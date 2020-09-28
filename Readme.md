@@ -1,7 +1,7 @@
 # Личный проект «Что посмотреть» [![Build status][travis-image]][travis-url]
 
 * Студент: [Екатерина Мартова](https://up.htmlacademy.ru/react/5/user/600361).
-* Наставник: `Неизвестно`.
+* Наставник: [Максим Плющ](https://htmlacademy.ru/profile/id1580889).
 
 ---
 
