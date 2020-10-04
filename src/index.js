@@ -9,46 +9,16 @@ const movieInfo = {
 };
 
 const genres = [
-  {
-    name: `All genres`,
-    active: true
-  },
-  {
-    name: `Crime`,
-    active: false
-  },
-  {
-    name: `Comedies`,
-    active: false
-  },
-  {
-    name: `Documentary`,
-    active: false
-  },
-  {
-    name: `Dramas`,
-    active: false
-  },
-  {
-    name: `Horror`,
-    active: false
-  },
-  {
-    name: `Kids & Family`,
-    active: false
-  },
-  {
-    name: `Romance`,
-    active: false
-  },
-  {
-    name: `Sci-Fi`,
-    active: false
-  },
-  {
-    name: `Thrillers`,
-    active: false
-  }
+  {name: `All genres`, active: true},
+  {name: `Crime`, active: false},
+  {name: `Comedies`, active: false},
+  {name: `Documentary`, active: false},
+  {name: `Dramas`, active: false},
+  {name: `Horror`, active: false},
+  {name: `Kids & Family`, active: false},
+  {name: `Romance`, active: false},
+  {name: `Sci-Fi`, active: false},
+  {name: `Thrillers`, active: false}
 ];
 
 const moviesList = [
@@ -135,6 +105,6 @@ const moviesList = [
 ];
 
 ReactDOM.render(
-    <App movieInfo={movieInfo} genres={genres} moviesList={moviesList}/>,
+    <App movieInfo={movieInfo} genres={genres} moviesList={moviesList} />,
     document.querySelector(`#root`)
 );
