@@ -1,8 +1,50 @@
 import React from "react";
 import PropTypes from "prop-types";
+import {Link, NavLink} from "react-router-dom";
+import moment from "moment";
 
 const Film = (props) => {
-  const {moviesList} = props;
+  const {moviesList, reviews} = props;
+
+  const addReviews = () => {
+    const cols = 2;
+    const half = Math.ceil(reviews.length / cols);
+    const reviewBlocks = [];
+    let resultArray = [];
+
+    for (let j = 0; j < reviews.length; j++) {
+      reviewBlocks.push(
+          <div className="review" key={`review-${j}`}>
+            <blockquote className="review__quote">
+              <p className="review__text">{reviews[j].text}</p>
+
+              <footer className="review__details">
+                <cite className="review__author">{reviews[j].author}</cite>
+                <time className="review__date" dateTime={moment(new Date(reviews[j].date)).format(`YYYY-DD-MM`)}>{reviews[j].date}</time>
+              </footer>
+            </blockquote>
+
+            <div className="review__rating">{reviews[j].rating.toFixed(1).replace(`.`, `,`)}</div>
+          </div>
+      );
+    }
+
+    for (let i = 0; i < cols; i++) {
+      let finish;
+
+      if (reviews.length % 2 !== 0 && i === cols - 1) {
+        finish = half * (i + 1) - 1;
+      } else {
+        finish = half * (i + 1);
+      }
+
+      resultArray.push(
+          <div className="movie-card__reviews-col" key={`reviews-col-${i}`}>{reviewBlocks.slice(half * i, finish)}</div>
+      );
+    }
+
+    return resultArray;
+  };
 
   return (
     <React.Fragment>
@@ -16,11 +58,11 @@ const Film = (props) => {
 
           <header className="page-header movie-card__head">
             <div className="logo">
-              <a href="main.html" className="logo__link">
+              <Link to="/" className="logo__link">
                 <span className="logo__letter logo__letter--1">W</span>
                 <span className="logo__letter logo__letter--2">T</span>
                 <span className="logo__letter logo__letter--3">W</span>
-              </a>
+              </Link>
             </div>
 
             <div className="user-block">
@@ -67,17 +109,18 @@ const Film = (props) => {
               <nav className="movie-nav movie-card__nav">
                 <ul className="movie-nav__list">
                   <li className="movie-nav__item movie-nav__item--active">
-                    <a href="#" className="movie-nav__link">Overview</a>
+                    <NavLink to="#" className="movie-nav__link">Overview</NavLink>
                   </li>
                   <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">Details</a>
+                    <NavLink to="#" className="movie-nav__link">Details</NavLink>
                   </li>
                   <li className="movie-nav__item">
-                    <a href="#" className="movie-nav__link">Reviews</a>
+                    <NavLink to="#" className="movie-nav__link">Reviews</NavLink>
                   </li>
                 </ul>
               </nav>
 
+              {/* RATING */}
               <div className="movie-rating">
                 <div className="movie-rating__score">8,9</div>
                 <p className="movie-rating__meta">
@@ -94,6 +137,53 @@ const Film = (props) => {
                 <p className="movie-card__director"><strong>Director: Wes Andreson</strong></p>
 
                 <p className="movie-card__starring"><strong>Starring: Bill Murray, Edward Norton, Jude Law, Willem Dafoe and other</strong></p>
+              </div>
+
+              {/* DETAILS */}
+              <div className="movie-card__text movie-card__row">
+                <div className="movie-card__text-col">
+                  <p className="movie-card__details-item">
+                    <strong className="movie-card__details-name">Director</strong>
+                    <span className="movie-card__details-value">Wes Andreson</span>
+                  </p>
+                  <p className="movie-card__details-item">
+                    <strong className="movie-card__details-name">Starring</strong>
+                    <span className="movie-card__details-value">
+                      Bill Murray, <br />
+                      Edward Norton, <br />
+                      Jude Law, <br />
+                      Willem Dafoe, <br />
+                      Saoirse Ronan, <br />
+                      Tony Revoloru, <br />
+                      Tilda Swinton, <br />
+                      Tom Wilkinson, <br />
+                      Owen Wilkinson, <br />
+                      Adrien Brody, <br />
+                      Ralph Fiennes, <br />
+                      Jeff Goldblum
+                    </span>
+                  </p>
+                </div>
+
+                <div className="movie-card__text-col">
+                  <p className="movie-card__details-item">
+                    <strong className="movie-card__details-name">Run Time</strong>
+                    <span className="movie-card__details-value">1h 39m</span>
+                  </p>
+                  <p className="movie-card__details-item">
+                    <strong className="movie-card__details-name">Genre</strong>
+                    <span className="movie-card__details-value">Comedy</span>
+                  </p>
+                  <p className="movie-card__details-item">
+                    <strong className="movie-card__details-name">Released</strong>
+                    <span className="movie-card__details-value">2014</span>
+                  </p>
+                </div>
+              </div>
+
+              {/* REVIEWS */}
+              <div className="movie-card__reviews movie-card__row">
+                {addReviews()}
               </div>
             </div>
           </div>
@@ -122,11 +212,11 @@ const Film = (props) => {
 
         <footer className="page-footer">
           <div className="logo">
-            <a href="main.html" className="logo__link logo__link--light">
+            <Link to="/" className="logo__link logo__link--light">
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>
-            </a>
+            </Link>
           </div>
 
           <div className="copyright">
@@ -144,7 +234,16 @@ Film.propTypes = {
         name: PropTypes.string.isRequired,
         src: PropTypes.string.isRequired,
       })
-  )
+  ),
+
+  reviews: PropTypes.arrayOf(
+      PropTypes.shape({
+        text: PropTypes.string.isRequired,
+        author: PropTypes.string.isRequired,
+        date: PropTypes.string.isRequired,
+        rating: PropTypes.number.isRequired,
+      })
+  ).isRequired
 };
 
 export default Film;

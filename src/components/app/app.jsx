@@ -3,15 +3,13 @@ import PropTypes from "prop-types";
 import {BrowserRouter, Switch, Route} from "react-router-dom";
 import Main from "../main/main";
 import Login from "../login/login";
-import MyList from "../myList/myList";
+import MyList from "../my-list/my-list";
 import Film from "../film/film";
-import AddReview from "../addReview/addReview";
+import AddReview from "../add-review/add-review";
 import Player from "../player/player";
 
 const App = (props) => {
-  const {movieInfo} = props;
-  const {genres} = props;
-  const {moviesList} = props;
+  const {movieInfo, genres, moviesList, reviews} = props;
 
   return (
     <BrowserRouter>
@@ -22,11 +20,11 @@ const App = (props) => {
         <Route exact path="/login">
           <Login />
         </Route>
-        <Route exact path="/myList">
+        <Route exact path="/my-list">
           <MyList moviesList={moviesList} />
         </Route>
         <Route exact path="/films/:id">
-          <Film moviesList={moviesList} />
+          <Film moviesList={moviesList} reviews={reviews} />
         </Route>
         <Route exact path="/films/:id/review">
           <AddReview />
@@ -43,6 +41,7 @@ App.propTypes = {
   movieInfo: PropTypes.shape().isRequired,
   genres: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   moviesList: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  reviews: PropTypes.arrayOf(PropTypes.shape()).isRequired
 };
 
 export default App;
