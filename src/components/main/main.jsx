@@ -1,13 +1,12 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import PropTypes from "prop-types";
 
 const Main = (props) => {
-  const {movieInfo} = props;
-  const {genres} = props;
-  const {moviesList} = props;
+  const {movieInfo, genres, moviesList} = props;
 
   return (
-    <div>
+    <React.Fragment>
       <section className="movie-card">
         <div className="movie-card__bg">
           <img src="img/bg-the-grand-budapest-hotel.jpg" alt={movieInfo.title} />
@@ -17,11 +16,11 @@ const Main = (props) => {
 
         <header className="page-header movie-card__head">
           <div className="logo">
-            <a className="logo__link">
+            <Link to="/" className="logo__link">
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>
-            </a>
+            </Link>
           </div>
 
           <div className="user-block">
@@ -99,11 +98,11 @@ const Main = (props) => {
 
         <footer className="page-footer">
           <div className="logo">
-            <a className="logo__link logo__link--light">
+            <Link to="/" className="logo__link logo__link--light">
               <span className="logo__letter logo__letter--1">W</span>
               <span className="logo__letter logo__letter--2">T</span>
               <span className="logo__letter logo__letter--3">W</span>
-            </a>
+            </Link>
           </div>
 
           <div className="copyright">
@@ -111,7 +110,7 @@ const Main = (props) => {
           </div>
         </footer>
       </div>
-    </div>
+    </React.Fragment>
   );
 };
 
