@@ -5,6 +5,8 @@ class FormLogin extends PureComponent {
     super(props);
 
     this.state = {
+      email: ``,
+      password: ``
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,6 +23,8 @@ class FormLogin extends PureComponent {
   }
 
   render() {
+    const {email, password} = this.state;
+
     return (
       <form action="#" className="sign-in__form" onSubmit={this.handleSubmit}>
         {/* ERROR MESSAGE */}
@@ -33,12 +37,26 @@ class FormLogin extends PureComponent {
         </div>
         <div className="sign-in__fields">
           <div className="sign-in__field">
-            <input className="sign-in__input" type="email" placeholder="Email address" name="user-email" id="user-email" onChange={this.handleFieldChange} />
-            <label className="sign-in__label visually-hidden" htmlFor="user-email">Email address</label>
+            <input
+              className="sign-in__input"
+              type="email"
+              placeholder="Email address"
+              name="email"
+              id="email"
+              onChange={this.handleFieldChange}
+              value={email} />
+            <label className="sign-in__label visually-hidden" htmlFor="email">Email address</label>
           </div>
           <div className="sign-in__field">
-            <input className="sign-in__input" type="password" placeholder="Password" name="user-password" id="user-password" onChange={this.handleFieldChange} />
-            <label className="sign-in__label visually-hidden" htmlFor="user-password">Password</label>
+            <input
+              className="sign-in__input"
+              type="password"
+              placeholder="Password"
+              name="password"
+              id="password"
+              onChange={this.handleFieldChange}
+              value={password} />
+            <label className="sign-in__label visually-hidden" htmlFor="password">Password</label>
           </div>
         </div>
         <div className="sign-in__submit">

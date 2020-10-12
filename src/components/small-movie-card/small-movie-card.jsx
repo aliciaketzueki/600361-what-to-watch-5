@@ -5,6 +5,21 @@ import {Link} from "react-router-dom";
 class SmallMovieCard extends PureComponent {
   constructor(props) {
     super(props);
+
+    this.state = {
+      isActive: false
+    };
+
+    this.handleMouseEnter = this.handleMouseEnter.bind(this);
+    this.handleMouseLeave = this.handleMouseLeave.bind(this);
+  }
+
+  handleMouseEnter() {
+    this.setState({isActive: true});
+  }
+
+  handleMouseLeave() {
+    this.setState({isActive: false});
   }
 
   render() {
@@ -12,7 +27,11 @@ class SmallMovieCard extends PureComponent {
     const {src, name} = film;
 
     return (
-      <article className="small-movie-card catalog__movies-card">
+      <article
+        className="small-movie-card catalog__movies-card"
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}
+      >
         <div className="small-movie-card__image">
           <img src={`img/` + src} alt={name} width="280" height="175" />
         </div>
@@ -24,8 +43,8 @@ class SmallMovieCard extends PureComponent {
   }
 }
 
-export default SmallMovieCard;
-
 SmallMovieCard.propTypes = {
   film: PropTypes.shape().isRequired,
 };
+
+export default SmallMovieCard;

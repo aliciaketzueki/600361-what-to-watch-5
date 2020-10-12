@@ -27,12 +27,9 @@ MyList.propTypes = {
         name: PropTypes.string.isRequired,
         src: PropTypes.string.isRequired,
       })
-  )
-};
-
-export default MyList;
-
-MyList.propTypes = {
+  ),
   header: PropTypes.shape().isRequired,
   history: PropTypes.shape().isRequired,
 };
+
+export default MyList;

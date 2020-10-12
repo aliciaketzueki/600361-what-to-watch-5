@@ -6,6 +6,7 @@ class FormAddReview extends PureComponent {
 
     this.state = {
       rating: `3`,
+      text: ``,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,7 +29,14 @@ class FormAddReview extends PureComponent {
     for (let i = 1; i <= maxRate; i++) {
       rateBlocks.push(
           <React.Fragment key={`rate-${i}`}>
-            <input className="rating__input" id={`star-${i}`} type="radio" name="rating" value={i} defaultChecked={i === parseInt(rating, 10) ? `checked` : !`checked`} onChange={this.handleFieldChange}/>
+            <input
+              className="rating__input"
+              id={`star-${i}`}
+              type="radio"
+              name="rating"
+              value={i}
+              defaultChecked={i === parseInt(rating, 10) ? `checked` : !`checked`}
+              onChange={this.handleFieldChange} />
             <label className="rating__label" htmlFor={`star-${i}`}>Rating {i}</label>
           </React.Fragment>
       );
@@ -38,7 +46,7 @@ class FormAddReview extends PureComponent {
   }
 
   render() {
-    const {rating} = this.state;
+    const {rating, text} = this.state;
 
     return (
       <form action="#" className="add-review__form" onSubmit={this.handleSubmit}>
@@ -49,7 +57,14 @@ class FormAddReview extends PureComponent {
         </div>
 
         <div className="add-review__text">
-          <textarea className="add-review__textarea" name="review-text" id="review-text" placeholder="Review text" onChange={this.handleFieldChange}></textarea>
+          <textarea
+            className="add-review__textarea"
+            name="text"
+            id="text"
+            placeholder="Review text"
+            onChange={this.handleFieldChange}
+            value={text}
+          />
           <div className="add-review__submit">
             <button className="add-review__btn" type="submit">Post</button>
           </div>

@@ -20,9 +20,9 @@ const Header = (props) => {
         </Link>
       </div>
 
-      {title ? <h1 className="page-title user-page__title">{title}</h1> : ``}
+      {title && <h1 className="page-title user-page__title">{title}</h1>}
 
-      {nav ?
+      {nav &&
         <nav className="breadcrumbs">
           <ul className="breadcrumbs__list">
             <li className="breadcrumbs__item">
@@ -33,25 +33,23 @@ const Header = (props) => {
             </li>
           </ul>
         </nav>
-        : ``
       }
 
-      {login ?
+      {login &&
         <div className="user-block">
           <div className="user-block__avatar" onClick={onLoginClick}>
             <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
           </div>
         </div>
-        : ``
       }
 
     </header>
   );
 };
 
-export default Header;
-
 Header.propTypes = {
   header: PropTypes.shape().isRequired,
   history: PropTypes.shape().isRequired,
 };
+
+export default Header;

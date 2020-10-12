@@ -9,17 +9,20 @@ const MyListBtn = (props) => {
   };
 
   return (
-    <button className="btn btn--list movie-card__button" type="button" onClick={onMyListBtnClick}>
+    <button
+      className="btn btn--list movie-card__button"
+      type="button"
+      onClick={onMyListBtnClick} >
       <svg viewBox="0 0 19 20" width="19" height="20">
-        <use xlinkHref="#add"></use>
+        <use xlinkHref="#add" />
       </svg>
       <span>My list</span>
     </button>
   );
 };
 
-export default MyListBtn;
-
 MyListBtn.propTypes = {
   history: PropTypes.shape().isRequired,
 };
+
+export default MyListBtn;

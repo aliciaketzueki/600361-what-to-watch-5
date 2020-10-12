@@ -29,9 +29,9 @@ const AddReview = (props) => {
   );
 };
 
-export default AddReview;
-
 AddReview.propTypes = {
   header: PropTypes.shape().isRequired,
   history: PropTypes.shape().isRequired,
 };
+
+export default AddReview;

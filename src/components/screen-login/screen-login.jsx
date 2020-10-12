@@ -21,9 +21,9 @@ const Login = (props) => {
   );
 };
 
-export default Login;
-
 Login.propTypes = {
   header: PropTypes.shape(),
   history: PropTypes.shape().isRequired,
 };
+
+export default Login;
