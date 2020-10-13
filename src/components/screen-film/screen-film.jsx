@@ -1,12 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Link, NavLink} from "react-router-dom";
-import moment from "moment";
+import {NavLink} from "react-router-dom";
+import {Link} from "react-router-dom";
+import MoviesList from "../movies-list/movies-list";
+import Header from "../header/header";
+import Footer from "../footer/footer";
+import VideoBtn from "../video-btn/video-btn";
+import Review from "../review/review";
+import MyListBtn from "../my-list-btn/my-list-btn";
 
 const Film = (props) => {
-  const {moviesList, reviews} = props;
-
-  const addReviews = () => {
+  function addReviews(reviews) {
     const cols = 2;
     const half = Math.ceil(reviews.length / cols);
     const reviewBlocks = [];
@@ -14,18 +18,7 @@ const Film = (props) => {
 
     for (let j = 0; j < reviews.length; j++) {
       reviewBlocks.push(
-          <div className="review" key={`review-${j}`}>
-            <blockquote className="review__quote">
-              <p className="review__text">{reviews[j].text}</p>
-
-              <footer className="review__details">
-                <cite className="review__author">{reviews[j].author}</cite>
-                <time className="review__date" dateTime={moment(new Date(reviews[j].date)).format(`YYYY-DD-MM`)}>{reviews[j].date}</time>
-              </footer>
-            </blockquote>
-
-            <div className="review__rating">{reviews[j].rating.toFixed(1).replace(`.`, `,`)}</div>
-          </div>
+          <Review key={`review-${j}`} review={reviews[j]} />
       );
     }
 
@@ -44,7 +37,9 @@ const Film = (props) => {
     }
 
     return resultArray;
-  };
+  }
+
+  const {films, reviews, header, history} = props;
 
   return (
     <React.Fragment>
@@ -55,22 +50,7 @@ const Film = (props) => {
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
-
-          <header className="page-header movie-card__head">
-            <div className="logo">
-              <Link to="/" className="logo__link">
-                <span className="logo__letter logo__letter--1">W</span>
-                <span className="logo__letter logo__letter--2">T</span>
-                <span className="logo__letter logo__letter--3">W</span>
-              </Link>
-            </div>
-
-            <div className="user-block">
-              <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
-              </div>
-            </div>
-          </header>
+          <Header header={header} history={history} />
 
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
@@ -81,19 +61,9 @@ const Film = (props) => {
               </p>
 
               <div className="movie-card__buttons">
-                <button className="btn btn--play movie-card__button" type="button">
-                  <svg viewBox="0 0 19 19" width="19" height="19">
-                    <use xlinkHref="#play-s"></use>
-                  </svg>
-                  <span>Play</span>
-                </button>
-                <button className="btn btn--list movie-card__button" type="button">
-                  <svg viewBox="0 0 19 20" width="19" height="20">
-                    <use xlinkHref="#add"></use>
-                  </svg>
-                  <span>My list</span>
-                </button>
-                <a href="add-review.html" className="btn movie-card__button">Add review</a>
+                <VideoBtn history={history} />
+                <MyListBtn history={history} />
+                <Link to="/films/:id/review" className="btn movie-card__button">Add review</Link>
               </div>
             </div>
           </div>
@@ -183,7 +153,7 @@ const Film = (props) => {
 
               {/* REVIEWS */}
               <div className="movie-card__reviews movie-card__row">
-                {addReviews()}
+                {addReviews(reviews)}
               </div>
             </div>
           </div>
@@ -194,56 +164,20 @@ const Film = (props) => {
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
 
-          <div className="catalog__movies-list">
-            {
-              moviesList.map((movie, index) => (
-                <article key={`${movie}-${index}`} className="small-movie-card catalog__movies-card">
-                  <div className="small-movie-card__image">
-                    <img src={`img/` + movie.src} alt={movie.name} width="280" height="175" />
-                  </div>
-                  <h3 className="small-movie-card__title">
-                    <a className="small-movie-card__link" href="movie-page.html">{movie.name}</a>
-                  </h3>
-                </article>
-              ))
-            }
-          </div>
+          <MoviesList films={films} />
         </section>
 
-        <footer className="page-footer">
-          <div className="logo">
-            <Link to="/" className="logo__link logo__link--light">
-              <span className="logo__letter logo__letter--1">W</span>
-              <span className="logo__letter logo__letter--2">T</span>
-              <span className="logo__letter logo__letter--3">W</span>
-            </Link>
-          </div>
-
-          <div className="copyright">
-            <p>© 2019 What to watch Ltd.</p>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </React.Fragment>
   );
 };
 
 Film.propTypes = {
-  moviesList: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        src: PropTypes.string.isRequired,
-      })
-  ),
-
-  reviews: PropTypes.arrayOf(
-      PropTypes.shape({
-        text: PropTypes.string.isRequired,
-        author: PropTypes.string.isRequired,
-        date: PropTypes.string.isRequired,
-        rating: PropTypes.number.isRequired,
-      })
-  ).isRequired
+  films: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  reviews: PropTypes.arrayOf(PropTypes.shape()).isRequired,
+  header: PropTypes.shape().isRequired,
+  history: PropTypes.shape().isRequired,
 };
 
 export default Film;
