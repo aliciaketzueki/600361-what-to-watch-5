@@ -1,82 +1,81 @@
-export default [
-  {
-    name: `Fantastic Beasts: The Crimes of Grindelwald`,
-    src: `fantastic-beasts-the-crimes-of-grindelwald.jpg`,
-  },
-  {
-    name: `Bohemian Rhapsody`,
-    src: `bohemian-rhapsody.jpg`,
-  },
-  {
-    name: `Macbeth`,
-    src: `macbeth.jpg`,
-  },
-  {
-    name: `Aviator`,
-    src: `aviator.jpg`
-  },
-  {
-    name: `We need to talk about Kevin`,
-    src: `we-need-to-talk-about-kevin.jpg`,
-  },
-  {
-    name: `What We Do in the Shadows`,
-    src: `what-we-do-in-the-shadows.jpg`,
-  },
-  {
-    name: `Revenant`,
-    src: `revenant.jpg`,
-  },
-  {
-    name: `Johnny English`,
-    src: `johnny-english.jpg`
-  },
-  {
-    name: `Shutter Island`,
-    src: `shutter-island.jpg`
-  },
-  {
-    name: `Pulp Fiction`,
-    src: `pulp-fiction.jpg`
-  },
-  {
-    name: `No Country for Old Men`,
-    src: `no-country-for-old-men.jpg`
-  },
-  {
-    name: `Snatch`,
-    src: `snatch.jpg`
-  },
-  {
-    name: `Moonrise Kingdom`,
-    src: `moonrise-kingdom.jpg`
-  },
-  {
-    name: `Seven Years in Tibet`,
-    src: `seven-years-in-tibet.jpg`
-  },
-  {
-    name: `Midnight Special`,
-    src: `midnight-special.jpg`
-  },
-  {
-    name: `War of the Worlds`,
-    src: `war-of-the-worlds.jpg`
-  },
-  {
-    name: `Dardjeeling Limited`,
-    src: `dardjeeling-limited.jpg`
-  },
-  {
-    name: `Orlando`,
-    src: `orlando.jpg`
-  },
-  {
-    name: `Mindhunter`,
-    src: `mindhunter.jpg`,
-  },
-  {
-    name: `Midnight Special`,
-    src: `midnight-special.jpg`
-  }
-];
+export default [{
+  name: `Fantastic Beasts: The Crimes of Grindelwald`,
+  poster: `fantastic-beasts-the-crimes-of-grindelwald.jpg`,
+  src: `https://docs.google.com/uc?id=1lOjED9R5dp-caVj1S8Wf8jjr3ob_qThW`,
+}, {
+  name: `Bohemian Rhapsody`,
+  poster: `bohemian-rhapsody.jpg`,
+  src: `https://docs.google.com/uc?id=1lOjED9R5dp-caVj1S8Wf8jjr3ob_qThW`,
+}, {
+  name: `Macbeth`,
+  poster: `macbeth.jpg`,
+  src: `https://docs.google.com/uc?id=1lOjED9R5dp-caVj1S8Wf8jjr3ob_qThW`,
+}, {
+  name: `Aviator`,
+  poster: `aviator.jpg`,
+  src: `https://docs.google.com/uc?id=1lOjED9R5dp-caVj1S8Wf8jjr3ob_qThW`,
+}, {
+  name: `We need to talk about Kevin`,
+  poster: `we-need-to-talk-about-kevin.jpg`,
+  src: `https://docs.google.com/uc?id=1lOjED9R5dp-caVj1S8Wf8jjr3ob_qThW`,
+}, {
+  name: `What We Do in the Shadows`,
+  poster: `what-we-do-in-the-shadows.jpg`,
+  src: `https://docs.google.com/uc?id=1lOjED9R5dp-caVj1S8Wf8jjr3ob_qThW`,
+}, {
+  name: `Revenant`,
+  poster: `revenant.jpg`,
+  src: `https://docs.google.com/uc?id=1lOjED9R5dp-caVj1S8Wf8jjr3ob_qThW`,
+}, {
+  name: `Johnny English`,
+  poster: `johnny-english.jpg`,
+  src: `https://docs.google.com/uc?id=1lOjED9R5dp-caVj1S8Wf8jjr3ob_qThW`,
+}, {
+  name: `Shutter Island`,
+  poster: `shutter-island.jpg`,
+  src: `https://docs.google.com/uc?id=1lOjED9R5dp-caVj1S8Wf8jjr3ob_qThW`,
+}, {
+  name: `Pulp Fiction`,
+  poster: `pulp-fiction.jpg`,
+  src: `https://docs.google.com/uc?id=1lOjED9R5dp-caVj1S8Wf8jjr3ob_qThW`,
+}, {
+  name: `No Country for Old Men`,
+  poster: `no-country-for-old-men.jpg`,
+  src: `https://docs.google.com/uc?id=1lOjED9R5dp-caVj1S8Wf8jjr3ob_qThW`,
+}, {
+  name: `Snatch`,
+  poster: `snatch.jpg`,
+  src: `https://docs.google.com/uc?id=1lOjED9R5dp-caVj1S8Wf8jjr3ob_qThW`,
+}, {
+  name: `Moonrise Kingdom`,
+  poster: `moonrise-kingdom.jpg`,
+  src: `https://docs.google.com/uc?id=1lOjED9R5dp-caVj1S8Wf8jjr3ob_qThW`,
+}, {
+  name: `Seven Years in Tibet`,
+  poster: `seven-years-in-tibet.jpg`,
+  src: `https://docs.google.com/uc?id=1lOjED9R5dp-caVj1S8Wf8jjr3ob_qThW`,
+}, {
+  name: `Midnight Special`,
+  poster: `midnight-special.jpg`,
+  src: `https://docs.google.com/uc?id=1lOjED9R5dp-caVj1S8Wf8jjr3ob_qThW`,
+}, {
+  name: `War of the Worlds`,
+  poster: `war-of-the-worlds.jpg`,
+  src: `https://docs.google.com/uc?id=1lOjED9R5dp-caVj1S8Wf8jjr3ob_qThW`,
+}, {
+  name: `Dardjeeling Limited`,
+  poster: `dardjeeling-limited.jpg`,
+  src: `https://docs.google.com/uc?id=1lOjED9R5dp-caVj1S8Wf8jjr3ob_qThW`,
+}, {
+  name: `Orlando`,
+  poster: `orlando.jpg`,
+  src: `https://docs.google.com/uc?id=1lOjED9R5dp-caVj1S8Wf8jjr3ob_qThW`,
+}, {
+  name: `Mindhunter`,
+  poster: `mindhunter.jpg`,
+  src: `https://docs.google.com/uc?id=1lOjED9R5dp-caVj1S8Wf8jjr3ob_qThW`,
+}, {
+  name: `Midnight Special`,
+  poster: `midnight-special.jpg`,
+  src: `https://docs.google.com/uc?id=1lOjED9R5dp-caVj1S8Wf8jjr3ob_qThW`,
+}];
