@@ -6,6 +6,7 @@ import Footer from "../footer/footer";
 import VideoBtn from "../video-btn/video-btn";
 import MyListBtn from "../my-list-btn/my-list-btn";
 import MoviesList from "../movies-list/movies-list";
+import GenresList from "../genres-list/genres-list";
 
 const Main = (props) => {
   const {movieInfo, genres, films, header, history} = props;
@@ -45,19 +46,8 @@ const Main = (props) => {
       <div className="page-content">
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
-
-          <ul className="catalog__genres-list">
-            {
-              genres.map((genre, index) => (
-                <li key={`${genre}-${index}`} className={genre.active ? `catalog__genres-item catalog__genres-item--active` : `catalog__genres-item`}>
-                  <a href="#" className="catalog__genres-link">{genre.name}</a>
-                </li>
-              ))
-            }
-          </ul>
-
+          <GenresList genres={genres} />
           <MoviesList films={films} />
-
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
           </div>
