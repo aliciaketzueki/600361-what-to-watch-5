@@ -4,11 +4,10 @@ export const ActionType = {
 };
 
 export const ActionCreator = {
-  changeGenre: (activeGenre) => ({
-    type: ActionType.CHANGE_GENRE,
-    genre: activeGenre,
-  }),
-  getMoviesList: () => ({
-    type: ActionType.GET_MOVIES_LIST
-  })
+  changeGenre: (activeGenre) => {
+    return {
+      type: ActionType.CHANGE_GENRE,
+      genre: activeGenre,
+    };
+  },
 };

@@ -1,12 +1,12 @@
 export default [
-  {name: `All genres`, active: true},
-  {name: `Crime`, active: false},
-  {name: `Comedies`, active: false},
-  {name: `Documentary`, active: false},
-  {name: `Dramas`, active: false},
-  {name: `Horror`, active: false},
-  {name: `Kids & Family`, active: false},
-  {name: `Romance`, active: false},
-  {name: `Sci-Fi`, active: false},
-  {name: `Thrillers`, active: false}
+  {name: `All genres`},
+  {name: `Crime`},
+  {name: `Comedies`},
+  {name: `Documentary`},
+  {name: `Dramas`},
+  {name: `Horror`},
+  {name: `Kids & Family`},
+  {name: `Romance`},
+  {name: `Sci-Fi`},
+  {name: `Thrillers`}
 ];

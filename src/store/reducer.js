@@ -3,16 +3,16 @@ import films from "../mocks/films";
 import {extend} from "../utils";
 
 const initialState = {
-  active_genre: `All genres`,
-  movies_list: films,
+  activeGenre: `All genres`,
+  moviesList: films,
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionType.CHANGE_FILTER:
-      return extend(state, {active_genre: action.genre})
-    case ActionType.GET_MOVIES_LIST:
-      console.log(`GET_MOVIES_LIST`); 
+    case ActionType.CHANGE_GENRE:
+      const filteredMovies = action.genre.toLowerCase() === initialState.activeGenre.toLowerCase() ? films : films.filter((film) => film.genre.toLowerCase() === action.genre.toLowerCase());
+
+      return extend(state, {activeGenre: action.genre, moviesList: filteredMovies});
   }
 
   return state;

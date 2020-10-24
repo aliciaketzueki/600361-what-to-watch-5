@@ -15,18 +15,18 @@ const movieInfo = {
 };
 
 const store = createStore(
-  reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
+    reducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
 );
 
 ReactDOM.render(
-  <Provider store={store}>
-    <App
-      movieInfo={movieInfo}
-      genres={genres}
-      films={films}
-      reviews={reviews}
-    />
-  </Provider>,
-  document.querySelector(`#root`)
+    <Provider store={store}>
+      <App
+        movieInfo={movieInfo}
+        genres={genres}
+        films={films}
+        reviews={reviews}
+      />
+    </Provider>,
+    document.querySelector(`#root`)
 );
