@@ -4,6 +4,9 @@ import App from "./components/app/app";
 import films from "./mocks/films";
 import reviews from "./mocks/reviews";
 import genres from "./mocks/genres";
+import {createStore} from "redux";
+import {Provider} from "react-redux";
+import {reducer} from "./store/reducer";
 
 const movieInfo = {
   title: `The Grand Budapest Hotel`,
@@ -11,12 +14,19 @@ const movieInfo = {
   year: 2014
 };
 
+const store = createStore(
+    reducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ ? window.__REDUX_DEVTOOLS_EXTENSION__() : (f) => f
+);
+
 ReactDOM.render(
-    <App
-      movieInfo={movieInfo}
-      genres={genres}
-      films={films}
-      reviews={reviews}
-    />,
+    <Provider store={store}>
+      <App
+        movieInfo={movieInfo}
+        genres={genres}
+        films={films}
+        reviews={reviews}
+      />
+    </Provider>,
     document.querySelector(`#root`)
 );
