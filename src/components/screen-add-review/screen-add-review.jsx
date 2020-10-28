@@ -1,7 +1,7 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Header from "../header/header";
 import FormAddReview from "../form-add-review/form-add-review";
+import {validShape} from "../../utils/props";
 
 const AddReview = (props) => {
   const {header, history} = props;
@@ -30,8 +30,8 @@ const AddReview = (props) => {
 };
 
 AddReview.propTypes = {
-  header: PropTypes.shape().isRequired,
-  history: PropTypes.shape().isRequired,
+  header: validShape,
+  history: validShape,
 };
 
 export default AddReview;

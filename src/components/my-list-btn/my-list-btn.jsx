@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import {validShape} from "../../utils/props";
 
 const MyListBtn = (props) => {
   const {history} = props;
@@ -22,7 +22,7 @@ const MyListBtn = (props) => {
 };
 
 MyListBtn.propTypes = {
-  history: PropTypes.shape().isRequired,
+  history: validShape,
 };
 
 export default MyListBtn;

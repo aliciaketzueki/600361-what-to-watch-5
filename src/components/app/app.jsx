@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import {BrowserRouter, Switch, Route} from "react-router-dom";
 import Main from "../screen-main/screen-main";
 import Login from "../screen-login/screen-login";
@@ -7,9 +6,10 @@ import MyList from "../screen-my-list/screen-my-list";
 import Film from "../screen-film/screen-film";
 import AddReview from "../screen-add-review/screen-add-review";
 import Player from "../screen-player/screen-player";
+import {validPromoFilm, validArrayOfShape} from "../../utils/props";
 
 const App = (props) => {
-  const {movieInfo, genres, films, reviews} = props;
+  const {promoFilm, genres, films, reviews} = props;
 
   return (
     <BrowserRouter>
@@ -19,7 +19,7 @@ const App = (props) => {
           exact path="/"
           render={({history}) => (
             <Main
-              movieInfo={movieInfo}
+              promoFilm={promoFilm}
               genres={genres} films={films}
               header={{headClass: `movie-card__head`, login: true}}
               history={history}
@@ -89,10 +89,10 @@ const App = (props) => {
 };
 
 App.propTypes = {
-  movieInfo: PropTypes.shape().isRequired,
-  genres: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  films: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  reviews: PropTypes.arrayOf(PropTypes.shape()).isRequired
+  promoFilm: validPromoFilm,
+  genres: validArrayOfShape,
+  films: validArrayOfShape,
+  reviews: validArrayOfShape
 };
 
 export default App;

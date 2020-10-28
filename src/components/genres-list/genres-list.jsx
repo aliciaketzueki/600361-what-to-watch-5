@@ -1,7 +1,7 @@
 import React from "react";
-import PropTypes from "prop-types";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
+import {validArrayOfShape, validString, validFunc} from "../../utils/props";
 
 const GenresList = (props) => {
   const {genres, activeGenre, onGenreClick} = props;
@@ -42,9 +42,9 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 GenresList.propTypes = {
-  genres: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  activeGenre: PropTypes.string.isRequired,
-  onGenreClick: PropTypes.func.isRequired
+  genres: validArrayOfShape,
+  activeGenre: validString,
+  onGenreClick: validFunc
 };
 
 export {GenresList};

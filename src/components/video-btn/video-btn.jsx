@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import {validShape} from "../../utils/props";
 
 const VideoBtn = (props) => {
   const {history} = props;
@@ -19,7 +19,7 @@ const VideoBtn = (props) => {
 };
 
 VideoBtn.propTypes = {
-  history: PropTypes.shape().isRequired,
+  history: validShape
 };
 
 export default VideoBtn;

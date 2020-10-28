@@ -1,9 +1,8 @@
 import React from "react";
-import PropTypes from "prop-types";
-
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import FormLogin from "../form-login/form-login";
+import {validShape} from "../../utils/props";
 
 const Login = (props) => {
   const {header, history} = props;
@@ -22,8 +21,8 @@ const Login = (props) => {
 };
 
 Login.propTypes = {
-  header: PropTypes.shape(),
-  history: PropTypes.shape().isRequired,
+  header: validShape,
+  history: validShape,
 };
 
 export default Login;

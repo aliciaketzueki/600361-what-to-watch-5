@@ -1,8 +1,8 @@
 import React from "react";
-import PropTypes from "prop-types";
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import MoviesList from "../movies-list/movies-list";
+import {validShape, validArrayOfShape} from "../../utils/props";
 
 const MyList = (props) => {
   const {films, header, history} = props;
@@ -22,14 +22,9 @@ const MyList = (props) => {
 };
 
 MyList.propTypes = {
-  films: PropTypes.arrayOf(
-      PropTypes.shape({
-        name: PropTypes.string.isRequired,
-        src: PropTypes.string.isRequired,
-      })
-  ),
-  header: PropTypes.shape().isRequired,
-  history: PropTypes.shape().isRequired,
+  films: validArrayOfShape,
+  header: validShape,
+  history: validShape,
 };
 
 export default MyList;

@@ -1,6 +1,6 @@
 export const ActionType = {
   CHANGE_GENRE: `CHANGE_GENRE`, // изменение фильтра по жанрам
-  GET_MOVIES_LIST: `GET_MOVIES_LIST`, // получение списка фильмов в соответствии выбранным жанром.
+  SHOW_MORE: `SHOW_MORE`, // получение списка фильмов в соответствии выбранным жанром.
 };
 
 export const ActionCreator = {
@@ -8,6 +8,13 @@ export const ActionCreator = {
     return {
       type: ActionType.CHANGE_GENRE,
       genre: activeGenre,
+    };
+  },
+
+  showMore: (filmsRendered) => {
+    return {
+      type: ActionType.SHOW_MORE,
+      num: filmsRendered
     };
   },
 };
