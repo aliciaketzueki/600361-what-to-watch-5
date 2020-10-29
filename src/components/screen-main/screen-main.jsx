@@ -1,21 +1,22 @@
 import React from "react";
-import PropTypes from "prop-types";
-
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import VideoBtn from "../video-btn/video-btn";
 import MyListBtn from "../my-list-btn/my-list-btn";
 import MoviesList from "../movies-list/movies-list";
 import GenresList from "../genres-list/genres-list";
+import ShowMore from "../show-more/show-more";
+import {connect} from "react-redux";
+import {validPromoFilm, validArrayOfShape, validShape, validNum} from "../../utils/props";
 
 const Main = (props) => {
-  const {movieInfo, genres, films, header, history} = props;
+  const {promoFilm, genres, films, header, history, filmsRendered, moviesList} = props;
 
   return (
     <React.Fragment>
       <section className="movie-card">
         <div className="movie-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt={movieInfo.title} />
+          <img src="img/bg-the-grand-budapest-hotel.jpg" alt={promoFilm.title} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -24,14 +25,14 @@ const Main = (props) => {
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt={movieInfo.title + ` poster`} width="218" height="327" />
+              <img src="img/the-grand-budapest-hotel-poster.jpg" alt={promoFilm.title + ` poster`} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{movieInfo.title}</h2>
+              <h2 className="movie-card__title">{promoFilm.title}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{movieInfo.genre}</span>
-                <span className="movie-card__year">{movieInfo.year}</span>
+                <span className="movie-card__genre">{promoFilm.genre}</span>
+                <span className="movie-card__year">{promoFilm.year}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -48,9 +49,7 @@ const Main = (props) => {
           <h2 className="catalog__title visually-hidden">Catalog</h2>
           <GenresList genres={genres} />
           <MoviesList films={films} />
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
-          </div>
+          {filmsRendered < moviesList.length && <ShowMore />}
         </section>
 
         <Footer />
@@ -59,17 +58,22 @@ const Main = (props) => {
   );
 };
 
-Main.propTypes = {
-  movieInfo: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired
-  }).isRequired,
-
-  genres: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  films: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  header: PropTypes.shape().isRequired,
-  history: PropTypes.shape().isRequired,
+const mapStateToProps = (state) => {
+  return {
+    moviesList: state.moviesList,
+    filmsRendered: state.filmsRendered,
+  };
 };
 
-export default Main;
+Main.propTypes = {
+  promoFilm: validPromoFilm,
+  genres: validArrayOfShape,
+  films: validArrayOfShape,
+  header: validShape,
+  moviesList: validArrayOfShape,
+  filmsRendered: validNum,
+  history: validShape,
+};
+
+export {Main};
+export default connect(mapStateToProps)(Main);

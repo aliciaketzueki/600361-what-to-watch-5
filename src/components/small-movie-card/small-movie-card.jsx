@@ -1,7 +1,7 @@
 import React, {PureComponent} from "react";
-import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import Video from "../video/video";
+import {validShape} from "../../utils/props";
 
 class SmallMovieCard extends PureComponent {
   constructor(props) {
@@ -53,7 +53,7 @@ class SmallMovieCard extends PureComponent {
 }
 
 SmallMovieCard.propTypes = {
-  film: PropTypes.shape().isRequired,
+  film: validShape,
 };
 
 export default SmallMovieCard;

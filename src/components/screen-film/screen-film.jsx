@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import {NavLink} from "react-router-dom";
 import {Link} from "react-router-dom";
 import MoviesList from "../movies-list/movies-list";
@@ -8,6 +7,7 @@ import Footer from "../footer/footer";
 import VideoBtn from "../video-btn/video-btn";
 import Review from "../review/review";
 import MyListBtn from "../my-list-btn/my-list-btn";
+import {validShape, validArrayOfShape} from "../../utils/props";
 
 const Film = (props) => {
   function addReviews(reviews) {
@@ -174,10 +174,10 @@ const Film = (props) => {
 };
 
 Film.propTypes = {
-  films: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  reviews: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  header: PropTypes.shape().isRequired,
-  history: PropTypes.shape().isRequired,
+  films: validArrayOfShape,
+  reviews: validArrayOfShape,
+  header: validShape,
+  history: validShape,
 };
 
 export default Film;

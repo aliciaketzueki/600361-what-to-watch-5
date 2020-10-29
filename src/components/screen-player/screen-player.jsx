@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from "prop-types";
+import {validFunc} from "../../utils/props";
 
 const Player = (props) => {
   const {onExitBtnClick} = props;
@@ -41,7 +41,7 @@ const Player = (props) => {
 };
 
 Player.propTypes = {
-  onExitBtnClick: PropTypes.func.isRequired
+  onExitBtnClick: validFunc
 };
 
 export default Player;

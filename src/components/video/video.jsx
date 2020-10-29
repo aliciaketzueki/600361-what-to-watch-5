@@ -1,11 +1,9 @@
 import React from "react";
-import PropTypes from "prop-types";
+import {validShape, validOneOfType} from "../../utils/props";
 
 const Video = (props) => {
   const {film, video} = props;
   const {poster, src} = film;
-
-  // console.log(`video state`, state);
 
   return (
     <React.Fragment>
@@ -24,11 +22,8 @@ const Video = (props) => {
 };
 
 Video.propTypes = {
-  film: PropTypes.shape().isRequired,
-  video: PropTypes.oneOfType([
-    PropTypes.func,
-    PropTypes.shape({current: PropTypes.any})
-  ])
+  film: validShape,
+  video: validOneOfType
 };
 
 export default Video;

@@ -1,6 +1,6 @@
 import React from "react";
-import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
+import {validShape} from "../../utils/props";
 
 const Header = (props) => {
   const {header, history} = props;
@@ -48,8 +48,8 @@ const Header = (props) => {
 };
 
 Header.propTypes = {
-  header: PropTypes.shape().isRequired,
-  history: PropTypes.shape().isRequired,
+  header: validShape,
+  history: validShape,
 };
 
 export default Header;
