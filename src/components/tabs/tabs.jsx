@@ -18,7 +18,9 @@ const Tabs = (props) => {
                 <NavLink
                   to="#"
                   className="movie-nav__link"
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
                     onTabLinkClick(index);
                   }}
                 >

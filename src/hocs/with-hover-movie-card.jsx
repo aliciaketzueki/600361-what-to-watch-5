@@ -1,4 +1,5 @@
 import React, {PureComponent} from "react";
+import {MOVIE_CARD_HOVER_TIMEOUT} from "../utils/const";
 
 const withHoverMovieCard = (Component) => {
   class WithHoverMovieCard extends PureComponent {
@@ -19,13 +20,17 @@ const withHoverMovieCard = (Component) => {
       this.timer = setTimeout(() => {
         this.setState({isActive: true});
         this.video.current.play();
-      }, 1000);
+      }, MOVIE_CARD_HOVER_TIMEOUT);
     }
 
     handleMouseLeave() {
       this.setState({isActive: false});
       this.video.current.pause();
       this.video.current.load();
+      clearTimeout(this.timer);
+    }
+
+    componentWillUnmount() {
       clearTimeout(this.timer);
     }
 

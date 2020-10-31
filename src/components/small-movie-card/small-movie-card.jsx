@@ -27,7 +27,7 @@ SmallMovieCard.propTypes = {
   film: validShape,
   video: validOneOfType,
   onMouseEnter: validFunc,
-  onMouseLeave: validFunc
+  onMouseLeave: validFunc,
 };
 
 export default SmallMovieCard;
