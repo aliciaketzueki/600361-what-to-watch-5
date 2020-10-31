@@ -1,6 +1,5 @@
 import React from "react";
 import SmallMovieCard from "../small-movie-card/small-movie-card";
-import {connect} from "react-redux";
 import {validArrayOfShape, validNum} from "../../utils/props";
 
 const MoviesList = (props) => {
@@ -18,17 +17,9 @@ const MoviesList = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    moviesList: state.moviesList,
-    filmsRendered: state.filmsRendered
-  };
-};
-
 MoviesList.propTypes = {
   moviesList: validArrayOfShape,
   filmsRendered: validNum
 };
 
-export {MoviesList};
-export default connect(mapStateToProps)(MoviesList);
+export default MoviesList;

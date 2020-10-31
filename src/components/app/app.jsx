@@ -20,7 +20,8 @@ const App = (props) => {
           render={({history}) => (
             <Main
               promoFilm={promoFilm}
-              genres={genres} films={films}
+              genres={genres}
+              films={films}
               header={{headClass: `movie-card__head`, login: true}}
               history={history}
             />
@@ -59,6 +60,7 @@ const App = (props) => {
               reviews={reviews}
               header={{headClass: `movie-card__head`, login: true}}
               history={history}
+              promoFilm={promoFilm}
             />
           )}
         />

@@ -10,7 +10,7 @@ import {connect} from "react-redux";
 import {validPromoFilm, validArrayOfShape, validShape, validNum} from "../../utils/props";
 
 const Main = (props) => {
-  const {promoFilm, genres, films, header, history, filmsRendered, moviesList} = props;
+  const {promoFilm, genres, header, history, filmsRendered, moviesList} = props;
 
   return (
     <React.Fragment>
@@ -48,7 +48,7 @@ const Main = (props) => {
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
           <GenresList genres={genres} />
-          <MoviesList films={films} />
+          <MoviesList moviesList={moviesList} filmsRendered={filmsRendered} />
           {filmsRendered < moviesList.length && <ShowMore />}
         </section>
 
@@ -58,12 +58,10 @@ const Main = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    moviesList: state.moviesList,
-    filmsRendered: state.filmsRendered,
-  };
-};
+const mapStateToProps = (state) => ({
+  moviesList: state.moviesList,
+  filmsRendered: state.filmsRendered,
+});
 
 Main.propTypes = {
   promoFilm: validPromoFilm,
