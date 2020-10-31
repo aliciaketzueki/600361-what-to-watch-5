@@ -6,4 +6,13 @@ export const promoFilm = {
   year: 2014
 };
 
-export const tabs = [`Overview`, `Details`, `Reviews`];
+export const tabs = [{
+  name: `Overview`,
+  id: 0,
+}, {
+  name: `Details`,
+  id: 1,
+}, {
+  name: `Reviews`,
+  id: 2
+}];

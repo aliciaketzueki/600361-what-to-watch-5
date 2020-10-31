@@ -8,6 +8,7 @@ import {createStore} from "redux";
 import {Provider} from "react-redux";
 import {reducer} from "./store/reducer";
 import {promoFilm} from "./utils/const";
+import {tabs} from "./utils/const";
 
 const store = createStore(
     reducer,
@@ -21,6 +22,7 @@ ReactDOM.render(
         genres={genres}
         films={films}
         reviews={reviews}
+        tabs={tabs}
       />
     </Provider>,
     document.querySelector(`#root`)

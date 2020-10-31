@@ -1,6 +1,8 @@
 import React from "react";
-import SmallMovieCard from "../small-movie-card/small-movie-card";
 import {validArrayOfShape, validNum} from "../../utils/props";
+import SmallMovieCard from "../small-movie-card/small-movie-card";
+import withHoverMovieCard from "../../hocs/with-hover-movie-card";
+const SmallMovieCardWrapper = withHoverMovieCard(SmallMovieCard);
 
 const MoviesList = (props) => {
   const {moviesList, filmsRendered} = props;
@@ -10,7 +12,7 @@ const MoviesList = (props) => {
       {
         moviesList.map((film, index) => (
           index < filmsRendered &&
-          <SmallMovieCard key={`${film}-${index}`} film={film} />
+          <SmallMovieCardWrapper key={`${film}-${index}`} film={film} />
         ))
       }
     </div>

@@ -6,11 +6,14 @@ import Footer from "../footer/footer";
 import VideoBtn from "../video-btn/video-btn";
 import MyListBtn from "../my-list-btn/my-list-btn";
 import {validShape, validArrayOfShape, validPromoFilm} from "../../utils/props";
-import Tabs from "../tabs/tabs";
 import {MORE_LIKE_NUM} from "../../utils/const";
+import withChangingActiveTab from "../../hocs/with-changing-active-tab";
+import Tabs from "../tabs/tabs";
+
+const TabSwitcher = withChangingActiveTab(Tabs);
 
 const Film = (props) => {
-  const {films, reviews, header, history, promoFilm} = props;
+  const {films, reviews, header, history, promoFilm, tabs} = props;
 
   const genre = `Dramas`;
   const filmsMoreLike = films.filter((film) => film.genre.toLowerCase() === genre.toLowerCase());
@@ -49,7 +52,7 @@ const Film = (props) => {
               <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
             </div>
 
-            <Tabs reviews={reviews} />
+            <TabSwitcher tabs={tabs} reviews={reviews} />
           </div>
         </div>
       </section>
@@ -66,13 +69,13 @@ const Film = (props) => {
   );
 };
 
-
 Film.propTypes = {
   promoFilm: validPromoFilm,
   films: validArrayOfShape,
   reviews: validArrayOfShape,
   header: validShape,
   history: validShape,
+  tabs: validArrayOfShape
 };
 
 export default Film;
