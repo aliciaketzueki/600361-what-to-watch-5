@@ -15,15 +15,15 @@ const TabSwitcher = withChangingActiveTab(Tabs);
 const Film = (props) => {
   const {films, reviews, header, history, promoFilm, tabs} = props;
 
-  const genre = `Dramas`;
-  const filmsMoreLike = films.filter((film) => film.genre.toLowerCase() === genre.toLowerCase());
+  const genreId = 4;
+  const filmsMoreLike = films.filter((film) => film.genreId === genreId);
 
   return (
     <React.Fragment>
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
+            <img src="img/bg-the-grand-budapest-hotel.jpg" alt={promoFilm.name} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -31,7 +31,7 @@ const Film = (props) => {
 
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{promoFilm.title}</h2>
+              <h2 className="movie-card__title">{promoFilm.name}</h2>
               <p className="movie-card__meta">
                 <span className="movie-card__genre">{promoFilm.genre}</span>
                 <span className="movie-card__year">{promoFilm.year}</span>
@@ -39,7 +39,7 @@ const Film = (props) => {
 
               <div className="movie-card__buttons">
                 <VideoBtn history={history} />
-                <MyListBtn history={history} />
+                <MyListBtn curFilmId={15} />
                 <Link to="/films/:id/review" className="btn movie-card__button">Add review</Link>
               </div>
             </div>
@@ -49,7 +49,7 @@ const Film = (props) => {
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
+              <img src="img/the-grand-budapest-hotel-poster.jpg" alt={promoFilm.name} width="218" height="327" />
             </div>
 
             <TabSwitcher tabs={tabs} reviews={reviews} />

@@ -12,7 +12,7 @@ const MoviesList = (props) => {
       {
         moviesList.map((film, index) => (
           index < filmsRendered &&
-          <SmallMovieCardWrapper key={`${film}-${index}`} film={film} />
+          <SmallMovieCardWrapper key={`${film.name}-${film.id}`} film={film} />
         ))
       }
     </div>

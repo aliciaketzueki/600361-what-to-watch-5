@@ -9,7 +9,7 @@ import Player from "../screen-player/screen-player";
 import {validPromoFilm, validArrayOfShape} from "../../utils/props";
 
 const App = (props) => {
-  const {promoFilm, genres, films, reviews, tabs} = props;
+  const {promoFilm, genres, films, userFilms, reviews, tabs} = props;
 
   return (
     <BrowserRouter>
@@ -44,7 +44,7 @@ const App = (props) => {
           exact path="/my-list"
           render={({history}) => (
             <MyList
-              films={films}
+              films={userFilms}
               header={{title: `My list`, headClass: `user-page__head`, login: true}}
               history={history}
             />
@@ -95,6 +95,7 @@ App.propTypes = {
   promoFilm: validPromoFilm,
   genres: validArrayOfShape,
   films: validArrayOfShape,
+  userFilms: validArrayOfShape,
   reviews: validArrayOfShape,
   tabs: validArrayOfShape,
 };

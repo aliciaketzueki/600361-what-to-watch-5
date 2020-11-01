@@ -1,12 +1,13 @@
 import React from "react";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
-import {validFunc, validNum} from "../../utils/props";
+import {validFunc, validNum, validArrayOfShape} from "../../utils/props";
 
 const ShowMore = (props) => {
-  const {filmsRendered, onShowMoreClick} = props;
+  const {filmsRendered, onShowMoreClick, moviesList} = props;
 
   return (
+    filmsRendered < moviesList.length &&
     <div className="catalog__more">
       <button
         className="catalog__button"
@@ -36,6 +37,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 ShowMore.propTypes = {
   filmsRendered: validNum,
+  moviesList: validArrayOfShape,
   onShowMoreClick: validFunc
 };
 

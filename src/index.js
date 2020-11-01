@@ -1,13 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/app/app";
-import films from "./mocks/films";
+import {films} from "./mocks/films";
+import {userFilms} from "./mocks/films";
+import {promoFilm} from "./mocks/films";
 import reviews from "./mocks/reviews";
 import genres from "./mocks/genres";
 import {createStore} from "redux";
 import {Provider} from "react-redux";
 import {reducer} from "./store/reducer";
-import {promoFilm} from "./utils/const";
 import {tabs} from "./utils/const";
 
 const store = createStore(
@@ -23,6 +24,7 @@ ReactDOM.render(
         films={films}
         reviews={reviews}
         tabs={tabs}
+        userFilms={userFilms}
       />
     </Provider>,
     document.querySelector(`#root`)

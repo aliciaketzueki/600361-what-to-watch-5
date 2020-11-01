@@ -1,18 +1,19 @@
 import {ActionType} from "./action";
-import films from "../mocks/films";
+import {films, userFilms} from "../mocks/films";
 import {extend} from "../utils/utils";
 
 const INITIAL_FILMS_NUM = 8;
 const initialState = {
-  activeGenre: `All genres`,
+  activeGenre: 0,
   moviesList: films,
-  filmsRendered: INITIAL_FILMS_NUM
+  userList: userFilms,
+  filmsRendered: INITIAL_FILMS_NUM,
 };
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
     case ActionType.CHANGE_GENRE:
-      const filteredMovies = action.genre.toLowerCase() === initialState.activeGenre.toLowerCase() ? films : films.filter((film) => film.genre.toLowerCase() === action.genre.toLowerCase());
+      const filteredMovies = action.genre === initialState.activeGenre ? films : films.filter((film) => film.genreId === action.genre);
       return extend(state, {activeGenre: action.genre, moviesList: filteredMovies});
     case ActionType.SHOW_MORE:
       if (state.filmsRendered < state.moviesList.length - INITIAL_FILMS_NUM) {
@@ -20,6 +21,12 @@ const reducer = (state = initialState, action) => {
       } else {
         return extend(state, {filmsRendered: state.moviesList.length});
       }
+    case ActionType.ADD_TO_USER_LIST:
+      if (userFilms.indexOf(films[action.filmId]) === -1) {
+        userFilms.push(films[action.filmId]);
+      }
+
+      return extend(state, {userList: userFilms});
   }
 
   return state;
