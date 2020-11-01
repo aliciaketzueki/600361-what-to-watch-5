@@ -1,7 +1,10 @@
 import React from "react";
 import Header from "../header/header";
 import FormAddReview from "../form-add-review/form-add-review";
+import withChangingForm from "../../hocs/with-changing-form";
 import {validShape} from "../../utils/props";
+
+const ReviewFormWrapper = withChangingForm(FormAddReview);
 
 const AddReview = (props) => {
   const {header, history} = props;
@@ -22,7 +25,7 @@ const AddReview = (props) => {
       </div>
 
       <div className="add-review">
-        <FormAddReview />
+        <ReviewFormWrapper />
       </div>
 
     </section>

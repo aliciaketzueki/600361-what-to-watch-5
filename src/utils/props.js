@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 
 export const validPromoFilm = PropTypes.shape({
-  title: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
   year: PropTypes.number.isRequired
 }).isRequired;

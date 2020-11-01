@@ -1,18 +1,20 @@
 import React from "react";
-import {validShape} from "../../utils/props";
+import {validNum, validFunc} from "../../utils/props";
+import {connect} from "react-redux";
+import {ActionCreator} from "../../store/action";
 
 const MyListBtn = (props) => {
-  const {history} = props;
-
-  const onMyListBtnClick = () => {
-    history.push(`/my-list`);
-  };
+  const {onMyListBtnClick, curFilmId} = props;
 
   return (
     <button
       className="btn btn--list movie-card__button"
       type="button"
-      onClick={onMyListBtnClick} >
+      onClick={(e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        onMyListBtnClick(curFilmId);
+      }}>
       <svg viewBox="0 0 19 20" width="19" height="20">
         <use xlinkHref="#add" />
       </svg>
@@ -21,8 +23,16 @@ const MyListBtn = (props) => {
   );
 };
 
+const mapDispatchToProps = (dispatch) => ({
+  onMyListBtnClick(filmId) {
+    dispatch(ActionCreator.addToMyList(filmId));
+  }
+});
+
 MyListBtn.propTypes = {
-  history: validShape,
+  onMyListBtnClick: validFunc,
+  curFilmId: validNum
 };
 
-export default MyListBtn;
+export {MyListBtn};
+export default connect(null, mapDispatchToProps)(MyListBtn);

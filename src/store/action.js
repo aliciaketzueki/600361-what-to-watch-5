@@ -1,6 +1,7 @@
 export const ActionType = {
   CHANGE_GENRE: `CHANGE_GENRE`, // изменение фильтра по жанрам
   SHOW_MORE: `SHOW_MORE`, // получение списка фильмов в соответствии выбранным жанром.
+  ADD_TO_USER_LIST: `ADD_TO_USER_LIST`
 };
 
 export const ActionCreator = {
@@ -15,6 +16,13 @@ export const ActionCreator = {
     return {
       type: ActionType.SHOW_MORE,
       num: filmsRendered
+    };
+  },
+
+  addToMyList: (curFilmId) => {
+    return {
+      type: ActionType.ADD_TO_USER_LIST,
+      filmId: curFilmId
     };
   },
 };

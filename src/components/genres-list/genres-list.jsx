@@ -1,7 +1,8 @@
 import React from "react";
+import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
-import {validArrayOfShape, validString, validFunc} from "../../utils/props";
+import {validArrayOfShape, validFunc, validNum} from "../../utils/props";
 
 const GenresList = (props) => {
   const {genres, activeGenre, onGenreClick} = props;
@@ -9,19 +10,19 @@ const GenresList = (props) => {
   return (
     <ul className="catalog__genres-list">
       {
-        genres.map((genre, index) => (
-          <li key={`${genre}-${index}`} className={genre.name === activeGenre ? `catalog__genres-item catalog__genres-item--active` : `catalog__genres-item`}>
-            <a
-              href="#"
+        genres.map((genre) => (
+          <li key={`${genre.name}-${genre.id}`} className={genre.id === activeGenre ? `catalog__genres-item catalog__genres-item--active` : `catalog__genres-item`}>
+            <Link
+              to="#"
               className="catalog__genres-link"
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                onGenreClick(genre.name);
+                onGenreClick(genre.id);
               }}
             >
               {genre.name}
-            </a>
+            </Link>
           </li>
         ))
       }
@@ -43,7 +44,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 GenresList.propTypes = {
   genres: validArrayOfShape,
-  activeGenre: validString,
+  activeGenre: validNum,
   onGenreClick: validFunc
 };
 
