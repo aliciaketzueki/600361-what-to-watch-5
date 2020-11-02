@@ -18,6 +18,16 @@ const withChangingForm = (Component) => {
 
     handleSubmit(evt) {
       evt.preventDefault();
+      const data = new FormData(evt.target);
+
+      fetch(`/`, {
+        method: `POST`,
+        body: data,
+      });
+
+      // for (let [key, value] of data.entries()) {
+      //   console.log(key, value);
+      //  }
     }
 
     handleFieldChange(evt) {

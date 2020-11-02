@@ -7,10 +7,10 @@ import VideoBtn from "../video-btn/video-btn";
 import MyListBtn from "../my-list-btn/my-list-btn";
 import {validShape, validArrayOfShape, validPromoFilm} from "../../utils/props";
 import {MORE_LIKE_NUM} from "../../utils/const";
-import withChangingActiveTab from "../../hocs/with-changing-active-tab";
+import withActiveItem from "../../hocs/with-active-item/with-active-item";
 import Tabs from "../tabs/tabs";
 
-const TabSwitcher = withChangingActiveTab(Tabs);
+const TabSwitcher = withActiveItem(Tabs);
 
 const Film = (props) => {
   const {films, reviews, header, history, promoFilm, tabs} = props;
@@ -23,7 +23,7 @@ const Film = (props) => {
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src="img/bg-the-grand-budapest-hotel.jpg" alt={promoFilm.name} />
+            <img src={`img/${promoFilm.bg}`} alt={promoFilm.name} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -52,7 +52,7 @@ const Film = (props) => {
               <img src="img/the-grand-budapest-hotel-poster.jpg" alt={promoFilm.name} width="218" height="327" />
             </div>
 
-            <TabSwitcher tabs={tabs} reviews={reviews} />
+            <TabSwitcher tabs={tabs} reviews={reviews} promoFilm={promoFilm} />
           </div>
         </div>
       </section>

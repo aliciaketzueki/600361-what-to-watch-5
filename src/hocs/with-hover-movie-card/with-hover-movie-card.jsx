@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react";
-import {MOVIE_CARD_HOVER_TIMEOUT} from "../utils/const";
+import {MOVIE_CARD_HOVER_TIMEOUT} from "../../utils/const";
 
 const withHoverMovieCard = (Component) => {
   class WithHoverMovieCard extends PureComponent {

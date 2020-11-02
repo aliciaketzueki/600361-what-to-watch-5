@@ -1,12 +1,24 @@
 import React from "react";
+import {validPromoFilm} from "../../utils/props";
 
-const TabOverview = () => {
+const TabOverview = (props) => {
+  const {promoFilm} = props;
+  const {rating} = promoFilm;
+
   return (
     <React.Fragment>
       <div className="movie-rating">
-        <div className="movie-rating__score">8,9</div>
+        <div className="movie-rating__score">{rating}</div>
         <p className="movie-rating__meta">
-          <span className="movie-rating__level">Very good</span>
+          <span className="movie-rating__level">
+            {
+              rating >= 0 && rating < 3 && `Bad` ||
+              rating >= 3 && rating < 5 && `Normal` ||
+              rating >= 5 && rating < 8 && `Good` ||
+              rating >= 8 && rating < 10 && `Very good` ||
+              rating === 10 && `Awesome`
+            }
+          </span>
           <span className="movie-rating__count">240 ratings</span>
         </p>
       </div>
@@ -22,6 +34,10 @@ const TabOverview = () => {
       </div>
     </React.Fragment>
   );
+};
+
+TabOverview.propTypes = {
+  promoFilm: validPromoFilm,
 };
 
 export default TabOverview;

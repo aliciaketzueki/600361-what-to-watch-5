@@ -1,9 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/app/app";
-import {films} from "./mocks/films";
-import {userFilms} from "./mocks/films";
-import {promoFilm} from "./mocks/films";
+import {films, userFilms, promoFilm} from "./mocks/films";
 import reviews from "./mocks/reviews";
 import genres from "./mocks/genres";
 import {createStore} from "redux";

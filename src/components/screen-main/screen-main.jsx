@@ -3,14 +3,11 @@ import Header from "../header/header";
 import Footer from "../footer/footer";
 import VideoBtn from "../video-btn/video-btn";
 import MyListBtn from "../my-list-btn/my-list-btn";
-import MoviesList from "../movies-list/movies-list";
-import GenresList from "../genres-list/genres-list";
-import ShowMore from "../show-more/show-more";
-import {connect} from "react-redux";
-import {validPromoFilm, validArrayOfShape, validShape, validNum} from "../../utils/props";
+import MoviesByGenres from "../movies-by-genres/movies-by-genres";
+import {validPromoFilm, validArrayOfShape, validShape} from "../../utils/props";
 
 const Main = (props) => {
-  const {promoFilm, genres, header, history, filmsRendered, moviesList} = props;
+  const {promoFilm, genres, header, history} = props;
 
   return (
     <React.Fragment>
@@ -47,9 +44,7 @@ const Main = (props) => {
       <div className="page-content">
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
-          <GenresList genres={genres} />
-          <MoviesList moviesList={moviesList} filmsRendered={filmsRendered} />
-          <ShowMore />
+          <MoviesByGenres genres={genres} />
         </section>
 
         <Footer />
@@ -58,20 +53,11 @@ const Main = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  moviesList: state.moviesList,
-  filmsRendered: state.filmsRendered,
-});
-
 Main.propTypes = {
   promoFilm: validPromoFilm,
   genres: validArrayOfShape,
-  films: validArrayOfShape,
   header: validShape,
-  moviesList: validArrayOfShape,
-  filmsRendered: validNum,
   history: validShape,
 };
 
-export {Main};
-export default connect(mapStateToProps)(Main);
+export default Main;

@@ -5,20 +5,21 @@ import {ActionCreator} from "../../store/action";
 import {validArrayOfShape, validFunc, validNum} from "../../utils/props";
 
 const GenresList = (props) => {
-  const {genres, activeGenre, onGenreClick} = props;
+  const {genres, onGenreClick, onClick, tabIndex} = props;
 
   return (
     <ul className="catalog__genres-list">
       {
-        genres.map((genre) => (
-          <li key={`${genre.name}-${genre.id}`} className={genre.id === activeGenre ? `catalog__genres-item catalog__genres-item--active` : `catalog__genres-item`}>
+        genres.map((genre, index) => (
+          <li key={`${genre.name}-${genre.id}`} className={genre.id === tabIndex ? `catalog__genres-item catalog__genres-item--active` : `catalog__genres-item`}>
             <Link
-              to="#"
+              to="/"
               className="catalog__genres-link"
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
                 onGenreClick(genre.id);
+                onClick(index);
               }}
             >
               {genre.name}
@@ -30,23 +31,18 @@ const GenresList = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return {
-    activeGenre: state.activeGenre,
-  };
-};
-
 const mapDispatchToProps = (dispatch) => ({
-  onGenreClick(activeGenre) {
-    dispatch(ActionCreator.changeGenre(activeGenre));
+  onGenreClick(tabIndex) {
+    dispatch(ActionCreator.changeGenre(tabIndex));
   }
 });
 
 GenresList.propTypes = {
   genres: validArrayOfShape,
-  activeGenre: validNum,
-  onGenreClick: validFunc
+  tabIndex: validNum,
+  onGenreClick: validFunc,
+  onClick: validFunc
 };
 
 export {GenresList};
-export default connect(mapStateToProps, mapDispatchToProps)(GenresList);
+export default connect(null, mapDispatchToProps)(GenresList);
