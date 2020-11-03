@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import Video from "../video/video";
+import VideoPreview from "../video-preview/video-preview";
 import {validShape, validFunc, validOneOfType} from "../../utils/props";
 
 const SmallMovieCard = (props) => {
@@ -14,7 +14,7 @@ const SmallMovieCard = (props) => {
       onMouseLeave={onMouseLeave}
     >
       <div className="small-movie-card__image">
-        <Video film={film} video={video} />
+        <VideoPreview film={film} video={video} />
       </div>
       <h3 className="small-movie-card__title">
         <Link to="/films/:id" className="small-movie-card__link">{name}</Link>

@@ -5,19 +5,30 @@ const TabOverview = (props) => {
   const {promoFilm} = props;
   const {rating} = promoFilm;
 
+  const addRating = () => {
+    switch (true) {
+      case rating >= 0 && rating < 3:
+        return `Bad`;
+      case rating >= 3 && rating < 5:
+        return `Normal`;
+      case rating >= 5 && rating < 8:
+        return `Good`;
+      case rating >= 8 && rating < 10:
+        return `Very good`;
+      case rating === 10:
+        return `Awesome`;
+    }
+
+    return false;
+  };
+
   return (
     <React.Fragment>
       <div className="movie-rating">
         <div className="movie-rating__score">{rating}</div>
         <p className="movie-rating__meta">
           <span className="movie-rating__level">
-            {
-              rating >= 0 && rating < 3 && `Bad` ||
-              rating >= 3 && rating < 5 && `Normal` ||
-              rating >= 5 && rating < 8 && `Good` ||
-              rating >= 8 && rating < 10 && `Very good` ||
-              rating === 10 && `Awesome`
-            }
+            {addRating()}
           </span>
           <span className="movie-rating__count">240 ratings</span>
         </p>

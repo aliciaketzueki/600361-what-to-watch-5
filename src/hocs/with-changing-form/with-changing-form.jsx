@@ -20,7 +20,7 @@ const withChangingForm = (Component) => {
       evt.preventDefault();
       const data = new FormData(evt.target);
 
-      fetch(`/`, {
+      fetch(`https://5.react.pages.academy/wtw`, {
         method: `POST`,
         body: data,
       });
