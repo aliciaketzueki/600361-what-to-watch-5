@@ -1,9 +1,12 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
-import {validFunc, validArrayOfShape, validNum} from "../../utils/props";
+import {validFunc, validArrayOfShape, validNum, validPromoFilm} from "../../utils/props";
+import TabOverview from "../tab-overview/tab-overview";
+import TabDetails from "../tab-details/tab-details";
+import TabReviews from "../tab-reviews/tab-reviews";
 
 const Tabs = (props) => {
-  const {tabs, reviews, tabIndex, renderSwitch, onTabLinkClick} = props;
+  const {tabs, reviews, tabIndex, onClick, promoFilm} = props;
 
   return (
     <div className="movie-card__desc">
@@ -16,12 +19,12 @@ const Tabs = (props) => {
                 key={`${tab.name}-${tab.id}`}
               >
                 <NavLink
-                  to="#"
+                  to="/"
                   className="movie-nav__link"
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    onTabLinkClick(index);
+                    onClick(index);
                   }}
                 >
                   {tab.name}
@@ -31,18 +34,21 @@ const Tabs = (props) => {
           }
         </ul>
       </nav>
-
-      {renderSwitch(reviews)}
+      {
+        tabIndex === 0 && <TabOverview promoFilm={promoFilm} /> ||
+        tabIndex === 1 && <TabDetails /> ||
+        tabIndex === 2 && <TabReviews reviews={reviews} />
+      }
     </div>
   );
 };
 
 Tabs.propTypes = {
-  onTabLinkClick: validFunc,
+  onClick: validFunc,
   tabs: validArrayOfShape,
   reviews: validArrayOfShape,
   tabIndex: validNum,
-  renderSwitch: validFunc
+  promoFilm: validPromoFilm
 };
 
 export default Tabs;

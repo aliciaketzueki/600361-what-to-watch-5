@@ -1,7 +1,7 @@
 import React from "react";
 import {validArrayOfShape, validNum} from "../../utils/props";
 import SmallMovieCard from "../small-movie-card/small-movie-card";
-import withHoverMovieCard from "../../hocs/with-hover-movie-card";
+import withHoverMovieCard from "../../hocs/with-hover-movie-card/with-hover-movie-card";
 const SmallMovieCardWrapper = withHoverMovieCard(SmallMovieCard);
 
 const MoviesList = (props) => {

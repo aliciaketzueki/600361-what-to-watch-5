@@ -1,7 +1,7 @@
 import React from "react";
 import Header from "../header/header";
 import FormAddReview from "../form-add-review/form-add-review";
-import withChangingForm from "../../hocs/with-changing-form";
+import withChangingForm from "../../hocs/with-changing-form/with-changing-form";
 import {validShape} from "../../utils/props";
 
 const ReviewFormWrapper = withChangingForm(FormAddReview);
