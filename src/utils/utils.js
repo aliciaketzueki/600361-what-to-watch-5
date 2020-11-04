@@ -13,26 +13,25 @@ const getFloor = (num) => {
 };
 
 export const createFilmCard = (name) => {
-  const film = {};
-  film.year = getFloor(getRandom(1990, 2020));
-  film.videoSrc = `https://docs.google.com/uc?id=1lOjED9R5dp-caVj1S8Wf8jjr3ob_qThW`;
-  film.id = getFloor(getRandom(1000, 9999));
-  film.name = name;
-  film.bg = `bg-the-grand-budapest-hotel.jpg`;
-  film.poster = name.split(` `).join(`-`).split(/[^a-zA-Z0-9_\-]/).join(``).toLowerCase() + `.jpg`;
-  film.genreId = getFloor(getRandom(0, 9));
+  const film = {
+    year: getFloor(getRandom(1990, 2020)),
+    videoSrc: `https://docs.google.com/uc?id=1lOjED9R5dp-caVj1S8Wf8jjr3ob_qThW`,
+    id: getFloor(getRandom(1000, 9999)),
+    name,
+    bg: `bg-the-grand-budapest-hotel.jpg`,
+    poster: name.split(` `).join(`-`).split(/[^a-zA-Z0-9_\-]/).join(``).toLowerCase() + `.jpg`,
+    genreId: getFloor(getRandom(0, 9)),
+    // genre: genres[film.genreId].name,
+    rating: getRandom(0, 10)
+  };
+
   film.genre = genres[film.genreId].name;
-  film.rating = getRandom(0, 10);
 
   return film;
 };
 
 export const createFilmsArr = (arr) => {
-  const filmArr = [];
-
-  arr.forEach((name) => {
-    filmArr.push(createFilmCard(name));
-  });
+  const filmArr = arr.map((item) => createFilmCard(item));
 
   return filmArr;
 };

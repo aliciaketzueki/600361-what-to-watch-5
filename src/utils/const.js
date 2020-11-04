@@ -1,5 +1,5 @@
 export const MORE_LIKE_NUM = 4;
-export const MOVIE_CARD_HOVER_TIMEOUT = 1000;
+export const SECOND = 1000;
 
 export const tabs = [{
   name: `Overview`,

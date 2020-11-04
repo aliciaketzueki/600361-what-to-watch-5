@@ -6,6 +6,7 @@ export const validPromoFilm = PropTypes.shape({
   year: PropTypes.number.isRequired
 }).isRequired;
 
+export const validBool = PropTypes.bool.isRequired;
 export const validShape = PropTypes.shape().isRequired;
 export const validArrayOfShape = PropTypes.arrayOf(PropTypes.shape()).isRequired;
 export const validNum = PropTypes.number.isRequired;
