@@ -1,34 +1,24 @@
 import {ActionType} from "../../action";
-import {extend} from "../../../utils/utils";
+import {extend, getGenres} from "../../../utils/utils";
+import {INITIAL_FILMS_NUM, ALL_GENRES} from "../../../utils/const";
 
-const INITIAL_FILMS_NUM = 8;
 const initialState = {
-  films: [],
-  userList: [],
   genres: [],
-  activeGenre: `All genres`,
+  activeGenre: ALL_GENRES,
   filmsRendered: INITIAL_FILMS_NUM,
 };
 
 const process = (state = initialState, action) => {
   switch (action.type) {
+    case ActionType.CREATE_GENRES_LIST:
+      return extend(state, {genres: getGenres(action.payload)});
+
     case ActionType.CHANGE_GENRE:
-      const filteredMovies = action.genre === initialState.activeGenre ? state.films : state.films.filter((film) => film.genreId === action.genre);
-      return extend(state, {films: filteredMovies});
+      return extend(state, {activeGenre: action.payload});
 
     case ActionType.SHOW_MORE:
-      if (state.filmsRendered < state.films.length - INITIAL_FILMS_NUM) {
-        return extend(state, {filmsRendered: action.num + INITIAL_FILMS_NUM});
-      } else {
-        return extend(state, {filmsRendered: state.films.length});
-      }
+      return extend(state, {filmsRendered: action.payload});
 
-    case ActionType.ADD_TO_USER_LIST:
-      if (userFilms.indexOf(films[action.filmId]) === -1) {
-        userFilms.push(films[action.filmId]);
-      }
-
-      return extend(state, {userList: userFilms});
   }
 
   return state;

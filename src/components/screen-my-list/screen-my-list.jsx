@@ -5,11 +5,18 @@ import MoviesList from "../movies-list/movies-list";
 import {validShape, validArrayOfShape} from "../../utils/props";
 
 const MyList = (props) => {
-  const {header, history, films} = props;
+  const {history, films} = props;
 
   return (
     <div className="user-page">
-      <Header header={header} history={history} />
+      <Header
+        header={{
+          title: `My list`,
+          headClass: `user-page__head`,
+          login: true
+        }}
+        history={history}
+      />
 
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
@@ -23,7 +30,6 @@ const MyList = (props) => {
 
 MyList.propTypes = {
   films: validArrayOfShape,
-  header: validShape,
   history: validShape,
 };
 

@@ -19,9 +19,9 @@ const MoviesList = (props) => {
   );
 };
 
-// MoviesList.propTypes = {
-//   films: validArrayOfShape,
-//   filmsRendered: validNum
-// };
+MoviesList.propTypes = {
+  films: validArrayOfShape,
+  filmsRendered: validNum
+};
 
 export default MoviesList;

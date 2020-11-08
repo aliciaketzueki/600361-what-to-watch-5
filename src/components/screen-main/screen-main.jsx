@@ -5,10 +5,11 @@ import VideoBtn from "../video-btn/video-btn";
 import MyListBtn from "../my-list-btn/my-list-btn";
 import MoviesByGenres from "../movies-by-genres/movies-by-genres";
 import {connect} from "react-redux";
-import {validPromoFilm, validArrayOfShape, validShape} from "../../utils/props";
+import {getPromoFilm} from "../../store/selectors";
+import {validPromoFilm, validShape} from "../../utils/props";
 
 const Main = (props) => {
-  const {promoFilm, genres, header, history} = props;
+  const {promoFilm, history} = props;
   const {name, genre, released, poster_image, background_image} = promoFilm;
 
   return (
@@ -19,7 +20,13 @@ const Main = (props) => {
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
-        <Header header={header} history={history} />
+        <Header
+          header = {{
+            headClass: `movie-card__head`,
+            login: true
+          }}
+          history={history}
+        />
 
         <div className="movie-card__wrap">
           <div className="movie-card__info">
@@ -36,7 +43,7 @@ const Main = (props) => {
 
               <div className="movie-card__buttons">
                 <VideoBtn history={history} />
-                <MyListBtn curFilmId={15} />
+                <MyListBtn />
               </div>
             </div>
           </div>
@@ -46,7 +53,7 @@ const Main = (props) => {
       <div className="page-content">
         <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
-          <MoviesByGenres genres={genres} />
+          <MoviesByGenres />
         </section>
 
         <Footer />
@@ -55,20 +62,14 @@ const Main = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  console.log(`state`, state);
+const mapStateToProps = (state) => ({
+  promoFilm: getPromoFilm(state)
+});
 
-  return {
-    promoFilm: state.DATA.promoFilm,
-  }
-}
-
-// Main.propTypes = {
-//   promoFilm: validPromoFilm,
-//   genres: validArrayOfShape,
-//   header: validShape,
-//   history: validShape,
-// };
+Main.propTypes = {
+  promoFilm: validPromoFilm,
+  history: validShape,
+};
 
 export {Main};
 export default connect(mapStateToProps)(Main);

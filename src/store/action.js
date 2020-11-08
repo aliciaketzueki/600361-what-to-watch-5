@@ -1,7 +1,7 @@
 export const ActionType = {
-  CHANGE_GENRE: `CHANGE_GENRE`, // изменение фильтра по жанрам
-  SHOW_MORE: `SHOW_MORE`, // получение списка фильмов в соответствии выбранным жанром.
-  ADD_TO_USER_LIST: `ADD_TO_USER_LIST`,
+  CREATE_GENRES_LIST: `CREATE_GENRES_LIST`,
+  CHANGE_GENRE: `CHANGE_GENRE`,
+  SHOW_MORE: `SHOW_MORE`,
   LOAD_FILMS: `LOAD_FILMS`,
   LOAD_PROMO_FILM: `LOAD_PROMO_FILM`,
   LOAD_REVIEWS: `LOAD_REVIEWS`,
@@ -9,19 +9,19 @@ export const ActionType = {
   REQUIRE_AUTHORIZATION: `REQUIRE_AUTHORIZATION`
 };
 
+export const createGenresList = (films) => ({
+  type: ActionType.CREATE_GENRES_LIST,
+  payload: films
+});
+
 export const changeGenre = (activeGenre) => ({
   type: ActionType.CHANGE_GENRE,
-  genre: activeGenre,
+  payload: activeGenre,
 });
 
 export const showMore = (filmsRendered) => ({
   type: ActionType.SHOW_MORE,
-  num: filmsRendered
-});
-
-export const addToMyList = (curFilmId) => ({
-  type: ActionType.ADD_TO_USER_LIST,
-  filmId: curFilmId
+  payload: filmsRendered
 });
 
 export const loadFilms = (films) => ({
@@ -41,7 +41,7 @@ export const loadReviews = (reviews) => ({
 
 export const loadFilm = (film) => ({
   type: ActionType.LOAD_FILM,
-  payload: filme
+  payload: film
 });
 
 export const requireAuthorization = () => ({

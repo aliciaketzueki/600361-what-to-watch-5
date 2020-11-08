@@ -18,9 +18,9 @@ const TabDetails = (props) => {
               {
                 starring.map((actor, index, arr) => {
                   if (index < arr.length - 1) {
-                    return <React.Fragment key={`${actor}-${id}`}>{actor}, <br /></React.Fragment>
+                    return <React.Fragment key={`${actor}-${id}`}>{actor}, <br /></React.Fragment>;
                   } else {
-                    return actor
+                    return actor;
                   }
                 })
               }

@@ -1,6 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {showMore} from "../../store/action";
+import {getFilmsByGenre, getRenderedFilms} from "../../store/selectors";
 import {validFunc, validNum, validArrayOfShape} from "../../utils/props";
 
 const ShowMore = (props) => {
@@ -24,8 +25,8 @@ const ShowMore = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    films: state.DATA.films,
-    filmsRendered: state.PROCESS.filmsRendered,
+    films: getFilmsByGenre(state),
+    filmsRendered: getRenderedFilms(state)
   };
 };
 

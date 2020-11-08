@@ -8,11 +8,17 @@ import withChangingForm from "../../hocs/with-changing-form/with-changing-form";
 const LoginFormWrapper = withChangingForm(FormLogin);
 
 const Login = (props) => {
-  const {header, history} = props;
+  const {history} = props;
 
   return (
     <div className="user-page">
-      <Header header={header} history={history} />
+      <Header
+        header={{
+          headClass: `user-page__head`,
+          title: `Sign in`
+        }}
+        history={history}
+      />
 
       <div className="sign-in user-page__content">
         <LoginFormWrapper />
@@ -24,7 +30,6 @@ const Login = (props) => {
 };
 
 Login.propTypes = {
-  header: validShape,
   history: validShape,
 };
 

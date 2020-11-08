@@ -6,6 +6,7 @@ import Footer from "../footer/footer";
 import VideoBtn from "../video-btn/video-btn";
 import MyListBtn from "../my-list-btn/my-list-btn";
 import {validShape, validArrayOfShape, validPromoFilm} from "../../utils/props";
+import {getFilms, getPromoFilm, getReviews} from "../../store/selectors";
 import {MORE_LIKE_NUM} from "../../utils/const";
 import withActiveItem from "../../hocs/with-active-item/with-active-item";
 import Tabs from "../tabs/tabs";
@@ -14,13 +15,11 @@ import {connect} from "react-redux";
 const TabSwitcher = withActiveItem(Tabs);
 
 const Film = (props) => {
-  const {films, reviews, header, history, promoFilm} = props;
+  const {films, reviews, history, promoFilm} = props;
   const {name, genre, released, background_image, poster_image} = promoFilm;
 
   const genreId = 4;
   const filmsMoreLike = films.filter((film) => film.genreId === genreId);
-
-  console.log(`reviews`, reviews);
 
   return (
     <React.Fragment>
@@ -31,7 +30,13 @@ const Film = (props) => {
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
-          <Header header={header} history={history} />
+          <Header
+            header={{
+              headClass: `movie-card__head`,
+              login: true
+            }}
+            history={history}
+          />
 
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
@@ -43,7 +48,7 @@ const Film = (props) => {
 
               <div className="movie-card__buttons">
                 <VideoBtn history={history} />
-                <MyListBtn curFilmId={15} />
+                <MyListBtn />
                 <Link to="/films/:id/review" className="btn movie-card__button">Add review</Link>
               </div>
             </div>
@@ -73,21 +78,18 @@ const Film = (props) => {
   );
 };
 
-
 const mapStateToProps = (state) => ({
-  films: state.films,
-  promoFilm: state.promoFilm,
-  reviews: state.reviews
+  films: getFilms(state),
+  promoFilm: getPromoFilm(state),
+  reviews: getReviews(state)
 });
 
-// Film.propTypes = {
-//   promoFilm: validPromoFilm,
-//   films: validArrayOfShape,
-//   reviews: validArrayOfShape,
-//   header: validShape,
-//   history: validShape,
-//   tabs: validArrayOfShape
-// };
+Film.propTypes = {
+  promoFilm: validPromoFilm,
+  films: validArrayOfShape,
+  reviews: validArrayOfShape,
+  history: validShape,
+};
 
 export {Film};
 export default connect(mapStateToProps)(Film);

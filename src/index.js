@@ -3,17 +3,16 @@ import ReactDOM from "react-dom";
 import App from "./components/app/app";
 import {Provider} from "react-redux";
 
-
 import rootReducer from "./store/reducers/root-reducer";
 import {createStore, applyMiddleware} from "redux";
 import thunk from "redux-thunk";
 import {composeWithDevTools} from "redux-devtools-extension";
 import {createAPI} from "./services/api";
 import {AuthorizationStatus} from "./utils/const";
-import {fetchFilms, fetchPromoFilm, fetchReviews, fetchFilm} from "./store/api-actions";
+import {fetchFilms, fetchPromoFilm} from "./store/api-actions";
 
 const api = createAPI(
-  () => store.dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH))
+    () => store.dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH))
 );
 
 const store = createStore(
@@ -25,16 +24,14 @@ const store = createStore(
 
 
 Promise.all([
-  store.dispatch(fetchFilms()),
-  store.dispatch(fetchPromoFilm()),
-  // store.dispatch(fetchReviews()),
-  // store.dispatch(fetchFilm()),
+    store.dispatch(fetchFilms()),
+    store.dispatch(fetchPromoFilm()),
 ])
 .then(() => {
-  ReactDOM.render(
-    <Provider store={store}>
-      <App />
-    </Provider>,
-    document.querySelector(`#root`)
-  );
-})
+    ReactDOM.render(
+      <Provider store={store}>
+        <App />
+      </Provider>,
+      document.querySelector(`#root`)
+    );
+});

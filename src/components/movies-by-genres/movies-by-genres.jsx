@@ -3,8 +3,10 @@ import MoviesList from "../movies-list/movies-list";
 import GenresList from "../genres-list/genres-list";
 import ShowMore from "../show-more/show-more";
 import {connect} from "react-redux";
-import {validArrayOfShape, validNum} from "../../utils/props";
+import {validArrayOfShape, validNum, validArrayOfString} from "../../utils/props";
 import withActiveItem from "../../hocs/with-active-item/with-active-item";
+
+import {getFilmsByGenre, getGenres, getFilmsRendered} from "../../store/selectors";
 
 const TabSwitcher = withActiveItem(GenresList);
 
@@ -21,15 +23,16 @@ const MoviesByGenres = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  films: state.DATA.films,
-  filmsRendered: state.PROCESS.filmsRendered,
+  films: getFilmsByGenre(state),
+  genres: getGenres(state),
+  filmsRendered: getFilmsRendered(state)
 });
 
-// MoviesByGenres.propTypes = {
-//   films: validArrayOfShape,
-//   genres: validArrayOfShape,
-//   filmsRendered: validNum,
-// };
+MoviesByGenres.propTypes = {
+  films: validArrayOfShape,
+  genres: validArrayOfString,
+  filmsRendered: validNum,
+};
 
 export {MoviesByGenres};
 export default connect(mapStateToProps)(MoviesByGenres);
