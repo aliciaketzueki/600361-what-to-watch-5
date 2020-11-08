@@ -1,7 +1,7 @@
 import React from "react";
 import {validNum, validFunc} from "../../utils/props";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../store/action";
+import {addToMyList} from "../../store/action";
 
 const MyListBtn = (props) => {
   const {onMyListBtnClick, curFilmId} = props;
@@ -25,7 +25,7 @@ const MyListBtn = (props) => {
 
 const mapDispatchToProps = (dispatch) => ({
   onMyListBtnClick(filmId) {
-    dispatch(ActionCreator.addToMyList(filmId));
+    dispatch(addToMyList(filmId));
   }
 });
 

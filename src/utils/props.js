@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 export const validPromoFilm = PropTypes.shape({
   name: PropTypes.string.isRequired,
   genre: PropTypes.string.isRequired,
-  year: PropTypes.number.isRequired
+  released: PropTypes.number.isRequired
 }).isRequired;
 
 export const validBool = PropTypes.bool.isRequired;

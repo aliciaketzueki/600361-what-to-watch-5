@@ -5,12 +5,12 @@ import withHoverMovieCard from "../../hocs/with-hover-movie-card/with-hover-movi
 const SmallMovieCardWrapper = withHoverMovieCard(SmallMovieCard);
 
 const MoviesList = (props) => {
-  const {moviesList, filmsRendered} = props;
+  const {films, filmsRendered} = props;
 
   return (
     <div className="catalog__movies-list">
       {
-        moviesList.map((film, index) => (
+        films.map((film, index) => (
           index < filmsRendered &&
           <SmallMovieCardWrapper key={`${film.name}-${film.id}`} film={film} />
         ))
@@ -19,9 +19,9 @@ const MoviesList = (props) => {
   );
 };
 
-MoviesList.propTypes = {
-  moviesList: validArrayOfShape,
-  filmsRendered: validNum
-};
+// MoviesList.propTypes = {
+//   films: validArrayOfShape,
+//   filmsRendered: validNum
+// };
 
 export default MoviesList;

@@ -3,7 +3,7 @@ import {validShape, validOneOfType} from "../../utils/props";
 
 const VideoPreview = (props) => {
   const {film, video} = props;
-  const {poster, videoSrc} = film;
+  const {preview_image, preview_video_link} = film;
 
   return (
     <React.Fragment>
@@ -11,11 +11,11 @@ const VideoPreview = (props) => {
         ref={video}
         width="280"
         height="175"
-        poster={`img/` + poster}
+        poster={preview_image}
         preload="auto"
         muted
         playsInline
-        src={videoSrc}
+        src={preview_video_link}
       />
     </React.Fragment>
   );

@@ -8,9 +8,7 @@ import AddReview from "../screen-add-review/screen-add-review";
 import Player from "../screen-player/screen-player";
 import {validPromoFilm, validArrayOfShape} from "../../utils/props";
 
-const App = (props) => {
-  const {promoFilm, genres, films, userFilms, reviews, tabs} = props;
-
+const App = () => {
   return (
     <BrowserRouter>
       <Switch>
@@ -19,9 +17,6 @@ const App = (props) => {
           exact path="/"
           render={({history}) => (
             <Main
-              promoFilm={promoFilm}
-              genres={genres}
-              films={films}
               header={{headClass: `movie-card__head`, login: true}}
               history={history}
             />
@@ -44,7 +39,6 @@ const App = (props) => {
           exact path="/my-list"
           render={({history}) => (
             <MyList
-              films={userFilms}
               header={{title: `My list`, headClass: `user-page__head`, login: true}}
               history={history}
             />
@@ -56,12 +50,8 @@ const App = (props) => {
           exact path="/films/:id"
           render={({history}) => (
             <Film
-              films={films}
-              reviews={reviews}
               header={{headClass: `movie-card__head`, login: true}}
               history={history}
-              promoFilm={promoFilm}
-              tabs={tabs}
             />
           )}
         />
@@ -91,13 +81,13 @@ const App = (props) => {
   );
 };
 
-App.propTypes = {
-  promoFilm: validPromoFilm,
-  genres: validArrayOfShape,
-  films: validArrayOfShape,
-  userFilms: validArrayOfShape,
-  reviews: validArrayOfShape,
-  tabs: validArrayOfShape,
-};
+// App.propTypes = {
+//   promoFilm: validPromoFilm,
+//   genres: validArrayOfShape,
+//   films: validArrayOfShape,
+//   userFilms: validArrayOfShape,
+//   reviews: validArrayOfShape,
+//   tabs: validArrayOfShape,
+// };
 
 export default App;

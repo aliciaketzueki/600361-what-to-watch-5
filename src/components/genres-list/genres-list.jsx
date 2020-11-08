@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../store/action";
+import {changeGenre} from "../../store/action";
 import {validArrayOfShape, validFunc, validNum} from "../../utils/props";
 
 const GenresList = (props) => {
@@ -18,7 +18,7 @@ const GenresList = (props) => {
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                onGenreClick(genre.id);
+                onGenreClick(genre.name);
                 onClick(index);
               }}
             >
@@ -31,18 +31,22 @@ const GenresList = (props) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  genres: state.PROCESS.genres
+});
+
 const mapDispatchToProps = (dispatch) => ({
   onGenreClick(tabIndex) {
-    dispatch(ActionCreator.changeGenre(tabIndex));
+    dispatch(changeGenre(tabIndex));
   }
 });
 
-GenresList.propTypes = {
-  genres: validArrayOfShape,
-  tabIndex: validNum,
-  onGenreClick: validFunc,
-  onClick: validFunc
-};
+// GenresList.propTypes = {
+//   genres: validArrayOfShape,
+//   tabIndex: validNum,
+//   onGenreClick: validFunc,
+//   onClick: validFunc
+// };
 
 export {GenresList};
-export default connect(null, mapDispatchToProps)(GenresList);
+export default connect(mapStateToProps, mapDispatchToProps)(GenresList);

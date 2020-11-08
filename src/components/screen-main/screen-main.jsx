@@ -4,16 +4,18 @@ import Footer from "../footer/footer";
 import VideoBtn from "../video-btn/video-btn";
 import MyListBtn from "../my-list-btn/my-list-btn";
 import MoviesByGenres from "../movies-by-genres/movies-by-genres";
+import {connect} from "react-redux";
 import {validPromoFilm, validArrayOfShape, validShape} from "../../utils/props";
 
 const Main = (props) => {
   const {promoFilm, genres, header, history} = props;
+  const {name, genre, released, poster_image, background_image} = promoFilm;
 
   return (
     <React.Fragment>
       <section className="movie-card">
         <div className="movie-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt={promoFilm.name} />
+          <img src={background_image} alt={name} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -22,14 +24,14 @@ const Main = (props) => {
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt={promoFilm.name + ` poster`} width="218" height="327" />
+              <img src={poster_image} alt={name + ` poster`} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{promoFilm.name}</h2>
+              <h2 className="movie-card__title">{name}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{promoFilm.genre}</span>
-                <span className="movie-card__year">{promoFilm.year}</span>
+                <span className="movie-card__genre">{genre}</span>
+                <span className="movie-card__year">{released}</span>
               </p>
 
               <div className="movie-card__buttons">
@@ -53,11 +55,20 @@ const Main = (props) => {
   );
 };
 
-Main.propTypes = {
-  promoFilm: validPromoFilm,
-  genres: validArrayOfShape,
-  header: validShape,
-  history: validShape,
-};
+const mapStateToProps = (state) => {
+  console.log(`state`, state);
 
-export default Main;
+  return {
+    promoFilm: state.DATA.promoFilm,
+  }
+}
+
+// Main.propTypes = {
+//   promoFilm: validPromoFilm,
+//   genres: validArrayOfShape,
+//   header: validShape,
+//   history: validShape,
+// };
+
+export {Main};
+export default connect(mapStateToProps)(Main);

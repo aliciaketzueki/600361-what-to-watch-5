@@ -9,27 +9,27 @@ import withActiveItem from "../../hocs/with-active-item/with-active-item";
 const TabSwitcher = withActiveItem(GenresList);
 
 const MoviesByGenres = (props) => {
-  const {moviesList, genres, filmsRendered} = props;
+  const {films, genres, filmsRendered} = props;
 
   return (
     <React.Fragment>
       <TabSwitcher genres={genres} />
-      <MoviesList moviesList={moviesList} filmsRendered={filmsRendered} />
+      <MoviesList films={films} filmsRendered={filmsRendered} />
       <ShowMore />
     </React.Fragment>
   );
 };
 
 const mapStateToProps = (state) => ({
-  moviesList: state.moviesList,
-  filmsRendered: state.filmsRendered,
+  films: state.DATA.films,
+  filmsRendered: state.PROCESS.filmsRendered,
 });
 
-MoviesByGenres.propTypes = {
-  moviesList: validArrayOfShape,
-  genres: validArrayOfShape,
-  filmsRendered: validNum,
-};
+// MoviesByGenres.propTypes = {
+//   films: validArrayOfShape,
+//   genres: validArrayOfShape,
+//   filmsRendered: validNum,
+// };
 
 export {MoviesByGenres};
 export default connect(mapStateToProps)(MoviesByGenres);
