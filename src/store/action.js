@@ -44,6 +44,7 @@ export const loadFilm = (film) => ({
   payload: film
 });
 
-export const requireAuthorization = () => ({
+export const requireAuthorization = (status) => ({
   type: ActionType.REQUIRE_AUTHORIZATION,
+  payload: status
 });

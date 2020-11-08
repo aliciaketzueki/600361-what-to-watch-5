@@ -10,13 +10,13 @@ import {validPromoFilm, validShape} from "../../utils/props";
 
 const Main = (props) => {
   const {promoFilm, history} = props;
-  const {name, genre, released, poster_image, background_image} = promoFilm;
+  const {name, genre, released, posterImage, backgroundImage} = promoFilm;
 
   return (
     <React.Fragment>
       <section className="movie-card">
         <div className="movie-card__bg">
-          <img src={background_image} alt={name} />
+          <img src={backgroundImage} alt={name} />
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
@@ -31,7 +31,7 @@ const Main = (props) => {
         <div className="movie-card__wrap">
           <div className="movie-card__info">
             <div className="movie-card__poster">
-              <img src={poster_image} alt={name + ` poster`} width="218" height="327" />
+              <img src={posterImage} alt={name + ` poster`} width="218" height="327" />
             </div>
 
             <div className="movie-card__desc">

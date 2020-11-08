@@ -36,11 +36,11 @@ const mapDispatchToProps = (dispatch) => ({
   }
 });
 
-// ShowMore.propTypes = {
-//   filmsRendered: validNum,
-//   films: validArrayOfShape,
-//   onShowMoreClick: validFunc
-// };
+ShowMore.propTypes = {
+  filmsRendered: validNum,
+  films: validArrayOfShape,
+  onShowMoreClick: validFunc
+};
 
 export {ShowMore};
 export default connect(mapStateToProps, mapDispatchToProps)(ShowMore);

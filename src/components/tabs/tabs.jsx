@@ -44,11 +44,11 @@ const Tabs = (props) => {
   );
 };
 
-// Tabs.propTypes = {
-//   onClick: validFunc,
-//   reviews: validArrayOfShape,
-//   tabIndex: validNum,
-//   promoFilm: validPromoFilm
-// };
+Tabs.propTypes = {
+  onClick: validFunc,
+  reviews: validArrayOfShape,
+  tabIndex: validNum,
+  promoFilm: validPromoFilm
+};
 
 export default Tabs;

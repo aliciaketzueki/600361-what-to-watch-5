@@ -1,9 +1,10 @@
 import React from "react";
 import {validShape, validOneOfType} from "../../utils/props";
+import {convertFilmProps} from "../../utils/utils";
 
 const VideoPreview = (props) => {
   const {film, video} = props;
-  const {preview_image, preview_video_link} = film;
+  const {previewImage, previewVideoLink} = convertFilmProps(film);
 
   return (
     <React.Fragment>
@@ -11,11 +12,11 @@ const VideoPreview = (props) => {
         ref={video}
         width="280"
         height="175"
-        poster={preview_image}
+        poster={previewImage}
         preload="auto"
         muted
         playsInline
-        src={preview_video_link}
+        src={previewVideoLink}
       />
     </React.Fragment>
   );

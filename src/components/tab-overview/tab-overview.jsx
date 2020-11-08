@@ -4,7 +4,7 @@ import {MAX_ACTORS_NUM} from "../../utils/const";
 
 const TabOverview = (props) => {
   const {promoFilm} = props;
-  const {rating, description, scores_count, director, starring} = promoFilm;
+  const {rating, description, scoresCount, director, starring} = promoFilm;
 
   const addRating = () => {
     switch (true) {
@@ -31,7 +31,7 @@ const TabOverview = (props) => {
           <span className="movie-rating__level">
             {addRating()}
           </span>
-          <span className="movie-rating__count">{scores_count} ratings</span>
+          <span className="movie-rating__count">{scoresCount} ratings</span>
         </p>
       </div>
 

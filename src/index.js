@@ -10,28 +10,28 @@ import {composeWithDevTools} from "redux-devtools-extension";
 import {createAPI} from "./services/api";
 import {AuthorizationStatus} from "./utils/const";
 import {fetchFilms, fetchPromoFilm} from "./store/api-actions";
+import {requireAuthorization} from "./store/action";
 
 const api = createAPI(
     () => store.dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH))
 );
 
 const store = createStore(
-  rootReducer,
+    rootReducer,
     composeWithDevTools(
-      applyMiddleware(thunk.withExtraArgument(api))
+        applyMiddleware(thunk.withExtraArgument(api))
     )
 );
 
-
 Promise.all([
-    store.dispatch(fetchFilms()),
-    store.dispatch(fetchPromoFilm()),
+  store.dispatch(fetchFilms()),
+  store.dispatch(fetchPromoFilm()),
 ])
 .then(() => {
-    ReactDOM.render(
+  ReactDOM.render(
       <Provider store={store}>
         <App />
       </Provider>,
       document.querySelector(`#root`)
-    );
+  );
 });

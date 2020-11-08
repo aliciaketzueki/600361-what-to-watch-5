@@ -3,11 +3,9 @@ import MoviesList from "../movies-list/movies-list";
 import GenresList from "../genres-list/genres-list";
 import ShowMore from "../show-more/show-more";
 import {connect} from "react-redux";
-import {validArrayOfShape, validNum, validArrayOfString} from "../../utils/props";
 import withActiveItem from "../../hocs/with-active-item/with-active-item";
-
 import {getFilmsByGenre, getGenres, getFilmsRendered} from "../../store/selectors";
-
+import {validArrayOfShape, validNum, validArrayOfString} from "../../utils/props";
 const TabSwitcher = withActiveItem(GenresList);
 
 const MoviesByGenres = (props) => {

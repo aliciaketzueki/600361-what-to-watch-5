@@ -24,3 +24,19 @@ export const renderFilms = (films, filmsRendered) => {
     return films.length;
   }
 };
+
+export const convertFilmProps = (film) => {
+  const newFilms = extend(film, {
+    posterImage: film.poster_image,
+    previewImage: film.preview_image,
+    backgroundImage: film.background_image,
+    backgroundColor: film.background_color,
+    videoLink: film.video_link,
+    previewVideoLink: film.preview_video_link,
+    scoresCount: film.scores_count,
+    runTime: film.run_time,
+    isFavorite: film.is_favorite,
+  });
+
+  return newFilms;
+};

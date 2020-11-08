@@ -1,8 +1,10 @@
 import React from "react";
+import {convertFilmProps} from "../../utils/utils";
+import {validPromoFilm} from "../../utils/props";
 
 const TabDetails = (props) => {
   const {promoFilm} = props;
-  const {director, starring, run_time, id} = promoFilm;
+  const {director, starring, runTime, id} = convertFilmProps(promoFilm);
 
   return (
     <React.Fragment>
@@ -31,7 +33,7 @@ const TabDetails = (props) => {
         <div className="movie-card__text-col">
           <p className="movie-card__details-item">
             <strong className="movie-card__details-name">Run Time</strong>
-            <span className="movie-card__details-value">{`${Math.floor(run_time / 60)}h ${run_time % 60}m`}</span>
+            <span className="movie-card__details-value">{`${Math.floor(runTime / 60)}h ${runTime % 60}m`}</span>
           </p>
           <p className="movie-card__details-item">
             <strong className="movie-card__details-name">Genre</strong>
@@ -45,6 +47,10 @@ const TabDetails = (props) => {
       </div>
     </React.Fragment>
   );
+};
+
+TabDetails.propTypes = {
+  promoFilm: validPromoFilm
 };
 
 export default TabDetails;

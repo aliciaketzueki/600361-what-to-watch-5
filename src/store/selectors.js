@@ -2,9 +2,9 @@ import {createSelector} from "reselect";
 import {filterFilms, renderFilms} from "../utils/utils";
 
 export const getFilms = (state) => state.DATA.films;
+export const getPromoFilm = (state) => state.DATA.promoFilm;
 export const getFilmsRendered = (state) => state.PROCESS.filmsRendered;
 export const getActiveGenre = (state) => state.PROCESS.activeGenre;
-export const getPromoFilm = (state) => state.DATA.promoFilm;
 export const getReviews = (state) => state.DATA.reviews;
 export const getGenres = (state) => state.PROCESS.genres;
 

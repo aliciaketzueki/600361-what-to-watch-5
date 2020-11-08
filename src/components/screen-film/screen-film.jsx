@@ -6,27 +6,25 @@ import Footer from "../footer/footer";
 import VideoBtn from "../video-btn/video-btn";
 import MyListBtn from "../my-list-btn/my-list-btn";
 import {validShape, validArrayOfShape, validPromoFilm} from "../../utils/props";
-import {getFilms, getPromoFilm, getReviews} from "../../store/selectors";
 import {MORE_LIKE_NUM} from "../../utils/const";
+import {getFilms, getPromoFilm, getReviews} from "../../store/selectors";
 import withActiveItem from "../../hocs/with-active-item/with-active-item";
 import Tabs from "../tabs/tabs";
 import {connect} from "react-redux";
-
 const TabSwitcher = withActiveItem(Tabs);
 
 const Film = (props) => {
   const {films, reviews, history, promoFilm} = props;
-  const {name, genre, released, background_image, poster_image} = promoFilm;
+  const {name, genre, released, backgroundImage, posterImage} = promoFilm;
 
-  const genreId = 4;
-  const filmsMoreLike = films.filter((film) => film.genreId === genreId);
+  const filmsMoreLike = films.filter((film) => film.genre === genre);
 
   return (
     <React.Fragment>
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src={background_image} alt={name} />
+            <img src={backgroundImage} alt={name} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
@@ -58,7 +56,7 @@ const Film = (props) => {
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src={poster_image} alt={name} width="218" height="327" />
+              <img src={posterImage} alt={name} width="218" height="327" />
             </div>
 
             <TabSwitcher reviews={reviews} promoFilm={promoFilm} />
