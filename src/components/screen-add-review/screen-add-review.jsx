@@ -20,7 +20,6 @@ const AddReview = (props) => {
         <Header
           header={{
             nav: true,
-            login: true
           }}
           history={history}
         />

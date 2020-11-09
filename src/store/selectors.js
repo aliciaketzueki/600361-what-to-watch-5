@@ -7,6 +7,7 @@ export const getFilmsRendered = (state) => state.PROCESS.filmsRendered;
 export const getActiveGenre = (state) => state.PROCESS.activeGenre;
 export const getReviews = (state) => state.DATA.reviews;
 export const getGenres = (state) => state.PROCESS.genres;
+export const getAuthorizationStatus = (state) => state.USER.authorizationStatus;
 
 export const getFilmsByGenre = createSelector(
     getFilms,

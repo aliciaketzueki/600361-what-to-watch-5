@@ -1,10 +1,9 @@
 import React from "react";
-import {convertFilmProps} from "../../utils/utils";
 import {validPromoFilm} from "../../utils/props";
 
 const TabDetails = (props) => {
   const {promoFilm} = props;
-  const {director, starring, runTime, id} = convertFilmProps(promoFilm);
+  const {director, starring, runTime, id} = promoFilm;
 
   return (
     <React.Fragment>

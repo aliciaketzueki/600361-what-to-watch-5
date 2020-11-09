@@ -1,7 +1,8 @@
-import {loadFilms, createGenresList, loadPromoFilm, loadReviews, loadFilm} from "./action";
+import {loadFilms, createGenresList, loadPromoFilm, loadReviews, loadFilm, requireAuthorization, redirectToRoute} from "./action";
+import {AuthorizationStatus, APIRoute, AppRoute} from "../utils/const";
 
 export const fetchFilms = () => (dispatch, _getState, api) => (
-  api.get(`/films`)
+  api.get(APIRoute.FILMS)
     .then(({data}) => {
       dispatch(loadFilms(data));
       dispatch(createGenresList(data));
@@ -9,22 +10,28 @@ export const fetchFilms = () => (dispatch, _getState, api) => (
 );
 
 export const fetchPromoFilm = () => (dispatch, _getState, api) => (
-  api.get(`/films/promo`)
+  api.get(APIRoute.PROMO)
     .then(({data}) => {
       dispatch(loadPromoFilm(data));
     })
 );
 
 export const fetchReviews = (id) => (dispatch, _getState, api) => (
-  api.get(`/films/comments/${id}`)
+  api.get(APIRoute.COMMENTS)
     .then(({data}) => {
       dispatch(loadReviews(data));
     })
 );
 
 export const fetchFilm = (id) => (dispatch, _getState, api) => (
-  api.get(`/films/${id}`)
+  api.get(APIRoute.FILM)
     .then(({data}) => {
       dispatch(loadFilm(data));
     })
+);
+
+export const login = ({email, password}) => (dispatch, _getState, api) => (
+  api.post(APIRoute.LOGIN, {email, password})
+    .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
+    .then(() => dispatch(redirectToRoute(AppRoute.MY_LIST)))
 );

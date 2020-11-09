@@ -39,9 +39,7 @@ const TabOverview = (props) => {
         <p>{description}</p>
         <p className="movie-card__director"><strong>Director: {director}</strong></p>
         <p className="movie-card__starring"><strong>Starring:&nbsp;
-          {
-            [...starring].splice(0, MAX_ACTORS_NUM).join(`, `)
-          }
+          {starring.slice(0, MAX_ACTORS_NUM).join(`, `)}
           &nbsp;and other</strong></p>
       </div>
     </React.Fragment>

@@ -18,7 +18,6 @@ const process = (state = initialState, action) => {
 
     case ActionType.SHOW_MORE:
       return extend(state, {filmsRendered: action.payload});
-
   }
 
   return state;

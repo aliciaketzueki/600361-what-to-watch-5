@@ -12,7 +12,7 @@ const GenresList = (props) => {
   return (
     <ul className="catalog__genres-list">
       {
-        [...genres].splice(0, MAX_GENRES_NUM).map((genre, index) => (
+        genres.slice(0, MAX_GENRES_NUM).map((genre, index) => (
           <li key={`${genre}-${index}`} className={genre === activeGenre ? `catalog__genres-item catalog__genres-item--active` : `catalog__genres-item`}>
             <Link
               to="/"

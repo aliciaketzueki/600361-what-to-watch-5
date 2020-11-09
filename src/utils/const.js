@@ -20,3 +20,20 @@ export const AuthorizationStatus = {
   AUTH: `AUTH`,
   NO_AUTH: `NO_AUTH`,
 };
+
+export const AppRoute = {
+  ROOT: `/`,
+  LOGIN: `/login`,
+  MY_LIST: `/my-list`,
+  FILM: `/films/:id`,
+  ADD_REVIEW: `/films/:id/review`,
+  PLAYER: `/player/:id`,
+};
+
+export const APIRoute = {
+  FILMS: `/films`,
+  PROMO: `/films/promo`,
+  COMMENTS: `/films/comments/:id`,
+  FILM: `/films/:id`,
+  LOGIN: `/login`,
+};

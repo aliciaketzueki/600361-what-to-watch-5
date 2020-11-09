@@ -31,7 +31,6 @@ const Film = (props) => {
           <Header
             header={{
               headClass: `movie-card__head`,
-              login: true
             }}
             history={history}
           />
@@ -79,7 +78,7 @@ const Film = (props) => {
 const mapStateToProps = (state) => ({
   films: getFilms(state),
   promoFilm: getPromoFilm(state),
-  reviews: getReviews(state)
+  reviews: getReviews(state),
 });
 
 Film.propTypes = {

@@ -3,9 +3,12 @@ import Header from "../header/header";
 import Footer from "../footer/footer";
 import MoviesList from "../movies-list/movies-list";
 import {validShape, validArrayOfShape} from "../../utils/props";
+import {getFilmsByGenre} from "../../store/selectors";
+import {connect} from "react-redux";
 
 const MyList = (props) => {
   const {history, films} = props;
+  console.log(films.length);
 
   return (
     <div className="user-page">
@@ -13,14 +16,13 @@ const MyList = (props) => {
         header={{
           title: `My list`,
           headClass: `user-page__head`,
-          login: true
         }}
         history={history}
       />
 
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
-        <MoviesList moviesList={films} filmsRendered={films.length} />
+        <MoviesList films={films} filmsRendered={films.length} />
       </section>
 
       <Footer />
@@ -28,9 +30,14 @@ const MyList = (props) => {
   );
 };
 
-MyList.propTypes = {
-  films: validArrayOfShape,
-  history: validShape,
-};
+const mapStateToProps = (state) => ({
+  films: getFilmsByGenre(state),
+});
 
-export default MyList;
+// MyList.propTypes = {
+//   films: validArrayOfShape,
+//   history: validShape,
+// };
+
+export {MyList};
+export default connect(mapStateToProps)(MyList);

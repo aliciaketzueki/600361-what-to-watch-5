@@ -24,10 +24,6 @@ const withChangingForm = (Component) => {
         method: `POST`,
         body: data,
       });
-
-      // for (let [key, value] of data.entries()) {
-      //   console.log(key, value);
-      //  }
     }
 
     handleFieldChange(evt) {
