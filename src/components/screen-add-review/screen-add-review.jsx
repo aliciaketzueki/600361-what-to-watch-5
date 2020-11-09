@@ -7,7 +7,7 @@ import {validShape} from "../../utils/props";
 const ReviewFormWrapper = withChangingForm(FormAddReview);
 
 const AddReview = (props) => {
-  const {header, history} = props;
+  const {history} = props;
 
   return (
     <section className="movie-card movie-card--full">
@@ -17,7 +17,13 @@ const AddReview = (props) => {
         </div>
 
         <h1 className="visually-hidden">WTW</h1>
-        <Header header={header} history={history} />
+        <Header
+          header={{
+            nav: true,
+            login: true
+          }}
+          history={history}
+        />
 
         <div className="movie-card__poster movie-card__poster--small">
           <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
@@ -33,7 +39,6 @@ const AddReview = (props) => {
 };
 
 AddReview.propTypes = {
-  header: validShape,
   history: validShape,
 };
 

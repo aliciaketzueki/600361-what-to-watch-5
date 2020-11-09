@@ -1,12 +1,13 @@
 import React from "react";
 import {NavLink} from "react-router-dom";
 import {validFunc, validArrayOfShape, validNum, validPromoFilm} from "../../utils/props";
+import {tabs} from "../../utils/const";
 import TabOverview from "../tab-overview/tab-overview";
 import TabDetails from "../tab-details/tab-details";
 import TabReviews from "../tab-reviews/tab-reviews";
 
 const Tabs = (props) => {
-  const {tabs, reviews, tabIndex, onClick, promoFilm} = props;
+  const {reviews, tabIndex, onClick, promoFilm} = props;
 
   return (
     <div className="movie-card__desc">
@@ -36,7 +37,7 @@ const Tabs = (props) => {
       </nav>
       {
         tabIndex === 0 && <TabOverview promoFilm={promoFilm} /> ||
-        tabIndex === 1 && <TabDetails /> ||
+        tabIndex === 1 && <TabDetails promoFilm={promoFilm} /> ||
         tabIndex === 2 && <TabReviews reviews={reviews} />
       }
     </div>
@@ -45,7 +46,6 @@ const Tabs = (props) => {
 
 Tabs.propTypes = {
   onClick: validFunc,
-  tabs: validArrayOfShape,
   reviews: validArrayOfShape,
   tabIndex: validNum,
   promoFilm: validPromoFilm

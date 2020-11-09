@@ -7,39 +7,46 @@ import VideoBtn from "../video-btn/video-btn";
 import MyListBtn from "../my-list-btn/my-list-btn";
 import {validShape, validArrayOfShape, validPromoFilm} from "../../utils/props";
 import {MORE_LIKE_NUM} from "../../utils/const";
+import {getFilms, getPromoFilm, getReviews} from "../../store/selectors";
 import withActiveItem from "../../hocs/with-active-item/with-active-item";
 import Tabs from "../tabs/tabs";
-
+import {connect} from "react-redux";
 const TabSwitcher = withActiveItem(Tabs);
 
 const Film = (props) => {
-  const {films, reviews, header, history, promoFilm, tabs} = props;
+  const {films, reviews, history, promoFilm} = props;
+  const {name, genre, released, backgroundImage, posterImage} = promoFilm;
 
-  const genreId = 4;
-  const filmsMoreLike = films.filter((film) => film.genreId === genreId);
+  const filmsMoreLike = films.filter((film) => film.genre === genre);
 
   return (
     <React.Fragment>
       <section className="movie-card movie-card--full">
         <div className="movie-card__hero">
           <div className="movie-card__bg">
-            <img src={`img/${promoFilm.bg}`} alt={promoFilm.name} />
+            <img src={backgroundImage} alt={name} />
           </div>
 
           <h1 className="visually-hidden">WTW</h1>
-          <Header header={header} history={history} />
+          <Header
+            header={{
+              headClass: `movie-card__head`,
+              login: true
+            }}
+            history={history}
+          />
 
           <div className="movie-card__wrap">
             <div className="movie-card__desc">
-              <h2 className="movie-card__title">{promoFilm.name}</h2>
+              <h2 className="movie-card__title">{name}</h2>
               <p className="movie-card__meta">
-                <span className="movie-card__genre">{promoFilm.genre}</span>
-                <span className="movie-card__year">{promoFilm.year}</span>
+                <span className="movie-card__genre">{genre}</span>
+                <span className="movie-card__year">{released}</span>
               </p>
 
               <div className="movie-card__buttons">
                 <VideoBtn history={history} />
-                <MyListBtn curFilmId={15} />
+                <MyListBtn />
                 <Link to="/films/:id/review" className="btn movie-card__button">Add review</Link>
               </div>
             </div>
@@ -49,10 +56,10 @@ const Film = (props) => {
         <div className="movie-card__wrap movie-card__translate-top">
           <div className="movie-card__info">
             <div className="movie-card__poster movie-card__poster--big">
-              <img src="img/the-grand-budapest-hotel-poster.jpg" alt={promoFilm.name} width="218" height="327" />
+              <img src={posterImage} alt={name} width="218" height="327" />
             </div>
 
-            <TabSwitcher tabs={tabs} reviews={reviews} promoFilm={promoFilm} />
+            <TabSwitcher reviews={reviews} promoFilm={promoFilm} />
           </div>
         </div>
       </section>
@@ -60,7 +67,7 @@ const Film = (props) => {
       <div className="page-content">
         <section className="catalog catalog--like-this">
           <h2 className="catalog__title">More like this</h2>
-          <MoviesList moviesList={filmsMoreLike} filmsRendered={MORE_LIKE_NUM} />
+          <MoviesList films={filmsMoreLike} filmsRendered={MORE_LIKE_NUM} />
         </section>
 
         <Footer />
@@ -69,13 +76,18 @@ const Film = (props) => {
   );
 };
 
+const mapStateToProps = (state) => ({
+  films: getFilms(state),
+  promoFilm: getPromoFilm(state),
+  reviews: getReviews(state)
+});
+
 Film.propTypes = {
   promoFilm: validPromoFilm,
   films: validArrayOfShape,
   reviews: validArrayOfShape,
-  header: validShape,
   history: validShape,
-  tabs: validArrayOfShape
 };
 
-export default Film;
+export {Film};
+export default connect(mapStateToProps)(Film);

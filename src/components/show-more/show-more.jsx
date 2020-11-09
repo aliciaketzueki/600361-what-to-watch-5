@@ -1,13 +1,14 @@
 import React from "react";
 import {connect} from "react-redux";
-import {ActionCreator} from "../../store/action";
+import {showMore} from "../../store/action";
+import {getFilmsByGenre, getRenderedFilms} from "../../store/selectors";
 import {validFunc, validNum, validArrayOfShape} from "../../utils/props";
 
 const ShowMore = (props) => {
-  const {filmsRendered, onShowMoreClick, moviesList} = props;
+  const {filmsRendered, onShowMoreClick, films} = props;
 
   return (
-    filmsRendered < moviesList.length &&
+    filmsRendered < films.length &&
     <div className="catalog__more">
       <button
         className="catalog__button"
@@ -24,20 +25,20 @@ const ShowMore = (props) => {
 
 const mapStateToProps = (state) => {
   return {
-    moviesList: state.moviesList,
-    filmsRendered: state.filmsRendered,
+    films: getFilmsByGenre(state),
+    filmsRendered: getRenderedFilms(state)
   };
 };
 
 const mapDispatchToProps = (dispatch) => ({
   onShowMoreClick(filmsRendered) {
-    dispatch(ActionCreator.showMore(filmsRendered));
+    dispatch(showMore(filmsRendered));
   }
 });
 
 ShowMore.propTypes = {
   filmsRendered: validNum,
-  moviesList: validArrayOfShape,
+  films: validArrayOfShape,
   onShowMoreClick: validFunc
 };
 

@@ -1,37 +1,42 @@
-import genres from "../mocks/genres";
+import {ALL_GENRES, INITIAL_FILMS_NUM} from "./const";
 
 export const extend = (a, b) => {
   return Object.assign({}, a, b);
 };
 
-const getRandom = (min, max) => {
-  return (Math.random() * (max - min) + min).toFixed(1);
+export const getGenres = (films) => {
+  let genres = films.map((film) => film.genre).filter((el, index, arr) => arr.indexOf(el) === index);
+  genres.unshift(ALL_GENRES);
+
+  return genres;
 };
 
-const getFloor = (num) => {
-  return Math.floor(num);
+export const filterFilms = (films, activeGenre) => {
+  const filteredFilms = activeGenre === ALL_GENRES ? films : films.filter((film) => film.genre === activeGenre);
+
+  return filteredFilms;
 };
 
-export const createFilmCard = (name) => {
-  const film = {
-    year: getFloor(getRandom(1990, 2020)),
-    videoSrc: `https://docs.google.com/uc?id=1lOjED9R5dp-caVj1S8Wf8jjr3ob_qThW`,
-    id: getFloor(getRandom(1000, 9999)),
-    name,
-    bg: `bg-the-grand-budapest-hotel.jpg`,
-    poster: name.split(` `).join(`-`).split(/[^a-zA-Z0-9_\-]/).join(``).toLowerCase() + `.jpg`,
-    genreId: getFloor(getRandom(0, 9)),
-    // genre: genres[film.genreId].name,
-    rating: getRandom(0, 10)
-  };
-
-  film.genre = genres[film.genreId].name;
-
-  return film;
+export const renderFilms = (films, filmsRendered) => {
+  if (filmsRendered < films.length - INITIAL_FILMS_NUM) {
+    return filmsRendered + INITIAL_FILMS_NUM;
+  } else {
+    return films.length;
+  }
 };
 
-export const createFilmsArr = (arr) => {
-  const filmArr = arr.map((item) => createFilmCard(item));
+export const convertFilmProps = (film) => {
+  const newFilms = extend(film, {
+    posterImage: film.poster_image,
+    previewImage: film.preview_image,
+    backgroundImage: film.background_image,
+    backgroundColor: film.background_color,
+    videoLink: film.video_link,
+    previewVideoLink: film.preview_video_link,
+    scoresCount: film.scores_count,
+    runTime: film.run_time,
+    isFavorite: film.is_favorite,
+  });
 
-  return filmArr;
+  return newFilms;
 };
