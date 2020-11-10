@@ -9,13 +9,8 @@ import {validArrayOfShape, validNum, validArrayOfString} from "../../utils/props
 const TabSwitcher = withActiveItem(GenresList);
 
 const MoviesByGenres = (props) => {
-  const {films, genres, filmsRendered, loading} = props;
+  const {films, genres, filmsRendered} = props;
 
-  console.log(loading)
-
-  if (loading) {
-    return <div>loading...</div>
-  }
   return (
     <React.Fragment>
       <TabSwitcher genres={genres} />

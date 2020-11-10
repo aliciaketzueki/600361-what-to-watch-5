@@ -14,10 +14,10 @@ import {connect} from "react-redux";
 const TabSwitcher = withActiveItem(Tabs);
 
 const Film = (props) => {
-  const {films, reviews, history, promoFilm, match} = props;
+  const {films, reviews, history, promoFilm} = props;
   const {name, genre, released, backgroundImage, posterImage} = promoFilm;
 
-  console.log(`match`, match)
+  // console.log(`match`, match)
 
   const filmsMoreLike = films.filter((film) => film.genre === genre);
 

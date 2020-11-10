@@ -5,6 +5,11 @@ export const SECOND = 1000;
 export const INITIAL_FILMS_NUM = 8;
 export const ALL_GENRES = `All genres`;
 
+export const Validation = {
+  EMAIL: /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i,
+  PASSWORD: 6
+};
+
 export const tabs = [{
   name: `Overview`,
   id: 0,
