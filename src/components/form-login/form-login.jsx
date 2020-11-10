@@ -11,7 +11,23 @@ class FormLogin extends PureComponent {
     this.email = createRef();
     this.password = createRef();
 
+    this.state = {
+      email: ``,
+      password: ``,
+      error: false
+    };
+
+    this.handleChangeField = this.handleChangeField.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  handleChangeField(evt) {
+    const {name, value} = evt.target;
+    this.setState({[name]: value});
+
+    // if (this.state.email.length < 3 && this.state.password < 3) {
+    //   this.setState({error: true});
+    // }
   }
 
   handleSubmit(e) {
@@ -20,19 +36,24 @@ class FormLogin extends PureComponent {
     e.preventDefault();
     e.stopPropagation();
 
-    onSubmit({
-      email: this.email.current.value,
-      password: this.password.current.value,
-    });
+    // if (!this.state.error) {
+      onSubmit({
+        email: this.state.email,
+        password: this.state.password,
+      });
+    // }
   }
 
   render() {
+    console.log(this.state);
     return (
       <form action="#" className="sign-in__form" onSubmit={this.handleSubmit}>
-        {/* ERROR MESSAGE */}
-        <div className="sign-in__message">
-          <p>Please enter a valid email address</p>
-        </div>
+        {
+          this.state.error &&
+          <div className="sign-in__message">
+            <p>Please enter a valid email address</p>
+          </div>
+        }
         {/* SIGN-IN MESSAGE */}
         <div className="sign-in__message">
           <p>We can’t recognize this email <br /> and password combination. Please try again.</p>
@@ -40,23 +61,25 @@ class FormLogin extends PureComponent {
         <div className="sign-in__fields">
           <div className="sign-in__field">
             <input
-              ref={this.email}
               className="sign-in__input"
               type="email"
               placeholder="Email address"
               name="email"
               id="email"
+              value={this.state.email}
+              onChange={this.handleChangeField}
             />
             <label className="sign-in__label visually-hidden" htmlFor="email">Email address</label>
           </div>
           <div className="sign-in__field">
             <input
-              ref={this.password}
               className="sign-in__input"
               type="password"
               placeholder="Password"
               name="password"
               id="password"
+              value={this.state.password}
+              onChange={this.handleChangeField}
             />
             <label className="sign-in__label visually-hidden" htmlFor="password">Password</label>
           </div>

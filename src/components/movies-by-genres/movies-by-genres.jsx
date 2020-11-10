@@ -9,8 +9,13 @@ import {validArrayOfShape, validNum, validArrayOfString} from "../../utils/props
 const TabSwitcher = withActiveItem(GenresList);
 
 const MoviesByGenres = (props) => {
-  const {films, genres, filmsRendered} = props;
+  const {films, genres, filmsRendered, loading} = props;
 
+  console.log(loading)
+
+  if (loading) {
+    return <div>loading...</div>
+  }
   return (
     <React.Fragment>
       <TabSwitcher genres={genres} />
@@ -22,6 +27,7 @@ const MoviesByGenres = (props) => {
 
 const mapStateToProps = (state) => ({
   films: getFilmsByGenre(state),
+  loading: state.DATA.loading,
   genres: getGenres(state),
   filmsRendered: getFilmsRendered(state)
 });

@@ -33,5 +33,5 @@ export const fetchFilm = () => (dispatch, _getState, api) => (
 export const login = ({email, password}) => (dispatch, _getState, api) => (
   api.post(APIRoute.LOGIN, {email, password})
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
-    .then(() => dispatch(redirectToRoute(AppRoute.MY_LIST)))
+    .then(() => dispatch(redirectToRoute(AppRoute.ROOT)))
 );

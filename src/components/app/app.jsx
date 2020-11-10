@@ -37,8 +37,8 @@ const App = () => {
 
         <Route
           exact path={AppRoute.FILM}
-          render={({history}) => (
-            <Film history={history} />
+          render={({history, match}) => (
+            <Film history={history} match={match} />
           )}
         />
 
