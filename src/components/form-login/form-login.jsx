@@ -1,5 +1,5 @@
 import React, {PureComponent, createRef} from "react";
-import {validFunc, validString} from "../../utils/props";
+import {validFunc} from "../../utils/props";
 import {connect} from "react-redux";
 import {login} from "../../store/api-actions";
 
@@ -67,7 +67,7 @@ class FormLogin extends PureComponent {
       </form>
     );
   }
-};
+}
 
 const mapDispatchToProps = (dispatch) => ({
   onSubmit(authData) {
@@ -76,7 +76,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 FormLogin.propTypes = {
-
+  onSubmit: validFunc
 };
 
 export {FormLogin};

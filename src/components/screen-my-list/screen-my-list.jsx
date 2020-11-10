@@ -8,7 +8,6 @@ import {connect} from "react-redux";
 
 const MyList = (props) => {
   const {history, films} = props;
-  console.log(films.length);
 
   return (
     <div className="user-page">
@@ -34,10 +33,10 @@ const mapStateToProps = (state) => ({
   films: getFilmsByGenre(state),
 });
 
-// MyList.propTypes = {
-//   films: validArrayOfShape,
-//   history: validShape,
-// };
+MyList.propTypes = {
+  films: validArrayOfShape,
+  history: validShape,
+};
 
 export {MyList};
 export default connect(mapStateToProps)(MyList);

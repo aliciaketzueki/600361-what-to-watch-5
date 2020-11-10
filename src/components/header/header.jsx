@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {validShape} from "../../utils/props";
+import {validShape, validString} from "../../utils/props";
 import {AuthorizationStatus, AppRoute} from "../../utils/const";
 import {connect} from "react-redux";
 import {getAuthorizationStatus} from "../../store/selectors";
@@ -64,6 +64,7 @@ const mapStateToProps = (state) => ({
 Header.propTypes = {
   header: validShape,
   history: validShape,
+  login: validString
 };
 
 export {Header};

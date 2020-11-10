@@ -16,14 +16,14 @@ export const fetchPromoFilm = () => (dispatch, _getState, api) => (
     })
 );
 
-export const fetchReviews = (id) => (dispatch, _getState, api) => (
+export const fetchReviews = () => (dispatch, _getState, api) => (
   api.get(APIRoute.COMMENTS)
     .then(({data}) => {
       dispatch(loadReviews(data));
     })
 );
 
-export const fetchFilm = (id) => (dispatch, _getState, api) => (
+export const fetchFilm = () => (dispatch, _getState, api) => (
   api.get(APIRoute.FILM)
     .then(({data}) => {
       dispatch(loadFilm(data));
