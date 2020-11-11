@@ -1,13 +1,16 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {validShape} from "../../utils/props";
+import {validShape, validString} from "../../utils/props";
+import {AuthorizationStatus, AppRoute} from "../../utils/const";
+import {connect} from "react-redux";
+import {getAuthorizationStatus} from "../../store/selectors";
 
 const Header = (props) => {
-  const {header, history} = props;
-  const {title, headClass, nav, login} = header;
+  const {header, history, login} = props;
+  const {title, headClass, nav} = header;
 
   const onLoginClick = () => {
-    history.push(`/login`);
+    history.push(AppRoute.MY_LIST);
   };
 
   return (
@@ -35,21 +38,34 @@ const Header = (props) => {
         </nav>
       }
 
-      {login &&
-        <div className="user-block">
-          <div className="user-block__avatar" onClick={onLoginClick}>
-            <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+      {
+        login === AuthorizationStatus.AUTH &&
+          <div className="user-block">
+            <div className="user-block__avatar" onClick={onLoginClick}>
+              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+            </div>
           </div>
-        </div>
+        ||
+        login === AuthorizationStatus.NO_AUTH &&
+          <div className="user-block">
+            <Link to="/login" className="user-block__link">Sign in</Link>
+          </div>
       }
 
     </header>
   );
 };
 
+
+const mapStateToProps = (state) => ({
+  login: getAuthorizationStatus(state)
+});
+
 Header.propTypes = {
   header: validShape,
   history: validShape,
+  login: validString
 };
 
-export default Header;
+export {Header};
+export default connect(mapStateToProps)(Header);

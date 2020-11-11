@@ -1,55 +1,101 @@
 import React from "react";
-import {validFunc, validString} from "../../utils/props";
+import {validFunc, validString, validShape} from "../../utils/props";
+import {connect} from "react-redux";
+import {login} from "../../store/api-actions";
 
 const FormLogin = (props) => {
-  const {handleSubmit, handleFieldChange, email, password} = props;
+  const {email, password, emailValid, passwordValid, formErrors, formValid, handleSubmit, handleFieldChange, checkValid, onSubmit} = props;
 
   return (
-    <form action="#" className="sign-in__form" onSubmit={handleSubmit}>
-      {/* ERROR MESSAGE */}
-      <div className="sign-in__message">
-        <p>Please enter a valid email address</p>
-      </div>
-      {/* SIGN-IN MESSAGE */}
-      <div className="sign-in__message">
-        <p>We can’t recognize this email <br /> and password combination. Please try again.</p>
-      </div>
+    <form action="#" className="sign-in__form" onSubmit={(e) => {
+      handleSubmit(e);
+
+      onSubmit({
+        email,
+        password,
+      });
+    }}
+    >
+      {
+        <div className="sign-in__message">
+          {
+            Object.keys(formErrors).map((fieldName, i) => {
+              if (formErrors[fieldName].length > 0) {
+                return (
+                  <p key={i}>{formErrors[fieldName]}</p>
+                );
+              } else {
+                return ``;
+              }
+            })
+          }
+        </div>
+      }
+
       <div className="sign-in__fields">
-        <div className="sign-in__field">
+        <div className={`sign-in__field ${!emailValid ? `sign-in__field--error` : ``}`}>
           <input
             className="sign-in__input"
             type="email"
             placeholder="Email address"
             name="email"
             id="email"
-            onChange={handleFieldChange}
-            value={email} />
+            value={email}
+            onChange={(e) => {
+              handleFieldChange(e);
+              checkValid(e);
+            }}
+          />
           <label className="sign-in__label visually-hidden" htmlFor="email">Email address</label>
         </div>
-        <div className="sign-in__field">
+        <div className={`sign-in__field ${!passwordValid ? `sign-in__field--error` : ``}`}>
           <input
             className="sign-in__input"
             type="password"
             placeholder="Password"
             name="password"
             id="password"
-            onChange={handleFieldChange}
-            value={password} />
+            value={password}
+            onChange={(e) => {
+              handleFieldChange(e);
+              checkValid(e);
+            }}
+          />
           <label className="sign-in__label visually-hidden" htmlFor="password">Password</label>
         </div>
       </div>
       <div className="sign-in__submit">
-        <button className="sign-in__btn" type="submit">Sign in</button>
+        <button
+          className="sign-in__btn"
+          type="submit"
+          disabled={!formValid}
+        >
+          Sign in
+        </button>
       </div>
     </form>
   );
 };
 
+const mapDispatchToProps = (dispatch) => ({
+  onSubmit(authData) {
+    dispatch(login(authData));
+  }
+});
+
 FormLogin.propTypes = {
+  onSubmit: validFunc,
   handleSubmit: validFunc,
   handleFieldChange: validFunc,
+  checkValid: validFunc,
   email: validString,
-  password: validString
+  password: validString,
+  formErrors: validShape,
+
+  // emailValid: PropTypes.bool,
+  // passwordValid: PropTypes.bool,
+  // formValid: PropTypes.bool,
 };
 
-export default FormLogin;
+export {FormLogin};
+export default connect(null, mapDispatchToProps)(FormLogin);

@@ -22,6 +22,7 @@ const MoviesByGenres = (props) => {
 
 const mapStateToProps = (state) => ({
   films: getFilmsByGenre(state),
+  loading: state.DATA.loading,
   genres: getGenres(state),
   filmsRendered: getFilmsRendered(state)
 });

@@ -18,16 +18,20 @@ const withChangingForm = (Component) => {
 
     handleSubmit(evt) {
       evt.preventDefault();
+      evt.stopPropagation();
+      // const {onSubmit} = this.props;
+
+      // onSubmit({
+      //   email: this.state.email,
+      //   password: this.state.password,
+      // });
+
       const data = new FormData(evt.target);
 
       fetch(`https://5.react.pages.academy/wtw`, {
         method: `POST`,
         body: data,
       });
-
-      // for (let [key, value] of data.entries()) {
-      //   console.log(key, value);
-      //  }
     }
 
     handleFieldChange(evt) {

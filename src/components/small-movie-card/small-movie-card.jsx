@@ -5,7 +5,7 @@ import {validShape, validFunc, validOneOfType} from "../../utils/props";
 
 const SmallMovieCard = (props) => {
   const {film, onMouseEnter, onMouseLeave, video} = props;
-  const {name} = film;
+  const {name, id} = film;
 
   return (
     <article
@@ -17,7 +17,7 @@ const SmallMovieCard = (props) => {
         <VideoPreview film={film} video={video} />
       </div>
       <h3 className="small-movie-card__title">
-        <Link to="/films/:id" className="small-movie-card__link">{name}</Link>
+        <Link to={`/films/${id}`} className="small-movie-card__link">{name}</Link>
       </h3>
     </article>
   );

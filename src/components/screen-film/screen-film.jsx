@@ -17,6 +17,8 @@ const Film = (props) => {
   const {films, reviews, history, promoFilm} = props;
   const {name, genre, released, backgroundImage, posterImage} = promoFilm;
 
+  // console.log(`match`, match)
+
   const filmsMoreLike = films.filter((film) => film.genre === genre);
 
   return (
@@ -31,7 +33,6 @@ const Film = (props) => {
           <Header
             header={{
               headClass: `movie-card__head`,
-              login: true
             }}
             history={history}
           />
@@ -79,7 +80,7 @@ const Film = (props) => {
 const mapStateToProps = (state) => ({
   films: getFilms(state),
   promoFilm: getPromoFilm(state),
-  reviews: getReviews(state)
+  reviews: getReviews(state),
 });
 
 Film.propTypes = {

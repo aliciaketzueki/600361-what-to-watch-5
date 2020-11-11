@@ -3,9 +3,10 @@ import Header from "../header/header";
 import Footer from "../footer/footer";
 import FormLogin from "../form-login/form-login";
 import {validShape} from "../../utils/props";
-
 import withChangingForm from "../../hocs/with-changing-form/with-changing-form";
-const LoginFormWrapper = withChangingForm(FormLogin);
+import withValidation from "../../hocs/with-validation/with-validation";
+
+const LoginFormWrapper = withValidation(withChangingForm(FormLogin));
 
 const Login = (props) => {
   const {history} = props;
