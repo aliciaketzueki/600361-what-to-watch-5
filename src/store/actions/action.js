@@ -5,6 +5,7 @@ export const ActionType = {
   LOAD_FILMS: `LOAD_FILMS`,
   LOAD_PROMO_FILM: `LOAD_PROMO_FILM`,
   LOAD_REVIEWS: `LOAD_REVIEWS`,
+  LOAD_FILM: `LOAD_FILM`,
   REQUIRE_AUTHORIZATION: `REQUIRE_AUTHORIZATION`,
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`
 };
@@ -32,6 +33,11 @@ export const loadFilms = (films) => ({
 export const loadPromoFilm = (promoFilm) => ({
   type: ActionType.LOAD_PROMO_FILM,
   payload: promoFilm
+});
+
+export const loadFilm = (film) => ({
+  type: ActionType.LOAD_FILM,
+  payload: film
 });
 
 export const loadReviews = (reviews) => ({

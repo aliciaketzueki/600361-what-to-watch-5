@@ -17,7 +17,7 @@ const api = createAPI(
     () => store.dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH))
 );
 
-const store = createStore(
+export const store = createStore(
     rootReducer,
     composeWithDevTools(
         applyMiddleware(thunk.withExtraArgument(api)),

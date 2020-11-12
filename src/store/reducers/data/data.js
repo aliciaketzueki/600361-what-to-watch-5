@@ -18,8 +18,7 @@ const data = (state = initialState, action) => {
       return extend(state, {promoFilm: convertFilmProps(action.payload)});
 
     case ActionType.LOAD_FILM:
-      console.log(`action.payload`, action.payload);
-      return extend(state, {film: action.payload});
+      return extend(state, {film: convertFilmProps(action.payload)});
 
     case ActionType.LOAD_REVIEWS:
       return extend(state, {reviews: action.payload});

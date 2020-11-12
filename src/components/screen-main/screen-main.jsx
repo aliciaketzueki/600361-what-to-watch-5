@@ -7,6 +7,7 @@ import MoviesByGenres from "../movies-by-genres/movies-by-genres";
 import {connect} from "react-redux";
 import {getPromoFilm} from "../../store/selectors";
 import {validFilm, validShape} from "../../utils/props";
+import BigMovieCard from "../big-movie-card/big-movie-card";
 
 const Main = (props) => {
   const {promoFilm, history} = props;
