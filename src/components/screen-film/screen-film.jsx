@@ -5,20 +5,24 @@ import Header from "../header/header";
 import Footer from "../footer/footer";
 import VideoBtn from "../video-btn/video-btn";
 import MyListBtn from "../my-list-btn/my-list-btn";
-import {validShape, validArrayOfShape, validPromoFilm} from "../../utils/props";
-import {MORE_LIKE_NUM} from "../../utils/const";
-import {getFilms, getPromoFilm, getReviews} from "../../store/selectors";
+import {validShape, validArrayOfShape} from "../../utils/props";
+import {MORE_LIKE_NUM, APIRoute} from "../../utils/const";
+import {convertFilmProps, selectFilm} from "../../utils/utils";
+import {getFilms, getReviews} from "../../store/selectors";
+import {fetchFilm} from "../../store/actions/api-actions";
 import withActiveItem from "../../hocs/with-active-item/with-active-item";
 import Tabs from "../tabs/tabs";
 import {connect} from "react-redux";
 const TabSwitcher = withActiveItem(Tabs);
 
 const Film = (props) => {
-  const {films, reviews, history, promoFilm} = props;
-  const {name, genre, released, backgroundImage, posterImage} = promoFilm;
+  const {films, reviews, history, match} = props;
 
-  // console.log(`match`, match)
+  // Куда эти функции можно вынести, чтоб они были не здесь?
+  const filmId = parseInt(match.url.replace(`${APIRoute.FILMS}/`, ``));
+  const film = convertFilmProps(selectFilm(films, filmId));
 
+  const {name, genre, released, backgroundImage, posterImage} = film;
   const filmsMoreLike = films.filter((film) => film.genre === genre);
 
   return (
@@ -60,7 +64,7 @@ const Film = (props) => {
               <img src={posterImage} alt={name} width="218" height="327" />
             </div>
 
-            <TabSwitcher reviews={reviews} promoFilm={promoFilm} />
+            <TabSwitcher reviews={reviews} film={film} />
           </div>
         </div>
       </section>
@@ -79,12 +83,10 @@ const Film = (props) => {
 
 const mapStateToProps = (state) => ({
   films: getFilms(state),
-  promoFilm: getPromoFilm(state),
   reviews: getReviews(state),
 });
 
 Film.propTypes = {
-  promoFilm: validPromoFilm,
   films: validArrayOfShape,
   reviews: validArrayOfShape,
   history: validShape,

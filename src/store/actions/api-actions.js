@@ -1,5 +1,5 @@
-import {loadFilms, createGenresList, loadPromoFilm, loadReviews, loadFilm, requireAuthorization, redirectToRoute} from "./action";
-import {AuthorizationStatus, APIRoute, AppRoute} from "../utils/const";
+import {loadFilms, createGenresList, loadPromoFilm, loadFilm, loadReviews, requireAuthorization, redirectToRoute} from "../actions/action";
+import {AuthorizationStatus, APIRoute, AppRoute} from "../../utils/const";
 
 export const fetchFilms = () => (dispatch, _getState, api) => (
   api.get(APIRoute.FILMS)
@@ -16,17 +16,17 @@ export const fetchPromoFilm = () => (dispatch, _getState, api) => (
     })
 );
 
+export const fetchFilm = (id) => (dispatch, _getState, api) => (
+  api.get(`${APIRoute.FILMS}/${id}`)
+    .then(({data}) => {
+      dispatch(loadFilm(data));
+    })
+)
+
 export const fetchReviews = () => (dispatch, _getState, api) => (
   api.get(APIRoute.COMMENTS)
     .then(({data}) => {
       dispatch(loadReviews(data));
-    })
-);
-
-export const fetchFilm = () => (dispatch, _getState, api) => (
-  api.get(APIRoute.FILM)
-    .then(({data}) => {
-      dispatch(loadFilm(data));
     })
 );
 

@@ -1,9 +1,9 @@
 import React from "react";
-import {validPromoFilm} from "../../utils/props";
+import {validFilm} from "../../utils/props";
 
 const TabDetails = (props) => {
-  const {promoFilm} = props;
-  const {director, starring, runTime, id} = promoFilm;
+  const {film} = props;
+  const {director, starring, runTime, id} = film;
 
   return (
     <React.Fragment>
@@ -49,7 +49,7 @@ const TabDetails = (props) => {
 };
 
 TabDetails.propTypes = {
-  promoFilm: validPromoFilm
+  film: validFilm
 };
 
 export default TabDetails;

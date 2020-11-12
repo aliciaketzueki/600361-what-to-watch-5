@@ -6,7 +6,7 @@ import MyListBtn from "../my-list-btn/my-list-btn";
 import MoviesByGenres from "../movies-by-genres/movies-by-genres";
 import {connect} from "react-redux";
 import {getPromoFilm} from "../../store/selectors";
-import {validPromoFilm, validShape} from "../../utils/props";
+import {validFilm, validShape} from "../../utils/props";
 
 const Main = (props) => {
   const {promoFilm, history} = props;
@@ -66,7 +66,7 @@ const mapStateToProps = (state) => ({
 });
 
 Main.propTypes = {
-  promoFilm: validPromoFilm,
+  promoFilm: validFilm,
   history: validShape,
 };
 

@@ -1,9 +1,10 @@
-import {ActionType} from "../../action";
+import {ActionType} from "../../actions/action";
 import {extend, getGenres} from "../../../utils/utils";
 import {INITIAL_FILMS_NUM, ALL_GENRES} from "../../../utils/const";
 
 const initialState = {
   genres: [],
+  film: {},
   activeGenre: ALL_GENRES,
   filmsRendered: INITIAL_FILMS_NUM,
 };

@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
-import {showMore} from "../../store/action";
+import {showMore} from "../../store/actions/action";
 import {getFilmsByGenre, getRenderedFilms} from "../../store/selectors";
 import {validFunc, validNum, validArrayOfShape} from "../../utils/props";
 

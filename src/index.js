@@ -9,8 +9,8 @@ import thunk from "redux-thunk";
 import {composeWithDevTools} from "redux-devtools-extension";
 import {createAPI} from "./services/api";
 import {AuthorizationStatus} from "./utils/const";
-import {fetchFilms, fetchPromoFilm} from "./store/api-actions";
-import {requireAuthorization} from "./store/action";
+import {fetchFilms, fetchPromoFilm} from "./store/actions/api-actions";
+import {requireAuthorization} from "./store/actions/action";
 import {redirect} from "./store/middlewares/redirect";
 
 const api = createAPI(

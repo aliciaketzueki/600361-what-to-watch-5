@@ -1,10 +1,10 @@
 import React from "react";
-import {validPromoFilm} from "../../utils/props";
+import {validFilm} from "../../utils/props";
 import {MAX_ACTORS_NUM} from "../../utils/const";
 
 const TabOverview = (props) => {
-  const {promoFilm} = props;
-  const {rating, description, scoresCount, director, starring} = promoFilm;
+  const {film} = props;
+  const {rating, description, scoresCount, director, starring} = film;
 
   const addRating = () => {
     switch (true) {
@@ -47,7 +47,7 @@ const TabOverview = (props) => {
 };
 
 TabOverview.propTypes = {
-  promoFilm: validPromoFilm,
+  film: validFilm,
 };
 
 export default TabOverview;

@@ -1,7 +1,7 @@
 import React from "react";
 import {validFunc, validString, validShape} from "../../utils/props";
 import {connect} from "react-redux";
-import {login} from "../../store/api-actions";
+import {login} from "../../store/actions/api-actions";
 
 const FormLogin = (props) => {
   const {email, password, emailValid, passwordValid, formErrors, formValid, handleSubmit, handleFieldChange, checkValid, onSubmit} = props;
