@@ -1,24 +1,36 @@
-import React from "react";
+import React, {useEffect} from "react";
 import MoviesList from "../movies-list/movies-list";
 import Footer from "../footer/footer";
 import {MORE_LIKE_NUM} from "../../utils/const";
-import {getFilms, getReviews} from "../../store/selectors";
+import {getFilms, getFilm, getReviews} from "../../store/selectors";
+import {fetchFilm, fetchReviews} from "../../store/actions/api-actions";
 import {connect} from "react-redux";
 import BigMovieCard from "../big-movie-card/big-movie-card";
 
 const Film = (props) => {
-  const {films, reviews, history, match, film} = props;
+  const {films, history, match, loadCurrentFilm, film, reviews} = props;
+  const filmId = match.params.id;
 
-  const filmsMoreLike = films.filter((it) => it.genre === film.genre);
+  useEffect(() => {
+    loadCurrentFilm(filmId);
+    console.log(`use effect`);
+  }, [filmId]);
+
+  if (!film) {
+    return null;
+  }
+
+  console.log(`film FilmScreen`, film);
+  // const filmsMoreLike = films.filter((it) => it.genre === film.genre);
+  const filmsMoreLike = films;
 
   return (
     <React.Fragment>
       <BigMovieCard
-        reviews={reviews}
         history={history}
-        match={match}
         isFull={true}
         film={film}
+        reviews={reviews}
       />
 
       <div className="page-content">
@@ -38,8 +50,15 @@ const Film = (props) => {
 
 const mapStateToProps = (state) => ({
   films: getFilms(state),
-  reviews: getReviews(state),
-  film: state.DATA.film
+  film: getFilm(state),
+  reviews: getReviews(state)
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  loadCurrentFilm(id) {
+    dispatch(fetchFilm(id));
+    dispatch(fetchReviews(id));
+  },
 });
 
 // Film.propTypes = {
@@ -49,4 +68,4 @@ const mapStateToProps = (state) => ({
 // };
 
 export {Film};
-export default connect(mapStateToProps)(Film);
+export default connect(mapStateToProps, mapDispatchToProps)(Film);

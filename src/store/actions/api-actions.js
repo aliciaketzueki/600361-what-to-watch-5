@@ -7,6 +7,9 @@ export const fetchFilms = () => (dispatch, _getState, api) => (
       dispatch(loadFilms(data));
       dispatch(createGenresList(data));
     })
+    .catch(() => {
+      throw Error(`Ошибка загруки списка фильмов`);
+    })
 );
 
 export const fetchPromoFilm = () => (dispatch, _getState, api) => (
@@ -14,20 +17,42 @@ export const fetchPromoFilm = () => (dispatch, _getState, api) => (
     .then(({data}) => {
       dispatch(loadPromoFilm(data));
     })
+    .catch(() => {
+      throw Error(`Ошибка загруки промо-фильма`);
+    })
 );
 
 export const fetchFilm = (id) => (dispatch, _getState, api) => (
   api.get(`${APIRoute.FILMS}/${id}`)
     .then(({data}) => {
+      console.log(`data`, data);
       dispatch(loadFilm(data));
+    })
+    .catch(() => {
+      throw Error(`Ошибка загруки фильма`);
     })
 )
 
-export const fetchReviews = () => (dispatch, _getState, api) => (
-  api.get(APIRoute.COMMENTS)
+export const fetchReviews = (id) => (dispatch, _getState, api) => (
+  api.get(`${APIRoute.COMMENTS}/${id}`)
     .then(({data}) => {
       dispatch(loadReviews(data));
     })
+    .catch(() => {
+      throw Error(`Ошибка загруки отзывов`);
+    })
+);
+
+export const addReview = (id, rating, comment) => (dispatch, _getState, api) => (
+  api.post(`${APIRoute.FILMS}/${id}/reviews`, {rating, comment})
+    .then(() => {
+      dispatch(redirectToRoute(`${APIRoute.FILMS}/${id}`));
+      // dispatch(setDataIsSending(false));
+    })
+    // .catch(() => {
+    //   dispatch(setDataIsSending(false));
+    //   dispatch(setDataSendError(true));
+    // })
 );
 
 export const login = ({email, password}) => (dispatch, _getState, api) => (

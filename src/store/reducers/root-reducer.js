@@ -3,7 +3,7 @@ import {data} from "./data/data";
 import {process} from "./process/process";
 import {user} from "./user/user";
 
-const NameSpace = {
+export const NameSpace = {
   DATA: `DATA`,
   PROCESS: `PROCESS`,
   USER: `USER`

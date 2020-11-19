@@ -3,7 +3,7 @@ import {validFilm} from "../../utils/props";
 
 const TabDetails = (props) => {
   const {film} = props;
-  const {director, starring, runTime, id} = film;
+  const {director, starring, runTime, id, genre, released} = film;
 
   return (
     <React.Fragment>
@@ -36,11 +36,11 @@ const TabDetails = (props) => {
           </p>
           <p className="movie-card__details-item">
             <strong className="movie-card__details-name">Genre</strong>
-            <span className="movie-card__details-value">Comedy</span>
+            <span className="movie-card__details-value">{genre}</span>
           </p>
           <p className="movie-card__details-item">
             <strong className="movie-card__details-name">Released</strong>
-            <span className="movie-card__details-value">2014</span>
+            <span className="movie-card__details-value">{released}</span>
           </p>
         </div>
       </div>
