@@ -7,9 +7,10 @@ import {fetchFilm, fetchReviews} from "../../store/actions/api-actions";
 import {changeActiveFilm} from "../../store/actions/action";
 import {connect} from "react-redux";
 import BigMovieCard from "../big-movie-card/big-movie-card";
+import {validArrayOfShape, validShape, validFunc, validFilm} from "../../utils/props";
 
 const Film = (props) => {
-  const {films, history, match, loadCurrentFilm, film, reviews, isLoad} = props;
+  const {films, history, match, loadCurrentFilm, film, reviews} = props;
   const filmId = match.params.id;
 
   useEffect(() => {
@@ -26,6 +27,8 @@ const Film = (props) => {
     <React.Fragment>
       <BigMovieCard
         history={history}
+        isFull={true}
+        isReview={false}
         film={film}
         reviews={reviews}
       />
@@ -49,7 +52,6 @@ const mapStateToProps = (state) => ({
   films: getFilms(state),
   film: getFilm(state),
   reviews: getReviews(state),
-  isLoadedFilm: state.DATA.isLoadedFilm
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -60,11 +62,14 @@ const mapDispatchToProps = (dispatch) => ({
   },
 });
 
-// Film.propTypes = {
-//   films: validArrayOfShape,
-//   reviews: validArrayOfShape,
-//   history: validShape,
-// };
+Film.propTypes = {
+  films: validArrayOfShape,
+  film: validFilm,
+  reviews: validArrayOfShape,
+  history: validShape,
+  match: validShape,
+  loadCurrentFilm: validFunc,
+};
 
 export {Film};
 export default connect(mapStateToProps, mapDispatchToProps)(Film);

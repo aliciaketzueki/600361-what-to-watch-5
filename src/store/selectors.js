@@ -9,6 +9,7 @@ export const getActiveGenre = (state) => state[NameSpace.PROCESS].activeGenre;
 export const getReviews = (state) => state[NameSpace.DATA].reviews;
 export const getFilm = (state) => state[NameSpace.DATA].film;
 export const getCurrentFilm = (state) => state[NameSpace.PROCESS].currentFilm;
+export const getFavourites = (state) => state[NameSpace.DATA].favourites;
 export const getGenres = (state) => state[NameSpace.PROCESS].genres;
 export const getAuthorizationStatus = (state) => state[NameSpace.USER].authorizationStatus;
 

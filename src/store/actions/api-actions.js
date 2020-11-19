@@ -1,4 +1,4 @@
-import {loadFilms, createGenresList, loadPromoFilm, loadFilm, loadReviews, requireAuthorization, redirectToRoute} from "../actions/action";
+import {loadFilms, createGenresList, loadPromoFilm, loadFilm, loadReviews, loadFavourites, requireAuthorization, redirectToRoute} from "../actions/action";
 import {AuthorizationStatus, APIRoute, AppRoute} from "../../utils/const";
 
 export const fetchFilms = () => (dispatch, _getState, api) => (
@@ -30,7 +30,7 @@ export const fetchFilm = (id) => (dispatch, _getState, api) => (
     .catch(() => {
       throw Error(`Ошибка загруки фильма`);
     })
-)
+);
 
 export const fetchReviews = (id) => (dispatch, _getState, api) => (
   api.get(`${APIRoute.COMMENTS}/${id}`)
@@ -46,12 +46,24 @@ export const addReview = (id, rating, comment) => (dispatch, _getState, api) => 
   api.post(`${APIRoute.COMMENTS}/${id}`, {rating, comment})
     .then(() => {
       dispatch(redirectToRoute(`${APIRoute.FILMS}/${id}`));
-      // dispatch(setDataIsSending(false));
     })
-    // .catch(() => {
-    //   dispatch(setDataIsSending(false));
-    //   dispatch(setDataSendError(true));
-    // })
+    .catch(() => {
+      throw Error(`Ошибка добавления отзыва`);
+    })
+);
+
+export const fetchFavourites = () => (dispatch, _getState, api) => (
+  api.get(APIRoute.FAVOURITES)
+    .then(({data}) => {
+      dispatch(loadFavourites(data));
+    })
+    .catch(() => {
+      throw Error(`Ошибка загруки любимых фильмов`);
+    })
+);
+
+export const addToMyList = (id, status) => (dispatch, _getState, api) => (
+  api.post(`${APIRoute.FAVOURITES}/${id}/${status}`)
 );
 
 export const login = ({email, password}) => (dispatch, _getState, api) => (

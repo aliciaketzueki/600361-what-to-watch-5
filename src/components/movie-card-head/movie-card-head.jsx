@@ -1,8 +1,10 @@
 import React from "react";
 import Header from "../header/header";
+import {validFilm, validShape} from "../../utils/props";
+import PropTypes from "prop-types";
 
 const MovieCardHead = (props) => {
-  const {film, history} = props;
+  const {film, history, headerNav} = props;
   const {name, backgroundImage} = film;
 
   return (
@@ -14,11 +16,18 @@ const MovieCardHead = (props) => {
       <Header
         header={{
           headClass: `movie-card__head`,
+          nav: headerNav
         }}
         history={history}
       />
     </React.Fragment>
   );
+};
+
+MovieCardHead.propTypes = {
+  film: validFilm,
+  history: validShape,
+  headerNav: PropTypes.bool
 };
 
 export default MovieCardHead;

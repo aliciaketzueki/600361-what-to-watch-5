@@ -3,7 +3,7 @@ import Footer from "../footer/footer";
 import MoviesByGenres from "../movies-by-genres/movies-by-genres";
 import {connect} from "react-redux";
 import {getPromoFilm} from "../../store/selectors";
-import {validFilm, validShape} from "../../utils/props";
+import {validFilm, validShape, validFunc} from "../../utils/props";
 import BigMovieCard from "../big-movie-card/big-movie-card";
 import {changeActiveFilm} from "../../store/actions/action";
 
@@ -36,13 +36,14 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   isLoad(film) {
-    dispatch(changeActiveFilm(film))
+    dispatch(changeActiveFilm(film));
   }
 });
 
 Main.propTypes = {
   promoFilm: validFilm,
   history: validShape,
+  isLoad: validFunc
 };
 
 export {Main};

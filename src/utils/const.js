@@ -7,7 +7,9 @@ export const ALL_GENRES = `All genres`;
 
 export const Validation = {
   EMAIL: /^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i,
-  PASSWORD: 6
+  PASSWORD: 6,
+  COMMENT_MIN: 50,
+  COMMENT_MAX: 400
 };
 
 export const tabs = [{
@@ -40,4 +42,5 @@ export const APIRoute = {
   PROMO: `/films/promo`,
   COMMENTS: `comments`,
   LOGIN: `/login`,
+  FAVOURITES: `/favorite`
 };

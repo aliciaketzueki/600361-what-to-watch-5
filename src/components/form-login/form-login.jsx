@@ -1,5 +1,5 @@
 import React from "react";
-import {validFunc, validString, validShape} from "../../utils/props";
+import {validFunc, validString, validShape, validBool} from "../../utils/props";
 import {connect} from "react-redux";
 import {login} from "../../store/actions/api-actions";
 
@@ -9,11 +9,7 @@ const FormLogin = (props) => {
   return (
     <form action="#" className="sign-in__form" onSubmit={(e) => {
       handleSubmit(e);
-
-      onSubmit({
-        email,
-        password,
-      });
+      onSubmit({email, password});
     }}
     >
       {
@@ -91,10 +87,9 @@ FormLogin.propTypes = {
   email: validString,
   password: validString,
   formErrors: validShape,
-
-  // emailValid: PropTypes.bool,
-  // passwordValid: PropTypes.bool,
-  // formValid: PropTypes.bool,
+  emailValid: validBool,
+  passwordValid: validBool,
+  formValid: validBool,
 };
 
 export {FormLogin};
