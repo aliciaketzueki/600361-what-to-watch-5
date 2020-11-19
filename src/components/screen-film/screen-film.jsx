@@ -4,31 +4,28 @@ import Footer from "../footer/footer";
 import {MORE_LIKE_NUM} from "../../utils/const";
 import {getFilms, getFilm, getReviews} from "../../store/selectors";
 import {fetchFilm, fetchReviews} from "../../store/actions/api-actions";
+import {changeActiveFilm} from "../../store/actions/action";
 import {connect} from "react-redux";
 import BigMovieCard from "../big-movie-card/big-movie-card";
 
 const Film = (props) => {
-  const {films, history, match, loadCurrentFilm, film, reviews} = props;
+  const {films, history, match, loadCurrentFilm, film, reviews, isLoad} = props;
   const filmId = match.params.id;
 
   useEffect(() => {
-    loadCurrentFilm(filmId);
-    console.log(`use effect`);
-  }, [filmId]);
+    loadCurrentFilm(filmId, film);
+  }, [filmId, film]);
 
   if (!film) {
     return null;
   }
 
-  console.log(`film FilmScreen`, film);
-  // const filmsMoreLike = films.filter((it) => it.genre === film.genre);
-  const filmsMoreLike = films;
+  const filmsMoreLike = films.filter((it) => it.genre === film.genre);
 
   return (
     <React.Fragment>
       <BigMovieCard
         history={history}
-        isFull={true}
         film={film}
         reviews={reviews}
       />
@@ -51,13 +48,15 @@ const Film = (props) => {
 const mapStateToProps = (state) => ({
   films: getFilms(state),
   film: getFilm(state),
-  reviews: getReviews(state)
+  reviews: getReviews(state),
+  isLoadedFilm: state.DATA.isLoadedFilm
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  loadCurrentFilm(id) {
+  loadCurrentFilm(id, film) {
     dispatch(fetchFilm(id));
     dispatch(fetchReviews(id));
+    dispatch(changeActiveFilm(film));
   },
 });
 

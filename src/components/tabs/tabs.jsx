@@ -9,8 +9,6 @@ import TabReviews from "../tab-reviews/tab-reviews";
 const Tabs = (props) => {
   const {reviews, tabIndex, onClick, film} = props;
 
-  console.log(`tabs film`, film);
-
   return (
     <div className="movie-card__desc">
       <nav className="movie-nav movie-card__nav">

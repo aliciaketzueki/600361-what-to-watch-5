@@ -5,7 +5,9 @@ const initialState = {
   loading: true,
   promoFilm: {},
   films: [],
-  film: {},
+  film: null,
+  isLoadedFilm: false,
+  isLoadedReviews: false,
   reviews: [],
 };
 
@@ -18,7 +20,7 @@ const data = (state = initialState, action) => {
       return extend(state, {promoFilm: convertFilmProps(action.payload)});
 
     case ActionType.LOAD_FILM:
-      return extend(state, {film: convertFilmProps(action.payload)});
+      return extend(state, {film: convertFilmProps(action.payload), isLoadedFilm: true});
 
     case ActionType.LOAD_REVIEWS:
       return extend(state, {reviews: action.payload});

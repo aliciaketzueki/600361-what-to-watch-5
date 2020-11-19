@@ -6,6 +6,7 @@ export const ActionType = {
   LOAD_PROMO_FILM: `LOAD_PROMO_FILM`,
   LOAD_REVIEWS: `LOAD_REVIEWS`,
   LOAD_FILM: `LOAD_FILM`,
+  CHANGE_ACTIVE_FILM: `CHANGE_ACTIVE_FILM`,
   REQUIRE_AUTHORIZATION: `REQUIRE_AUTHORIZATION`,
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`
 };
@@ -37,6 +38,11 @@ export const loadPromoFilm = (promoFilm) => ({
 
 export const loadFilm = (film) => ({
   type: ActionType.LOAD_FILM,
+  payload: film
+});
+
+export const changeActiveFilm = (film) => ({
+  type: ActionType.CHANGE_ACTIVE_FILM,
   payload: film
 });
 

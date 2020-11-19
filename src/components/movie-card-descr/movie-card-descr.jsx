@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 
 const MovieCardDescr = (props) => {
   const {film, history} = props;
-  const {name, genre, released} = film;
+  const {name, genre, released, id} = film;
 
   return (
     <div className="movie-card__desc">
@@ -18,7 +18,7 @@ const MovieCardDescr = (props) => {
       <div className="movie-card__buttons">
         <VideoBtn history={history} />
         <MyListBtn />
-        <Link to="/films/:id/review" className="btn movie-card__button">Add review</Link>
+        <Link to={`/films/${id}/review`} className="btn movie-card__button">Add review</Link>
       </div>
     </div>
   );

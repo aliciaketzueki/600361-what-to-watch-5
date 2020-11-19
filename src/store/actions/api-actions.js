@@ -25,7 +25,6 @@ export const fetchPromoFilm = () => (dispatch, _getState, api) => (
 export const fetchFilm = (id) => (dispatch, _getState, api) => (
   api.get(`${APIRoute.FILMS}/${id}`)
     .then(({data}) => {
-      console.log(`data`, data);
       dispatch(loadFilm(data));
     })
     .catch(() => {
@@ -44,7 +43,7 @@ export const fetchReviews = (id) => (dispatch, _getState, api) => (
 );
 
 export const addReview = (id, rating, comment) => (dispatch, _getState, api) => (
-  api.post(`${APIRoute.FILMS}/${id}/reviews`, {rating, comment})
+  api.post(`${APIRoute.COMMENTS}/${id}`, {rating, comment})
     .then(() => {
       dispatch(redirectToRoute(`${APIRoute.FILMS}/${id}`));
       // dispatch(setDataIsSending(false));

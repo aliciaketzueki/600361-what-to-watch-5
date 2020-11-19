@@ -1,8 +1,10 @@
 import React from "react";
+import {connect} from "react-redux";
 import {validFunc, validString} from "../../utils/props";
+import {addReview} from "../../store/actions/api-actions";
 
 const FormAddReview = (props) => {
-  const {rating, text, handleSubmit, handleFieldChange} = props;
+  const {rating, text, handleSubmit, handleFieldChange, onSubmit, filmId} = props;
 
   const addRating = () => {
     const maxRate = 5;
@@ -28,7 +30,14 @@ const FormAddReview = (props) => {
   };
 
   return (
-    <form action="#" className="add-review__form" onSubmit={handleSubmit}>
+    <form
+      action="#"
+      className="add-review__form"
+      onSubmit={(e) => {
+        handleSubmit(e);
+        onSubmit(filmId, rating, text);
+      }
+      }>
       <div className="rating">
         <div className="rating__stars">
           {addRating()}
@@ -59,4 +68,11 @@ FormAddReview.propTypes = {
   rating: validString
 };
 
-export default FormAddReview;
+const mapDispatchToProps = (dispatch) => ({
+  onSubmit(id, rating, comment) {
+    dispatch(addReview(id, rating, comment))
+  }
+});
+
+export {FormAddReview};
+export default connect(null, mapDispatchToProps)(FormAddReview);
