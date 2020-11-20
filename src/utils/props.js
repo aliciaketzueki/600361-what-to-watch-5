@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-export const validPromoFilm = PropTypes.shape({
+export const validFilm = PropTypes.shape({
   id: PropTypes.number.isRequired,
   name: PropTypes.string.isRequired,
   posterImage: PropTypes.string.isRequired,

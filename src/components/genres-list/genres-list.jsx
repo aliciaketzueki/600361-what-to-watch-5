@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
-import {changeGenre} from "../../store/action";
+import {changeGenre} from "../../store/actions/action";
 import {getGenres, getActiveGenre} from "../../store/selectors";
 import {MAX_GENRES_NUM} from "../../utils/const";
 import {validArrayOfString, validNum, validFunc, validString} from "../../utils/props";

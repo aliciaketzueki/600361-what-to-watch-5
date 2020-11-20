@@ -1,8 +1,10 @@
 import React from "react";
-import {validFunc, validString} from "../../utils/props";
+import {connect} from "react-redux";
+import {validFunc, validString, validNum, validBool} from "../../utils/props";
+import {addReview} from "../../store/actions/api-actions";
 
 const FormAddReview = (props) => {
-  const {rating, text, handleSubmit, handleFieldChange} = props;
+  const {rating, textReview, handleSubmit, handleFieldChange, checkValid, onSubmit, filmId, formValid} = props;
 
   const addRating = () => {
     const maxRate = 5;
@@ -28,7 +30,14 @@ const FormAddReview = (props) => {
   };
 
   return (
-    <form action="#" className="add-review__form" onSubmit={handleSubmit}>
+    <form
+      action="#"
+      className="add-review__form"
+      onSubmit={(e) => {
+        handleSubmit(e);
+        onSubmit(filmId, rating, textReview);
+      }
+      }>
       <div className="rating">
         <div className="rating__stars">
           {addRating()}
@@ -38,14 +47,23 @@ const FormAddReview = (props) => {
       <div className="add-review__text">
         <textarea
           className="add-review__textarea"
-          name="text"
+          name="textReview"
           id="text"
           placeholder="Review text"
-          onChange={handleFieldChange}
-          value={text}
+          value={textReview}
+          onChange={(e) => {
+            handleFieldChange(e);
+            checkValid(e);
+          }}
         />
         <div className="add-review__submit">
-          <button className="add-review__btn" type="submit">Post</button>
+          <button
+            className="add-review__btn"
+            type="submit"
+            disabled={!formValid}
+          >
+            Post
+          </button>
         </div>
       </div>
     </form>
@@ -55,8 +73,19 @@ const FormAddReview = (props) => {
 FormAddReview.propTypes = {
   handleSubmit: validFunc,
   handleFieldChange: validFunc,
-  text: validString,
-  rating: validString
+  checkValid: validFunc,
+  onSubmit: validFunc,
+  textReview: validString,
+  rating: validString,
+  filmId: validNum,
+  formValid: validBool
 };
 
-export default FormAddReview;
+const mapDispatchToProps = (dispatch) => ({
+  onSubmit(id, rating, comment) {
+    dispatch(addReview(id, rating, comment));
+  }
+});
+
+export {FormAddReview};
+export default connect(null, mapDispatchToProps)(FormAddReview);

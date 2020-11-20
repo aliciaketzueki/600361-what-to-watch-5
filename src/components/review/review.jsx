@@ -4,16 +4,16 @@ import {validShape} from "../../utils/props";
 
 const Review = (props) => {
   const {review} = props;
-  const {author, text, date, rating} = review;
+  const {user, comment, date, rating} = review;
 
   return (
     <div className="review">
       <blockquote className="review__quote">
-        <p className="review__text">{text}</p>
+        <p className="review__text">{comment}</p>
 
         <footer className="review__details">
-          <cite className="review__author">{author}</cite>
-          <time className="review__date" dateTime={moment(new Date(date)).format(`YYYY-DD-MM`)}>{date}</time>
+          <cite className="review__author">{user.name}</cite>
+          <time className="review__date" dateTime={moment(new Date(date)).format(`YYYY-DD-MM`)}>{moment(date).format(`MMMM D, YYYY`)}</time>
         </footer>
       </blockquote>
 

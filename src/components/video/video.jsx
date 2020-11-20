@@ -1,18 +1,21 @@
 import React from "react";
 import moment from "moment";
-import {validFunc, validBool, validNum, validOneOfType} from "../../utils/props";
+import {connect} from "react-redux";
+import {getCurrentFilm} from "../../store/selectors";
+import {validFunc, validBool, validNum, validOneOfType, validFilm} from "../../utils/props";
 
 const VideoPlayer = (props) => {
-  const {onExitBtnClick, isPlaying, duration, progress, video, progressBar, onPlay, onPause, onMouseDown, onFullScreen} = props;
+  const {onExitBtnClick, isPlaying, duration, progress, video, progressBar, onPlay, onPause, onMouseDown, onFullScreen, film} = props;
+  const {videoLink, backgroundImage, name} = film;
 
   return (
     <div className="player">
       <video
         ref={video}
         preload="metadata"
-        src="https://docs.google.com/uc?id=1lOjED9R5dp-caVj1S8Wf8jjr3ob_qThW"
+        src={videoLink}
         className="player__video"
-        poster="img/player-poster.jpg"
+        poster={backgroundImage}
       />
 
       <button type="button" className="player__exit" onClick={onExitBtnClick}>Exit</button>
@@ -61,7 +64,7 @@ const VideoPlayer = (props) => {
               <span>Pause</span>
             </button>
           }
-          <div className="player__name">Transpotting</div>
+          <div className="player__name">{name}</div>
 
           <button
             type="button"
@@ -89,7 +92,13 @@ VideoPlayer.propTypes = {
   duration: validNum,
   progress: validNum,
   video: validOneOfType,
-  progressBar: validOneOfType
+  progressBar: validOneOfType,
+  film: validFilm
 };
 
-export default VideoPlayer;
+const mapStateToProps = (state) => ({
+  film: getCurrentFilm(state),
+});
+
+export {VideoPlayer};
+export default connect(mapStateToProps)(VideoPlayer);

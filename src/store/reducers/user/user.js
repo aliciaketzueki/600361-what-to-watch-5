@@ -1,4 +1,4 @@
-import {ActionType} from "../../action";
+import {ActionType} from "../../actions/action";
 import {AuthorizationStatus} from "../../../utils/const";
 import {extend} from "../../../utils/utils";
 

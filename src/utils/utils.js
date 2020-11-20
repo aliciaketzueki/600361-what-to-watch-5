@@ -17,6 +17,12 @@ export const filterFilms = (films, activeGenre) => {
   return filteredFilms;
 };
 
+export const selectFilm = (films, id) => {
+  let selectedFilm = films.find((film) => film.id === id);
+
+  return selectedFilm;
+};
+
 export const renderFilms = (films, filmsRendered) => {
   if (filmsRendered < films.length - INITIAL_FILMS_NUM) {
     return filmsRendered + INITIAL_FILMS_NUM;

@@ -1,13 +1,22 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import MoviesList from "../movies-list/movies-list";
-import {validShape, validArrayOfShape} from "../../utils/props";
-import {getFilmsByGenre} from "../../store/selectors";
+import {validShape, validArrayOfShape, validFunc} from "../../utils/props";
+import {fetchFavourites} from "../../store/actions/api-actions";
+import {getFavourites} from "../../store/selectors";
 import {connect} from "react-redux";
 
 const MyList = (props) => {
-  const {history, films} = props;
+  const {history, films, loadFavourites} = props;
+
+  useEffect(() => {
+    loadFavourites();
+  }, []);
+
+  if (!films) {
+    return null;
+  }
 
   return (
     <div className="user-page">
@@ -21,7 +30,10 @@ const MyList = (props) => {
 
       <section className="catalog">
         <h2 className="catalog__title visually-hidden">Catalog</h2>
-        <MoviesList films={films} filmsRendered={films.length} />
+        {
+          films && films.length > 0 &&
+          <MoviesList films={films} filmsRendered={films.length} />
+        }
       </section>
 
       <Footer />
@@ -30,13 +42,20 @@ const MyList = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  films: getFilmsByGenre(state),
+  films: getFavourites(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  loadFavourites() {
+    dispatch(fetchFavourites());
+  },
 });
 
 MyList.propTypes = {
   films: validArrayOfShape,
   history: validShape,
+  loadFavourites: validFunc
 };
 
 export {MyList};
-export default connect(mapStateToProps)(MyList);
+export default connect(mapStateToProps, mapDispatchToProps)(MyList);

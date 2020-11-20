@@ -1,11 +1,12 @@
 import React from "react";
-import {validShape} from "../../utils/props";
+import {validShape, validFilm} from "../../utils/props";
 
 const VideoBtn = (props) => {
-  const {history} = props;
+  const {history, film} = props;
+  const {id} = film;
 
   const onVideoBtnClick = () => {
-    history.push(`/player/:id`);
+    history.push(`/player/${id}`);
   };
 
   return (
@@ -19,7 +20,8 @@ const VideoBtn = (props) => {
 };
 
 VideoBtn.propTypes = {
-  history: validShape
+  history: validShape,
+  film: validFilm
 };
 
 export default VideoBtn;

@@ -9,7 +9,7 @@ const withChangingForm = (Component) => {
         email: ``,
         password: ``,
         rating: `3`,
-        text: ``,
+        textReview: ``,
       };
 
       this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,19 +19,6 @@ const withChangingForm = (Component) => {
     handleSubmit(evt) {
       evt.preventDefault();
       evt.stopPropagation();
-      // const {onSubmit} = this.props;
-
-      // onSubmit({
-      //   email: this.state.email,
-      //   password: this.state.password,
-      // });
-
-      const data = new FormData(evt.target);
-
-      fetch(`https://5.react.pages.academy/wtw`, {
-        method: `POST`,
-        body: data,
-      });
     }
 
     handleFieldChange(evt) {
@@ -40,7 +27,7 @@ const withChangingForm = (Component) => {
     }
 
     render() {
-      const {email, password, rating, text} = this.state;
+      const {email, password, rating, textReview} = this.state;
 
       return (
         <Component
@@ -48,7 +35,7 @@ const withChangingForm = (Component) => {
           email={email}
           password={password}
           rating={rating}
-          text={text}
+          textReview={textReview}
           handleSubmit={this.handleSubmit}
           handleFieldChange={this.handleFieldChange}
         />

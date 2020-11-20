@@ -1,44 +1,30 @@
 import React from "react";
-import Header from "../header/header";
-import FormAddReview from "../form-add-review/form-add-review";
-import withChangingForm from "../../hocs/with-changing-form/with-changing-form";
-import {validShape} from "../../utils/props";
-
-const ReviewFormWrapper = withChangingForm(FormAddReview);
+import {connect} from "react-redux";
+import BigMovieCard from "../big-movie-card/big-movie-card";
+import {validShape, validFilm} from "../../utils/props";
+import {getCurrentFilm} from "../../store/selectors";
 
 const AddReview = (props) => {
-  const {history} = props;
+  const {history, film} = props;
 
   return (
-    <section className="movie-card movie-card--full">
-      <div className="movie-card__header">
-        <div className="movie-card__bg">
-          <img src="img/bg-the-grand-budapest-hotel.jpg" alt="The Grand Budapest Hotel" />
-        </div>
-
-        <h1 className="visually-hidden">WTW</h1>
-        <Header
-          header={{
-            nav: true,
-          }}
-          history={history}
-        />
-
-        <div className="movie-card__poster movie-card__poster--small">
-          <img src="img/the-grand-budapest-hotel-poster.jpg" alt="The Grand Budapest Hotel poster" width="218" height="327" />
-        </div>
-      </div>
-
-      <div className="add-review">
-        <ReviewFormWrapper />
-      </div>
-
-    </section>
+    <BigMovieCard
+      history={history}
+      isFull={true}
+      isReview={true}
+      film={film}
+    />
   );
 };
 
+const mapStateToProps = (state) => ({
+  film: getCurrentFilm(state),
+});
+
 AddReview.propTypes = {
   history: validShape,
+  film: validFilm
 };
 
-export default AddReview;
+export {AddReview};
+export default connect(mapStateToProps)(AddReview);
