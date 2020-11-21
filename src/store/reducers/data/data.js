@@ -1,5 +1,5 @@
 import {ActionType} from "../../actions/action";
-import {extend, convertFilmProps} from "../../../utils/utils";
+import {extend} from "../../../utils/utils";
 
 const initialState = {
   promoFilm: {},
@@ -15,10 +15,10 @@ const data = (state = initialState, action) => {
       return extend(state, {films: action.payload});
 
     case ActionType.LOAD_PROMO_FILM:
-      return extend(state, {promoFilm: convertFilmProps(action.payload)});
+      return extend(state, {promoFilm: action.payload});
 
     case ActionType.LOAD_FILM:
-      return extend(state, {film: convertFilmProps(action.payload)});
+      return extend(state, {film: action.payload});
 
     case ActionType.LOAD_REVIEWS:
       return extend(state, {reviews: action.payload});

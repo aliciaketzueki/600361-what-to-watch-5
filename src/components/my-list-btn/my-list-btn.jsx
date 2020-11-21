@@ -1,7 +1,7 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {connect} from "react-redux";
 import {redirectToRoute} from "../../store/actions/action";
-import {addToMyList} from "../../store/actions/api-actions";
+import {addToMyList, fetchFilm, fetchPromoFilm} from "../../store/actions/api-actions";
 import {getAuthorizationStatus} from "../../store/selectors";
 import {AuthorizationStatus, AppRoute} from "../../utils/const";
 import {validFilm, validString, validFunc} from "../../utils/props";
@@ -17,12 +17,6 @@ const MyListBtn = (props) => {
       addFilm(id, isFavorite ? 0 : 1);
     }
   };
-
-  useEffect(() => {
-    // addFilm(id, isFavorite ? 0 : 1);
-    handleBtn();
-    console.log(`isFavorite`, isFavorite);
-  }, []);
 
   return (
     <button
@@ -45,16 +39,19 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   addFilm(id, status) {
     dispatch(addToMyList(id, status));
+    dispatch(fetchFilm(id));
+    dispatch(fetchPromoFilm(id));
   },
   moveToPage(route) {
-    dispatch(redirectToRoute(route))
+    dispatch(redirectToRoute(route));
   }
 });
 
 MyListBtn.propTypes = {
   film: validFilm,
   addFilm: validFunc,
-  authStatus: validString
+  authStatus: validString,
+  moveToPage: validFunc
 };
 
 export {MyListBtn};

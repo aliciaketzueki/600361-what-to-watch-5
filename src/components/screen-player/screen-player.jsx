@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import {connect} from "react-redux";
 import Video from "../video/video";
 import withPlayingVideo from "../../hocs/with-playing-video/with-playing-video";
-import {validOneOfType} from "../../utils/props";
+import {validOneOfType, validShape, validFilm, validFunc} from "../../utils/props";
 import {getFilm} from "../../store/selectors";
 import {fetchFilm} from "../../store/actions/api-actions";
 
@@ -44,7 +44,11 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 Player.propTypes = {
-  video: validOneOfType
+  video: validOneOfType,
+  history: validShape,
+  match: validShape,
+  film: validFilm,
+  loadCurrentFilm: validFunc
 };
 
 export {Player};

@@ -3,7 +3,7 @@ import Footer from "../footer/footer";
 import MoviesByGenres from "../movies-by-genres/movies-by-genres";
 import {connect} from "react-redux";
 import {getPromoFilm} from "../../store/selectors";
-import {validFilm, validFunc} from "../../utils/props";
+import {validFilm} from "../../utils/props";
 import BigMovieCard from "../big-movie-card/big-movie-card";
 
 const Main = (props) => {
@@ -11,9 +11,7 @@ const Main = (props) => {
 
   return (
     <React.Fragment>
-      <BigMovieCard
-        film={promoFilm}
-      />
+      <BigMovieCard film={promoFilm} />
 
       <div className="page-content">
         <section className="catalog">

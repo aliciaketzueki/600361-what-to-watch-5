@@ -1,6 +1,6 @@
 import {loadFilms, createGenresList, loadPromoFilm, loadFilm, loadReviews, loadFavourites, requireAuthorization, loadUser, redirectToRoute} from "../actions/action";
 import {AuthorizationStatus, APIRoute, AppRoute} from "../../utils/const";
-import {convertUserProps} from "../../utils/utils";
+import {convertUserProps, convertFilmProps} from "../../utils/utils";
 
 export const fetchFilms = () => (dispatch, _getState, api) => (
   api.get(APIRoute.FILMS)
@@ -16,7 +16,7 @@ export const fetchFilms = () => (dispatch, _getState, api) => (
 export const fetchPromoFilm = () => (dispatch, _getState, api) => (
   api.get(APIRoute.PROMO)
     .then(({data}) => {
-      dispatch(loadPromoFilm(data));
+      dispatch(loadPromoFilm(convertFilmProps(data)));
     })
     .catch(() => {
       throw Error(`Ошибка загруки промо-фильма`);
@@ -26,7 +26,7 @@ export const fetchPromoFilm = () => (dispatch, _getState, api) => (
 export const fetchFilm = (id) => (dispatch, _getState, api) => (
   api.get(`${APIRoute.FILMS}/${id}`)
     .then(({data}) => {
-      dispatch(loadFilm(data));
+      dispatch(loadFilm(convertFilmProps(data)));
     })
     .catch(() => {
       throw Error(`Ошибка загруки фильма`);
@@ -65,6 +65,9 @@ export const fetchFavourites = () => (dispatch, _getState, api) => (
 
 export const addToMyList = (id, status) => (dispatch, _getState, api) => (
   api.post(`${APIRoute.FAVOURITES}/${id}/${status}`)
+    .catch(() => {
+      throw Error(`Ошибка добавления фильма в избранное`);
+    })
 );
 
 export const checkAuth = () => (dispatch, _getState, api) => (

@@ -1,10 +1,11 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {validShape, validString} from "../../utils/props";
+import {validShape, validString, validFunc} from "../../utils/props";
 import {AuthorizationStatus, AppRoute} from "../../utils/const";
 import {connect} from "react-redux";
 import {getAuthorizationStatus, getUserData} from "../../store/selectors";
 import {redirectToRoute} from "../../store/actions/action";
+import PropTypes from "prop-types";
 
 const Header = (props) => {
   const {header, login, userData, film, moveToPage} = props;
@@ -65,14 +66,16 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   moveToPage(route) {
-    dispatch(redirectToRoute(route))
+    dispatch(redirectToRoute(route));
   }
 });
 
 Header.propTypes = {
   header: validShape,
   userData: validShape,
-  login: validString
+  login: validString,
+  moveToPage: validFunc,
+  film: PropTypes.shape(),
 };
 
 export {Header};

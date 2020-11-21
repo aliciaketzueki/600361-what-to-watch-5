@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
-import {validFilm} from "../../utils/props";
+import {validFilm, validFunc} from "../../utils/props";
 import {APIRoute} from "../../utils/const";
 import {redirectToRoute} from "../../store/actions/action";
 
@@ -24,12 +24,13 @@ const VideoBtn = (props) => {
 
 const mapDispatchToProps = (dispatch) => ({
   moveToPage(route) {
-    dispatch(redirectToRoute(route))
+    dispatch(redirectToRoute(route));
   }
 });
 
 VideoBtn.propTypes = {
-  film: validFilm
+  film: validFilm,
+  moveToPage: validFunc
 };
 
 export {VideoBtn};

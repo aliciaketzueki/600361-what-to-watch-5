@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../header/header";
-import {validFilm, validShape} from "../../utils/props";
+import {validFilm} from "../../utils/props";
 import PropTypes from "prop-types";
 
 const MovieCardHead = (props) => {

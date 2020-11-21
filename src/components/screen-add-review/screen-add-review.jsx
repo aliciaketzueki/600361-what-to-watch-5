@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import {connect} from "react-redux";
 import BigMovieCard from "../big-movie-card/big-movie-card";
-import {validFilm} from "../../utils/props";
+import {validFilm, validShape, validFunc} from "../../utils/props";
 import {getFilm} from "../../store/selectors";
 import {fetchFilm} from "../../store/actions/api-actions";
 
@@ -37,7 +37,9 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 AddReview.propTypes = {
-  // film: validFilm
+  film: validFilm,
+  match: validShape,
+  loadCurrentFilm: validFunc,
 };
 
 export {AddReview};

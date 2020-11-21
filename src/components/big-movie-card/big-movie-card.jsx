@@ -7,7 +7,7 @@ import withChangingForm from "../../hocs/with-changing-form/with-changing-form";
 import withValidation from "../../hocs/with-validation/with-validation";
 import FormAddReview from "../form-add-review/form-add-review";
 import Tabs from "../tabs/tabs";
-import {validFilm, validShape} from "../../utils/props";
+import {validFilm} from "../../utils/props";
 import PropTypes from "prop-types";
 
 const TabSwitcher = withActiveItem(Tabs);
@@ -24,12 +24,10 @@ const BigMovieCard = (props) => {
         <Fragment>
           <div className="movie-card__hero">
             <MovieCardHead film={film} />
-
             <div className="movie-card__wrap">
               <MovieCardDescr film={film} />
             </div>
           </div>
-
           <div className="movie-card__wrap movie-card__translate-top">
             <div className="movie-card__info">
               <MovieCardPoster film={film} classname="big" />
@@ -43,7 +41,6 @@ const BigMovieCard = (props) => {
             <MovieCardHead film={film} headerNav={true} />
             <MovieCardPoster film={film} classname="small" />
           </div>
-
           <div className="add-review">
             <ReviewFormWrapper filmId={id} />
           </div>
@@ -51,7 +48,6 @@ const BigMovieCard = (props) => {
         ||
         <Fragment>
           <MovieCardHead film={film} />
-
           <div className="movie-card__wrap">
             <div className="movie-card__info">
               <MovieCardPoster film={film} />

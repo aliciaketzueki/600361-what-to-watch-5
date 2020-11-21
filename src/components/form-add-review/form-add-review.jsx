@@ -18,7 +18,7 @@ const FormAddReview = (props) => {
               id={`star-${i}`}
               type="radio"
               name="rating"
-              value={i}
+              value={i * 2}
               defaultChecked={i === parseInt(rating, 10) ? `checked` : !`checked`}
               onChange={handleFieldChange} />
             <label className="rating__label" htmlFor={`star-${i}`}>Rating {i}</label>

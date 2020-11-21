@@ -93,7 +93,7 @@ VideoPlayer.propTypes = {
   progress: validNum,
   video: validOneOfType,
   progressBar: validOneOfType,
-  // film: validFilm
+  film: validFilm
 };
 
 
