@@ -1,15 +1,24 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {connect} from "react-redux";
 import BigMovieCard from "../big-movie-card/big-movie-card";
-import {validShape, validFilm} from "../../utils/props";
-import {getCurrentFilm} from "../../store/selectors";
+import {validFilm} from "../../utils/props";
+import {getFilm} from "../../store/selectors";
+import {fetchFilm} from "../../store/actions/api-actions";
 
 const AddReview = (props) => {
-  const {history, film} = props;
+  const {film, match, loadCurrentFilm} = props;
+  const filmId = match.params.id;
+
+  useEffect(() => {
+    loadCurrentFilm(filmId);
+  }, [filmId]);
+
+  if (!film) {
+    return null;
+  }
 
   return (
     <BigMovieCard
-      history={history}
       isFull={true}
       isReview={true}
       film={film}
@@ -18,13 +27,18 @@ const AddReview = (props) => {
 };
 
 const mapStateToProps = (state) => ({
-  film: getCurrentFilm(state),
+  film: getFilm(state),
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  loadCurrentFilm(id) {
+    dispatch(fetchFilm(id));
+  },
 });
 
 AddReview.propTypes = {
-  history: validShape,
-  film: validFilm
+  // film: validFilm
 };
 
 export {AddReview};
-export default connect(mapStateToProps)(AddReview);
+export default connect(mapStateToProps, mapDispatchToProps)(AddReview);

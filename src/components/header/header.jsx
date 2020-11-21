@@ -3,14 +3,16 @@ import {Link} from "react-router-dom";
 import {validShape, validString} from "../../utils/props";
 import {AuthorizationStatus, AppRoute} from "../../utils/const";
 import {connect} from "react-redux";
-import {getAuthorizationStatus} from "../../store/selectors";
+import {getAuthorizationStatus, getUserData} from "../../store/selectors";
+import {redirectToRoute} from "../../store/actions/action";
 
 const Header = (props) => {
-  const {header, history, login} = props;
+  const {header, login, userData, film, moveToPage} = props;
   const {title, headClass, nav} = header;
+  const {avatarUrl} = userData;
 
   const onLoginClick = () => {
-    history.push(AppRoute.MY_LIST);
+    moveToPage(AppRoute.MY_LIST);
   };
 
   return (
@@ -29,7 +31,7 @@ const Header = (props) => {
         <nav className="breadcrumbs">
           <ul className="breadcrumbs__list">
             <li className="breadcrumbs__item">
-              <a href="movie-page.html" className="breadcrumbs__link">The Grand Budapest Hotel</a>
+              <Link to={`/films/${film.id}`} className="breadcrumbs__link">{film.name}</Link>
             </li>
             <li className="breadcrumbs__item">
               <a className="breadcrumbs__link">Add review</a>
@@ -42,7 +44,7 @@ const Header = (props) => {
         login === AuthorizationStatus.AUTH &&
           <div className="user-block">
             <div className="user-block__avatar" onClick={onLoginClick}>
-              <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+              <img src={avatarUrl} alt="User avatar" width="63" height="63" />
             </div>
           </div>
         ||
@@ -56,16 +58,22 @@ const Header = (props) => {
   );
 };
 
-
 const mapStateToProps = (state) => ({
-  login: getAuthorizationStatus(state)
+  login: getAuthorizationStatus(state),
+  userData: getUserData(state)
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  moveToPage(route) {
+    dispatch(redirectToRoute(route))
+  }
 });
 
 Header.propTypes = {
   header: validShape,
-  history: validShape,
+  userData: validShape,
   login: validString
 };
 
 export {Header};
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

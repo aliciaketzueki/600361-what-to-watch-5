@@ -1,12 +1,15 @@
 import React from "react";
-import {validShape, validFilm} from "../../utils/props";
+import {connect} from "react-redux";
+import {validFilm} from "../../utils/props";
+import {APIRoute} from "../../utils/const";
+import {redirectToRoute} from "../../store/actions/action";
 
 const VideoBtn = (props) => {
-  const {history, film} = props;
+  const {film, moveToPage} = props;
   const {id} = film;
 
   const onVideoBtnClick = () => {
-    history.push(`/player/${id}`);
+    moveToPage(`${APIRoute.PLAYER}/${id}`);
   };
 
   return (
@@ -19,9 +22,15 @@ const VideoBtn = (props) => {
   );
 };
 
+const mapDispatchToProps = (dispatch) => ({
+  moveToPage(route) {
+    dispatch(redirectToRoute(route))
+  }
+});
+
 VideoBtn.propTypes = {
-  history: validShape,
   film: validFilm
 };
 
-export default VideoBtn;
+export {VideoBtn};
+export default connect(null, mapDispatchToProps)(VideoBtn);

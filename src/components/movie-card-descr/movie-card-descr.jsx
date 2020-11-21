@@ -2,10 +2,10 @@ import React from "react";
 import VideoBtn from "../video-btn/video-btn";
 import MyListBtn from "../my-list-btn/my-list-btn";
 import {Link} from "react-router-dom";
-import {validFilm, validShape} from "../../utils/props";
+import {validFilm} from "../../utils/props";
 
 const MovieCardDescr = (props) => {
-  const {film, history} = props;
+  const {film} = props;
   const {name, genre, released, id} = film;
 
   return (
@@ -17,8 +17,8 @@ const MovieCardDescr = (props) => {
       </p>
 
       <div className="movie-card__buttons">
-        <VideoBtn history={history} film={film} />
-        <MyListBtn history={history} film={film} />
+        <VideoBtn film={film} />
+        <MyListBtn film={film} />
         <Link to={`/films/${id}/review`} className="btn movie-card__button">Add review</Link>
       </div>
     </div>
@@ -27,7 +27,6 @@ const MovieCardDescr = (props) => {
 
 MovieCardDescr.propTypes = {
   film: validFilm,
-  history: validShape,
 };
 
 export default MovieCardDescr;

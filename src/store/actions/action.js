@@ -8,6 +8,7 @@ export const ActionType = {
   LOAD_FILM: `LOAD_FILM`,
   CHANGE_ACTIVE_FILM: `CHANGE_ACTIVE_FILM`,
   REQUIRE_AUTHORIZATION: `REQUIRE_AUTHORIZATION`,
+  LOAD_USER: `LOAD_USER`,
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
   LOAD_FAVOURITES: `LOAD_FAVOURITES`,
 };
@@ -42,11 +43,6 @@ export const loadFilm = (film) => ({
   payload: film
 });
 
-export const changeActiveFilm = (film) => ({
-  type: ActionType.CHANGE_ACTIVE_FILM,
-  payload: film
-});
-
 export const loadReviews = (reviews) => ({
   type: ActionType.LOAD_REVIEWS,
   payload: reviews
@@ -59,6 +55,11 @@ export const loadFavourites = (films) => ({
 
 export const requireAuthorization = (status) => ({
   type: ActionType.REQUIRE_AUTHORIZATION,
+  payload: status
+});
+
+export const loadUser = (status) => ({
+  type: ActionType.LOAD_USER,
   payload: status
 });
 

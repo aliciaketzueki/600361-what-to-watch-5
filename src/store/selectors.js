@@ -12,6 +12,7 @@ export const getCurrentFilm = (state) => state[NameSpace.PROCESS].currentFilm;
 export const getFavourites = (state) => state[NameSpace.DATA].favourites;
 export const getGenres = (state) => state[NameSpace.PROCESS].genres;
 export const getAuthorizationStatus = (state) => state[NameSpace.USER].authorizationStatus;
+export const getUserData = (state) => state[NameSpace.USER].userData;
 
 export const getFilmsByGenre = createSelector(
     getFilms,

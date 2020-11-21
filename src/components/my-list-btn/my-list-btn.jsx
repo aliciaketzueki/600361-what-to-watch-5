@@ -1,21 +1,28 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {connect} from "react-redux";
+import {redirectToRoute} from "../../store/actions/action";
 import {addToMyList} from "../../store/actions/api-actions";
 import {getAuthorizationStatus} from "../../store/selectors";
 import {AuthorizationStatus, AppRoute} from "../../utils/const";
-import {validFilm, validShape, validString, validFunc} from "../../utils/props";
+import {validFilm, validString, validFunc} from "../../utils/props";
 
 const MyListBtn = (props) => {
-  const {film, addFilm, authStatus, history} = props;
+  const {film, addFilm, authStatus, moveToPage} = props;
   const {id, isFavorite} = film;
 
   const handleBtn = () => {
     if (authStatus === AuthorizationStatus.NO_AUTH) {
-      history.push(AppRoute.LOGIN);
+      moveToPage(AppRoute.LOGIN);
     } else {
       addFilm(id, isFavorite ? 0 : 1);
     }
   };
+
+  useEffect(() => {
+    // addFilm(id, isFavorite ? 0 : 1);
+    handleBtn();
+    console.log(`isFavorite`, isFavorite);
+  }, []);
 
   return (
     <button
@@ -38,11 +45,13 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   addFilm(id, status) {
     dispatch(addToMyList(id, status));
+  },
+  moveToPage(route) {
+    dispatch(redirectToRoute(route))
   }
 });
 
 MyListBtn.propTypes = {
-  history: validShape,
   film: validFilm,
   addFilm: validFunc,
   authStatus: validString

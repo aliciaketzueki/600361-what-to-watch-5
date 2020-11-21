@@ -14,7 +14,7 @@ const TabSwitcher = withActiveItem(Tabs);
 const ReviewFormWrapper = withValidation(withChangingForm(FormAddReview));
 
 const BigMovieCard = (props) => {
-  const {history, isFull, isReview, film, reviews} = props;
+  const {isFull, isReview, film, reviews} = props;
   const {id} = film;
 
   return (
@@ -23,10 +23,10 @@ const BigMovieCard = (props) => {
         isFull && !isReview &&
         <Fragment>
           <div className="movie-card__hero">
-            <MovieCardHead film={film} history={history} />
+            <MovieCardHead film={film} />
 
             <div className="movie-card__wrap">
-              <MovieCardDescr film={film} history={history} />
+              <MovieCardDescr film={film} />
             </div>
           </div>
 
@@ -40,7 +40,7 @@ const BigMovieCard = (props) => {
         || isFull && isReview &&
         <Fragment>
           <div className="movie-card__header">
-            <MovieCardHead film={film} history={history} headerNav={true} />
+            <MovieCardHead film={film} headerNav={true} />
             <MovieCardPoster film={film} classname="small" />
           </div>
 
@@ -50,12 +50,12 @@ const BigMovieCard = (props) => {
         </Fragment>
         ||
         <Fragment>
-          <MovieCardHead film={film} history={history} />
+          <MovieCardHead film={film} />
 
           <div className="movie-card__wrap">
             <div className="movie-card__info">
-              <MovieCardPoster film={film}/>
-              <MovieCardDescr film={film} history={history} />
+              <MovieCardPoster film={film} />
+              <MovieCardDescr film={film} />
             </div>
           </div>
         </Fragment>
@@ -67,7 +67,6 @@ const BigMovieCard = (props) => {
 BigMovieCard.propTypes = {
   film: validFilm,
   reviews: PropTypes.arrayOf(PropTypes.shape()),
-  history: validShape,
   isFull: PropTypes.bool,
   isReview: PropTypes.bool
 };

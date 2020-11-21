@@ -3,18 +3,15 @@ import Footer from "../footer/footer";
 import MoviesByGenres from "../movies-by-genres/movies-by-genres";
 import {connect} from "react-redux";
 import {getPromoFilm} from "../../store/selectors";
-import {validFilm, validShape, validFunc} from "../../utils/props";
+import {validFilm, validFunc} from "../../utils/props";
 import BigMovieCard from "../big-movie-card/big-movie-card";
-import {changeActiveFilm} from "../../store/actions/action";
 
 const Main = (props) => {
-  const {promoFilm, history, isLoad} = props;
-  isLoad(promoFilm);
+  const {promoFilm} = props;
 
   return (
     <React.Fragment>
       <BigMovieCard
-        history={history}
         film={promoFilm}
       />
 
@@ -34,17 +31,9 @@ const mapStateToProps = (state) => ({
   promoFilm: getPromoFilm(state),
 });
 
-const mapDispatchToProps = (dispatch) => ({
-  isLoad(film) {
-    dispatch(changeActiveFilm(film));
-  }
-});
-
 Main.propTypes = {
   promoFilm: validFilm,
-  history: validShape,
-  isLoad: validFunc
 };
 
 export {Main};
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default connect(mapStateToProps, null)(Main);

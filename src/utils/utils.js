@@ -46,3 +46,12 @@ export const convertFilmProps = (film) => {
 
   return newFilms;
 };
+
+export const convertUserProps = (user) => {
+  const newUser = extend(user, {
+    avatarUrl: user.avatar_url
+  });
+
+  // newUser.delete(avatar_url);
+  return newUser;
+};

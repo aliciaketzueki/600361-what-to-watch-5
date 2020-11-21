@@ -1,10 +1,10 @@
 import React from "react";
 import {validFunc, validString, validShape, validBool} from "../../utils/props";
 import {connect} from "react-redux";
-import {login} from "../../store/actions/api-actions";
+import {login, checkAuth} from "../../store/actions/api-actions";
 
 const FormLogin = (props) => {
-  const {email, password, emailValid, passwordValid, formErrors, formValid, handleSubmit, handleFieldChange, checkValid, onSubmit} = props;
+  const {email, password, emailValid, passwordValid, formErrors, formValid, handleSubmit, handleFieldChange, checkValid, onSubmit, isAuth} = props;
 
   return (
     <form action="#" className="sign-in__form" onSubmit={(e) => {
@@ -25,6 +25,10 @@ const FormLogin = (props) => {
               }
             })
           }
+          {/* {
+            !isAuth() &&
+            <p>We can’t recognize this email and password combination. Please try again.</p>
+          } */}
         </div>
       }
 
@@ -74,6 +78,9 @@ const FormLogin = (props) => {
 };
 
 const mapDispatchToProps = (dispatch) => ({
+  isAuth() {
+    dispatch(checkAuth());
+  },
   onSubmit(authData) {
     dispatch(login(authData));
   }
