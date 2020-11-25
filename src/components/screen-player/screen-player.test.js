@@ -36,9 +36,7 @@ describe(`Render Player`, () => {
               film={film}
               loadCurrentFilm={noop}
               filmId={0}
-            >
-              <video />
-            </Player>
+            />
           </BrowserRouter>, {
             createNodeMock: () => {
               return {};

@@ -1,10 +1,7 @@
 import React from "react";
-import renderer from "react-test-renderer";
-import {AddReview} from "./screen-add-review";
-import {Router as BrowserRouter} from "react-router-dom";
-import {Provider} from "react-redux";
-import browserHistory from "../../browser-history";
-import {store} from "../../index";
+import {configure, shallow} from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
+import {ShowMore} from "./show-more";
 
 const film = {
   id: 1,
@@ -26,24 +23,23 @@ const film = {
   isFavorite: false
 };
 
-const noop = () => {};
+const films = [film];
 
-describe(`Render AddReview`, () => {
-  it(`Should AddReview render correctly`, () => {
-    const tree = renderer
-    .create(
-        <Provider store={store}>
-          <BrowserRouter history={browserHistory}>
-            <AddReview
-              film={film}
-              filmId={0}
-              loadCurrentFilm={noop}
-            />
-          </BrowserRouter>
-        </Provider>
-    )
-    .toJSON();
+configure({adapter: new Adapter()});
 
-    expect(tree).toMatchSnapshot();
+describe(`Press ShowMore`, () => {
+  it(`Should ShowMore be pressed`, () => {
+    const handleShowMoreClick = jest.fn();
+
+    const wrapper = shallow(
+        <ShowMore
+          filmsRendered={0}
+          films={films}
+          onShowMoreClick={handleShowMoreClick}
+        />
+    );
+
+    wrapper.find(`.catalog__button`).simulate(`click`);
+    expect(handleShowMoreClick).toHaveBeenCalledTimes(1);
   });
 });

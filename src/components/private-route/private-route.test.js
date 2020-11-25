@@ -24,6 +24,6 @@ describe(`Render PrivateRoute`, () => {
     )
     .toJSON();
 
-  expect(tree).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 });

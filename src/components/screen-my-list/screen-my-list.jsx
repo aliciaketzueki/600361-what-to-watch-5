@@ -12,7 +12,7 @@ const MyList = (props) => {
 
   useEffect(() => {
     loadFavourites();
-  });
+  }, []);
 
   if (!films) {
     return null;

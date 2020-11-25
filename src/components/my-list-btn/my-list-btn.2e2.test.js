@@ -1,10 +1,10 @@
 import React from "react";
-import renderer from "react-test-renderer";
-import {AddReview} from "./screen-add-review";
-import {Router as BrowserRouter} from "react-router-dom";
-import {Provider} from "react-redux";
-import browserHistory from "../../browser-history";
-import {store} from "../../index";
+import {configure, shallow} from "enzyme";
+import Adapter from "enzyme-adapter-react-16";
+import {MyListBtn} from "./my-list-btn";
+import {AuthorizationStatus} from "../../utils/const";
+
+configure({adapter: new Adapter()});
 
 const film = {
   id: 1,
@@ -26,24 +26,23 @@ const film = {
   isFavorite: false
 };
 
-const noop = () => {};
+describe(`Press MyListBtn`, () => {
+  test.each([
+    [`with`, AuthorizationStatus.AUTH],
+    [`without`, AuthorizationStatus.NO_AUTH],
+  ])(`%s auth`, (_expected, login) => {
+    const handleMyListBtnClick = jest.fn();
 
-describe(`Render AddReview`, () => {
-  it(`Should AddReview render correctly`, () => {
-    const tree = renderer
-    .create(
-        <Provider store={store}>
-          <BrowserRouter history={browserHistory}>
-            <AddReview
-              film={film}
-              filmId={0}
-              loadCurrentFilm={noop}
-            />
-          </BrowserRouter>
-        </Provider>
-    )
-    .toJSON();
+    const wrapper = shallow(
+        <MyListBtn
+          film={film}
+          authStatus={login}
+          addFilm={handleMyListBtnClick}
+          moveToPage={handleMyListBtnClick}
+        />
+    );
 
-    expect(tree).toMatchSnapshot();
+    wrapper.find(`.btn--list`).simulate(`click`);
+    expect(handleMyListBtnClick).toHaveBeenCalledTimes(1);
   });
 });

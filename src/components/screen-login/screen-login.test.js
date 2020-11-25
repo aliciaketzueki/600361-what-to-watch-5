@@ -18,6 +18,6 @@ describe(`Render Login`, () => {
     )
     .toJSON();
 
-  expect(tree).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 });

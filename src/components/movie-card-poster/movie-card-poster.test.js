@@ -37,6 +37,6 @@ describe(`Render MovieCardPoster`, () => {
     )
     .toJSON();
 
-  expect(tree).toMatchSnapshot();
+    expect(tree).toMatchSnapshot();
   });
 });

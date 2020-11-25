@@ -29,22 +29,22 @@ const film = {
 
 const films = [film];
 
-const genres = ["All genres", "Crime"];
+const genres = [`All genres`, `Crime`];
 
 describe(`Render MoviesByGenres`, () => {
   it(`Should MoviesByGenres render correctly`, () => {
     const tree = renderer
       .create(
-        <Provider store={store}>
-          <BrowserRouter history={browserHistory}>
-            <MoviesByGenres
-              films={films}
-              genres={genres}
-              filmsRendered={INITIAL_FILMS_NUM}
-            />
-          </BrowserRouter>
-        </Provider>
-        )
+          <Provider store={store}>
+            <BrowserRouter history={browserHistory}>
+              <MoviesByGenres
+                films={films}
+                genres={genres}
+                filmsRendered={INITIAL_FILMS_NUM}
+              />
+            </BrowserRouter>
+          </Provider>
+      )
       .toJSON();
 
     expect(tree).toMatchSnapshot();

@@ -31,7 +31,7 @@ describe(`Render FormLogin`, () => {
             checkValid={noop}
             onSubmit={noop}
           />
-        )
+      )
       .toJSON();
 
     expect(tree).toMatchSnapshot();

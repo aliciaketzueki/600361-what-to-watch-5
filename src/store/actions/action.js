@@ -18,12 +18,12 @@ export const createGenresList = (films) => ({
   payload: films
 });
 
-export const changeGenre = (activeGenre) => ({
+export const changeGenre = (activeGenre) => ({ // +
   type: ActionType.CHANGE_GENRE,
   payload: activeGenre,
 });
 
-export const showMore = (filmsRendered) => ({
+export const showMore = (filmsRendered) => ({ // +
   type: ActionType.SHOW_MORE,
   payload: filmsRendered
 });

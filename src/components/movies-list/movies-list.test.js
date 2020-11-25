@@ -36,7 +36,7 @@ describe(`Render MoviesList`, () => {
               filmsRendered={INITIAL_FILMS_NUM}
             />
           </Router>
-        )
+      )
       .toJSON();
 
     expect(tree).toMatchSnapshot();
