@@ -1,13 +1,12 @@
 import React, {useEffect} from "react";
 import {connect} from "react-redux";
 import BigMovieCard from "../big-movie-card/big-movie-card";
-import {validFilm, validShape, validFunc} from "../../utils/props";
+import {validFilm, validNum, validFunc} from "../../utils/props";
 import {getFilm} from "../../store/selectors";
 import {fetchFilm} from "../../store/actions/api-actions";
 
 const AddReview = (props) => {
-  const {film, match, loadCurrentFilm} = props;
-  const filmId = match.params.id;
+  const {film, filmId, loadCurrentFilm} = props;
 
   useEffect(() => {
     loadCurrentFilm(filmId);
@@ -26,6 +25,12 @@ const AddReview = (props) => {
   );
 };
 
+AddReview.propTypes = {
+  film: validFilm,
+  filmId: validNum,
+  loadCurrentFilm: validFunc,
+};
+
 const mapStateToProps = (state) => ({
   film: getFilm(state),
 });
@@ -35,12 +40,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(fetchFilm(id));
   },
 });
-
-AddReview.propTypes = {
-  film: validFilm,
-  match: validShape,
-  loadCurrentFilm: validFunc,
-};
 
 export {AddReview};
 export default connect(mapStateToProps, mapDispatchToProps)(AddReview);

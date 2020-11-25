@@ -3,14 +3,14 @@ import {Route, Redirect} from "react-router-dom";
 import {connect} from "react-redux";
 import {AuthorizationStatus, AppRoute} from "../../utils/const";
 import {getAuthorizationStatus} from "../../store/selectors";
-import {validString, validBool, validFunc} from "../../utils/props";
+import {validString, validFunc} from "../../utils/props";
 
 const PrivateRoute = (props) => {
-  const {render, path, exact, authorizationStatus} = props;
+  const {render, path, authorizationStatus} = props;
 
   return (
     <Route
-      exact={exact}
+      exact
       path={path}
       render={(routeProps) => {
         return (
@@ -23,16 +23,15 @@ const PrivateRoute = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  authorizationStatus: getAuthorizationStatus(state),
-});
-
 PrivateRoute.propTypes = {
   authorizationStatus: validString,
-  exact: validBool,
   path: validString,
   render: validFunc,
 };
+
+const mapStateToProps = (state) => ({
+  authorizationStatus: getAuthorizationStatus(state),
+});
 
 export {PrivateRoute};
 export default connect(mapStateToProps)(PrivateRoute);

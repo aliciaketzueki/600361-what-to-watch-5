@@ -59,6 +59,14 @@ const Header = (props) => {
   );
 };
 
+Header.propTypes = {
+  header: validShape,
+  userData: validShape,
+  login: validString,
+  moveToPage: validFunc,
+  film: PropTypes.shape(),
+};
+
 const mapStateToProps = (state) => ({
   login: getAuthorizationStatus(state),
   userData: getUserData(state)
@@ -69,14 +77,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(redirectToRoute(route));
   }
 });
-
-Header.propTypes = {
-  header: validShape,
-  userData: validShape,
-  login: validString,
-  moveToPage: validFunc,
-  film: PropTypes.shape(),
-};
 
 export {Header};
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

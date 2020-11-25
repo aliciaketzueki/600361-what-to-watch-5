@@ -4,7 +4,7 @@ import {connect} from "react-redux";
 import {changeGenre} from "../../store/actions/action";
 import {getGenres, getActiveGenre} from "../../store/selectors";
 import {MAX_GENRES_NUM} from "../../utils/const";
-import {validArrayOfString, validNum, validFunc, validString} from "../../utils/props";
+import {validArrayOfString, validFunc, validString} from "../../utils/props";
 
 const GenresList = (props) => {
   const {genres, onGenreClick, onClick, activeGenre} = props;
@@ -33,6 +33,13 @@ const GenresList = (props) => {
   );
 };
 
+GenresList.propTypes = {
+  genres: validArrayOfString,
+  activeGenre: validString,
+  onGenreClick: validFunc,
+  onClick: validFunc
+};
+
 const mapStateToProps = (state) => ({
   activeGenre: getActiveGenre(state),
   genres: getGenres(state)
@@ -43,14 +50,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(changeGenre(activeGenre));
   }
 });
-
-GenresList.propTypes = {
-  genres: validArrayOfString,
-  activeGenre: validString,
-  tabIndex: validNum,
-  onGenreClick: validFunc,
-  onClick: validFunc
-};
 
 export {GenresList};
 export default connect(mapStateToProps, mapDispatchToProps)(GenresList);

@@ -25,13 +25,13 @@ const Main = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  promoFilm: getPromoFilm(state),
-});
-
 Main.propTypes = {
   promoFilm: validFilm,
 };
+
+const mapStateToProps = (state) => ({
+  promoFilm: getPromoFilm(state),
+});
 
 export {Main};
 export default connect(mapStateToProps, null)(Main);

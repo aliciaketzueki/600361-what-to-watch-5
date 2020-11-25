@@ -96,5 +96,4 @@ VideoPlayer.propTypes = {
   film: validFilm
 };
 
-
 export default VideoPlayer;

@@ -2,14 +2,14 @@ import React, {useEffect} from "react";
 import {connect} from "react-redux";
 import Video from "../video/video";
 import withPlayingVideo from "../../hocs/with-playing-video/with-playing-video";
-import {validOneOfType, validShape, validFilm, validFunc} from "../../utils/props";
+import {validOneOfType, validShape, validFilm, validFunc, validNum} from "../../utils/props";
 import {getFilm} from "../../store/selectors";
 import {fetchFilm} from "../../store/actions/api-actions";
 
 const VideoPlayer = withPlayingVideo(Video);
+
 const Player = (props) => {
-  const {history, match, video, film, loadCurrentFilm} = props;
-  const filmId = match.params.id;
+  const {history, filmId, video, film, loadCurrentFilm} = props;
 
   useEffect(() => {
     loadCurrentFilm(filmId);
@@ -27,10 +27,17 @@ const Player = (props) => {
     <VideoPlayer
       onExitBtnClick={onExitBtnClick}
       video={video}
-      match={match}
       film={film}
     />
   );
+};
+
+Player.propTypes = {
+  video: validOneOfType,
+  history: validShape,
+  filmId: validNum,
+  film: validFilm,
+  loadCurrentFilm: validFunc
 };
 
 const mapStateToProps = (state) => ({
@@ -42,14 +49,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(fetchFilm(id));
   },
 });
-
-Player.propTypes = {
-  video: validOneOfType,
-  history: validShape,
-  match: validShape,
-  film: validFilm,
-  loadCurrentFilm: validFunc
-};
 
 export {Player};
 export default connect(mapStateToProps, mapDispatchToProps)(Player);

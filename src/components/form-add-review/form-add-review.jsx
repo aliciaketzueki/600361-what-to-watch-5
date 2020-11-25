@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
-import {validFunc, validString, validNum, validBool} from "../../utils/props";
+import {validFunc, validString, validBool, validNum} from "../../utils/props";
 import {addReview} from "../../store/actions/api-actions";
 
 const FormAddReview = (props) => {

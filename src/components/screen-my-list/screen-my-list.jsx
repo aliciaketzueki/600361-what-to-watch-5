@@ -40,6 +40,11 @@ const MyList = (props) => {
   );
 };
 
+MyList.propTypes = {
+  films: validArrayOfShape,
+  loadFavourites: validFunc
+};
+
 const mapStateToProps = (state) => ({
   films: getFavourites(state),
 });
@@ -49,11 +54,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(fetchFavourites());
   },
 });
-
-MyList.propTypes = {
-  films: validArrayOfShape,
-  loadFavourites: validFunc
-};
 
 export {MyList};
 export default connect(mapStateToProps, mapDispatchToProps)(MyList);

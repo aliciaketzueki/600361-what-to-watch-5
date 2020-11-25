@@ -22,16 +22,16 @@ const VideoBtn = (props) => {
   );
 };
 
+VideoBtn.propTypes = {
+  film: validFilm,
+  moveToPage: validFunc
+};
+
 const mapDispatchToProps = (dispatch) => ({
   moveToPage(route) {
     dispatch(redirectToRoute(route));
   }
 });
-
-VideoBtn.propTypes = {
-  film: validFilm,
-  moveToPage: validFunc
-};
 
 export {VideoBtn};
 export default connect(null, mapDispatchToProps)(VideoBtn);

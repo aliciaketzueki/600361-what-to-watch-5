@@ -1,4 +1,4 @@
-import {loadFilms, createGenresList, loadPromoFilm, loadFilm, loadReviews, loadFavourites, requireAuthorization, loadUser, redirectToRoute} from "../actions/action";
+import {loadFilms, createGenresList, loadPromoFilm, loadFilm, loadReviews, loadFavourites, requireAuthorization, loadUser, redirectToRoute} from "./action";
 import {AuthorizationStatus, APIRoute, AppRoute} from "../../utils/const";
 import {convertUserProps, convertFilmProps} from "../../utils/utils";
 

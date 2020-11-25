@@ -73,15 +73,6 @@ const FormLogin = (props) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  isAuth() {
-    dispatch(checkAuth());
-  },
-  onSubmit(authData) {
-    dispatch(login(authData));
-  }
-});
-
 FormLogin.propTypes = {
   onSubmit: validFunc,
   handleSubmit: validFunc,
@@ -94,6 +85,15 @@ FormLogin.propTypes = {
   passwordValid: validBool,
   formValid: validBool,
 };
+
+const mapDispatchToProps = (dispatch) => ({
+  isAuth() {
+    dispatch(checkAuth());
+  },
+  onSubmit(authData) {
+    dispatch(login(authData));
+  }
+});
 
 export {FormLogin};
 export default connect(null, mapDispatchToProps)(FormLogin);

@@ -38,7 +38,7 @@ const App = () => {
           exact
           path={AppRoute.FILM}
           render={({match}) => (
-            <Film match={match} />
+            <Film filmId={parseInt(match.params.id, 10)} />
           )}
         />
 
@@ -46,7 +46,7 @@ const App = () => {
           exact
           path={AppRoute.ADD_REVIEW}
           render={({match}) => (
-            <AddReview match={match} />
+            <AddReview filmId={parseInt(match.params.id, 10)} />
           )}
         />
 
@@ -54,7 +54,7 @@ const App = () => {
           exact
           path={AppRoute.PLAYER}
           render={({history, match}) => (
-            <Player history={history} match={match} />
+            <Player history={history} filmId={parseInt(match.params.id, 10)} />
           )}
         />
       </Switch>

@@ -32,6 +32,13 @@ const MyListBtn = (props) => {
   );
 };
 
+MyListBtn.propTypes = {
+  film: validFilm,
+  addFilm: validFunc,
+  authStatus: validString,
+  moveToPage: validFunc
+};
+
 const mapStateToProps = (state) => ({
   authStatus: getAuthorizationStatus(state)
 });
@@ -46,13 +53,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(redirectToRoute(route));
   }
 });
-
-MyListBtn.propTypes = {
-  film: validFilm,
-  addFilm: validFunc,
-  authStatus: validString,
-  moveToPage: validFunc
-};
 
 export {MyListBtn};
 export default connect(mapStateToProps, mapDispatchToProps)(MyListBtn);
