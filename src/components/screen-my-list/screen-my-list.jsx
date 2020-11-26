@@ -1,14 +1,14 @@
 import React, {useEffect} from "react";
+import {connect} from "react-redux";
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import MoviesList from "../movies-list/movies-list";
-import {validShape, validArrayOfShape, validFunc} from "../../utils/props";
+import {validArrayOfShape, validFunc} from "../../utils/props";
 import {fetchFavourites} from "../../store/actions/api-actions";
 import {getFavourites} from "../../store/selectors";
-import {connect} from "react-redux";
 
 const MyList = (props) => {
-  const {history, films, loadFavourites} = props;
+  const {films, loadFavourites} = props;
 
   useEffect(() => {
     loadFavourites();
@@ -25,7 +25,6 @@ const MyList = (props) => {
           title: `My list`,
           headClass: `user-page__head`,
         }}
-        history={history}
       />
 
       <section className="catalog">
@@ -41,6 +40,11 @@ const MyList = (props) => {
   );
 };
 
+MyList.propTypes = {
+  films: validArrayOfShape,
+  loadFavourites: validFunc
+};
+
 const mapStateToProps = (state) => ({
   films: getFavourites(state),
 });
@@ -50,12 +54,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(fetchFavourites());
   },
 });
-
-MyList.propTypes = {
-  films: validArrayOfShape,
-  history: validShape,
-  loadFavourites: validFunc
-};
 
 export {MyList};
 export default connect(mapStateToProps, mapDispatchToProps)(MyList);

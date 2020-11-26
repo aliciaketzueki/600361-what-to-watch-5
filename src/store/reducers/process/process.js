@@ -4,7 +4,6 @@ import {INITIAL_FILMS_NUM, ALL_GENRES} from "../../../utils/const";
 
 const initialState = {
   genres: [],
-  currentFilm: {},
   activeGenre: ALL_GENRES,
   filmsRendered: INITIAL_FILMS_NUM,
 };
@@ -19,9 +18,6 @@ const process = (state = initialState, action) => {
 
     case ActionType.SHOW_MORE:
       return extend(state, {filmsRendered: action.payload});
-
-    case ActionType.CHANGE_ACTIVE_FILM:
-      return extend(state, {currentFilm: action.payload});
   }
 
   return state;

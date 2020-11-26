@@ -7,14 +7,14 @@ import withChangingForm from "../../hocs/with-changing-form/with-changing-form";
 import withValidation from "../../hocs/with-validation/with-validation";
 import FormAddReview from "../form-add-review/form-add-review";
 import Tabs from "../tabs/tabs";
-import {validFilm, validShape} from "../../utils/props";
+import {validFilm} from "../../utils/props";
 import PropTypes from "prop-types";
 
 const TabSwitcher = withActiveItem(Tabs);
 const ReviewFormWrapper = withValidation(withChangingForm(FormAddReview));
 
 const BigMovieCard = (props) => {
-  const {history, isFull, isReview, film, reviews} = props;
+  const {isFull, isReview, film, reviews} = props;
   const {id} = film;
 
   return (
@@ -23,13 +23,11 @@ const BigMovieCard = (props) => {
         isFull && !isReview &&
         <Fragment>
           <div className="movie-card__hero">
-            <MovieCardHead film={film} history={history} />
-
+            <MovieCardHead film={film} />
             <div className="movie-card__wrap">
-              <MovieCardDescr film={film} history={history} />
+              <MovieCardDescr film={film} />
             </div>
           </div>
-
           <div className="movie-card__wrap movie-card__translate-top">
             <div className="movie-card__info">
               <MovieCardPoster film={film} classname="big" />
@@ -40,22 +38,20 @@ const BigMovieCard = (props) => {
         || isFull && isReview &&
         <Fragment>
           <div className="movie-card__header">
-            <MovieCardHead film={film} history={history} headerNav={true} />
+            <MovieCardHead film={film} headerNav={true} />
             <MovieCardPoster film={film} classname="small" />
           </div>
-
           <div className="add-review">
             <ReviewFormWrapper filmId={id} />
           </div>
         </Fragment>
         ||
         <Fragment>
-          <MovieCardHead film={film} history={history} />
-
+          <MovieCardHead film={film} />
           <div className="movie-card__wrap">
             <div className="movie-card__info">
-              <MovieCardPoster film={film}/>
-              <MovieCardDescr film={film} history={history} />
+              <MovieCardPoster film={film} />
+              <MovieCardDescr film={film} />
             </div>
           </div>
         </Fragment>
@@ -67,7 +63,6 @@ const BigMovieCard = (props) => {
 BigMovieCard.propTypes = {
   film: validFilm,
   reviews: PropTypes.arrayOf(PropTypes.shape()),
-  history: validShape,
   isFull: PropTypes.bool,
   isReview: PropTypes.bool
 };

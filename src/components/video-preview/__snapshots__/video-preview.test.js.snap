@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render VideoPreview Should VideoPreview render correctly 1`] = `
+<video
+  height="175"
+  muted={true}
+  playsInline={true}
+  preload="auto"
+  width="280"
+/>
+`;

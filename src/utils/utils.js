@@ -12,15 +12,7 @@ export const getGenres = (films) => {
 };
 
 export const filterFilms = (films, activeGenre) => {
-  const filteredFilms = activeGenre === ALL_GENRES ? films : films.filter((film) => film.genre === activeGenre);
-
-  return filteredFilms;
-};
-
-export const selectFilm = (films, id) => {
-  let selectedFilm = films.find((film) => film.id === id);
-
-  return selectedFilm;
+  return activeGenre === ALL_GENRES ? films : films.filter((film) => film.genre === activeGenre);
 };
 
 export const renderFilms = (films, filmsRendered) => {
@@ -32,7 +24,7 @@ export const renderFilms = (films, filmsRendered) => {
 };
 
 export const convertFilmProps = (film) => {
-  const newFilms = extend(film, {
+  return extend(film, {
     posterImage: film.poster_image,
     previewImage: film.preview_image,
     backgroundImage: film.background_image,
@@ -43,6 +35,10 @@ export const convertFilmProps = (film) => {
     runTime: film.run_time,
     isFavorite: film.is_favorite,
   });
+};
 
-  return newFilms;
+export const convertUserProps = (user) => {
+  return extend(user, {
+    avatarUrl: user.avatar_url
+  });
 };

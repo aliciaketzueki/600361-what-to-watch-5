@@ -30,7 +30,7 @@ const withValidation = (Component) => {
 
       switch (fieldName) {
         case `email`:
-          emailValid = value.match(EMAIL);
+          emailValid = EMAIL.test(value);
           formErrors.email = emailValid ? `` : `Please enter a valid email address`;
           break;
         case `password`:

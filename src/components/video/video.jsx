@@ -1,11 +1,11 @@
 import React from "react";
 import moment from "moment";
-import {connect} from "react-redux";
-import {getCurrentFilm} from "../../store/selectors";
 import {validFunc, validBool, validNum, validOneOfType, validFilm} from "../../utils/props";
+import {SECOND} from "../../utils/const";
 
 const VideoPlayer = (props) => {
   const {onExitBtnClick, isPlaying, duration, progress, video, progressBar, onPlay, onPause, onMouseDown, onFullScreen, film} = props;
+
   const {videoLink, backgroundImage, name} = film;
 
   return (
@@ -37,7 +37,7 @@ const VideoPlayer = (props) => {
               Toggler
             </div>
           </div>
-          <div className="player__time-value">{moment.utc((duration) * 1000).format(`HH:mm:ss`, {trim: false})}</div>
+          <div className="player__time-value">{moment.utc((duration) * SECOND).format(`HH:mm:ss`, {trim: false})}</div>
         </div>
 
         <div className="player__controls-row">
@@ -96,9 +96,4 @@ VideoPlayer.propTypes = {
   film: validFilm
 };
 
-const mapStateToProps = (state) => ({
-  film: getCurrentFilm(state),
-});
-
-export {VideoPlayer};
-export default connect(mapStateToProps)(VideoPlayer);
+export default VideoPlayer;

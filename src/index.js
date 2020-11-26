@@ -9,7 +9,7 @@ import thunk from "redux-thunk";
 import {composeWithDevTools} from "redux-devtools-extension";
 import {createAPI} from "./services/api";
 import {AuthorizationStatus} from "./utils/const";
-import {fetchFilms, fetchPromoFilm} from "./store/actions/api-actions";
+import {fetchFilms, fetchPromoFilm, checkAuth} from "./store/actions/api-actions";
 import {requireAuthorization} from "./store/actions/action";
 import {redirect} from "./store/middlewares/redirect";
 
@@ -28,6 +28,7 @@ export const store = createStore(
 Promise.all([
   store.dispatch(fetchFilms()),
   store.dispatch(fetchPromoFilm()),
+  store.dispatch(checkAuth())
 ])
 .then(() => {
   ReactDOM.render(

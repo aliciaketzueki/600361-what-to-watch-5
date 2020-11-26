@@ -20,17 +20,17 @@ const MoviesByGenres = (props) => {
   );
 };
 
-const mapStateToProps = (state) => ({
-  films: getFilmsByGenre(state),
-  genres: getGenres(state),
-  filmsRendered: getFilmsRendered(state)
-});
-
 MoviesByGenres.propTypes = {
   films: validArrayOfShape,
   genres: validArrayOfString,
   filmsRendered: validNum,
 };
+
+const mapStateToProps = (state) => ({
+  films: getFilmsByGenre(state),
+  genres: getGenres(state),
+  filmsRendered: getFilmsRendered(state)
+});
 
 export {MoviesByGenres};
 export default connect(mapStateToProps)(MoviesByGenres);

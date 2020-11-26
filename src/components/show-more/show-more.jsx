@@ -23,6 +23,12 @@ const ShowMore = (props) => {
   );
 };
 
+ShowMore.propTypes = {
+  filmsRendered: validNum,
+  films: validArrayOfShape,
+  onShowMoreClick: validFunc
+};
+
 const mapStateToProps = (state) => {
   return {
     films: getFilmsByGenre(state),
@@ -35,12 +41,6 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(showMore(filmsRendered));
   }
 });
-
-ShowMore.propTypes = {
-  filmsRendered: validNum,
-  films: validArrayOfShape,
-  onShowMoreClick: validFunc
-};
 
 export {ShowMore};
 export default connect(mapStateToProps, mapDispatchToProps)(ShowMore);

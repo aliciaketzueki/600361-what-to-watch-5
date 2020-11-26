@@ -15,44 +15,46 @@ const App = () => {
     <BrowserRouter history={browserHistory}>
       <Switch>
         <Route
-          exact path={AppRoute.ROOT}
-          render={({history}) => (
-            <Main history={history} />
+          exact
+          path={AppRoute.ROOT}
+          component={Main}
+        />
+
+        <Route
+          exact
+          path={AppRoute.LOGIN}
+          component={Login}
+        />
+
+        <PrivateRoute
+          exact
+          path={AppRoute.MY_LIST}
+          render={() => (
+            <MyList />
           )}
         />
 
         <Route
-          exact path={AppRoute.LOGIN}
-          render={({history}) => (
-            <Login history={history} />
+          exact
+          path={AppRoute.FILM}
+          render={({match}) => (
+            <Film filmId={parseInt(match.params.id, 10)} />
           )}
         />
 
         <PrivateRoute
-          exact path={AppRoute.MY_LIST}
-          render={({history}) => (
-            <MyList history={history} />
+          exact
+          path={AppRoute.ADD_REVIEW}
+          render={({match}) => (
+            <AddReview filmId={parseInt(match.params.id, 10)} />
           )}
         />
 
         <Route
-          exact path={AppRoute.FILM}
+          exact
+          path={AppRoute.PLAYER}
           render={({history, match}) => (
-            <Film history={history} match={match} />
-          )}
-        />
-
-        <PrivateRoute
-          exact path={AppRoute.ADD_REVIEW}
-          render={({history}) => (
-            <AddReview history={history} />
-          )}
-        />
-
-        <Route
-          exact path={AppRoute.PLAYER}
-          render={({history}) => (
-            <Player onExitBtnClick={() => history.goBack()} />
+            <Player history={history} filmId={parseInt(match.params.id, 10)} />
           )}
         />
       </Switch>

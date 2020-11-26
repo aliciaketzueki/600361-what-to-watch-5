@@ -1,5 +1,6 @@
-import {loadFilms, createGenresList, loadPromoFilm, loadFilm, loadReviews, loadFavourites, requireAuthorization, redirectToRoute} from "../actions/action";
+import {loadFilms, createGenresList, loadPromoFilm, loadFilm, loadReviews, loadFavourites, requireAuthorization, loadUser, redirectToRoute} from "./action";
 import {AuthorizationStatus, APIRoute, AppRoute} from "../../utils/const";
+import {convertUserProps, convertFilmProps} from "../../utils/utils";
 
 export const fetchFilms = () => (dispatch, _getState, api) => (
   api.get(APIRoute.FILMS)
@@ -15,7 +16,7 @@ export const fetchFilms = () => (dispatch, _getState, api) => (
 export const fetchPromoFilm = () => (dispatch, _getState, api) => (
   api.get(APIRoute.PROMO)
     .then(({data}) => {
-      dispatch(loadPromoFilm(data));
+      dispatch(loadPromoFilm(convertFilmProps(data)));
     })
     .catch(() => {
       throw Error(`Ошибка загруки промо-фильма`);
@@ -25,7 +26,7 @@ export const fetchPromoFilm = () => (dispatch, _getState, api) => (
 export const fetchFilm = (id) => (dispatch, _getState, api) => (
   api.get(`${APIRoute.FILMS}/${id}`)
     .then(({data}) => {
-      dispatch(loadFilm(data));
+      dispatch(loadFilm(convertFilmProps(data)));
     })
     .catch(() => {
       throw Error(`Ошибка загруки фильма`);
@@ -64,10 +65,31 @@ export const fetchFavourites = () => (dispatch, _getState, api) => (
 
 export const addToMyList = (id, status) => (dispatch, _getState, api) => (
   api.post(`${APIRoute.FAVOURITES}/${id}/${status}`)
+    .catch(() => {
+      throw Error(`Ошибка добавления фильма в избранное`);
+    })
+);
+
+export const checkAuth = () => (dispatch, _getState, api) => (
+  api.get(AppRoute.LOGIN)
+    .then(({data}) => {
+      dispatch(loadUser(convertUserProps(data)));
+      dispatch(requireAuthorization(AuthorizationStatus.AUTH));
+    })
+    .catch(() => {
+      dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH));
+    })
 );
 
 export const login = ({email, password}) => (dispatch, _getState, api) => (
-  api.post(APIRoute.LOGIN, {email, password})
-    .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
+  api.post(AppRoute.LOGIN, {email, password})
+    .then(({data}) => {
+      dispatch(requireAuthorization(AuthorizationStatus.AUTH));
+      dispatch(loadUser(convertUserProps(data)));
+    })
     .then(() => dispatch(redirectToRoute(AppRoute.ROOT)))
+    .catch(() => {
+      dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH));
+      throw Error(`Ошибка авторизации`);
+    })
 );

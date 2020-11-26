@@ -1,7 +1,7 @@
 import React from "react";
 import {validFunc, validString, validShape, validBool} from "../../utils/props";
 import {connect} from "react-redux";
-import {login} from "../../store/actions/api-actions";
+import {login, checkAuth} from "../../store/actions/api-actions";
 
 const FormLogin = (props) => {
   const {email, password, emailValid, passwordValid, formErrors, formValid, handleSubmit, handleFieldChange, checkValid, onSubmit} = props;
@@ -73,12 +73,6 @@ const FormLogin = (props) => {
   );
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  onSubmit(authData) {
-    dispatch(login(authData));
-  }
-});
-
 FormLogin.propTypes = {
   onSubmit: validFunc,
   handleSubmit: validFunc,
@@ -91,6 +85,15 @@ FormLogin.propTypes = {
   passwordValid: validBool,
   formValid: validBool,
 };
+
+const mapDispatchToProps = (dispatch) => ({
+  isAuth() {
+    dispatch(checkAuth());
+  },
+  onSubmit(authData) {
+    dispatch(login(authData));
+  }
+});
 
 export {FormLogin};
 export default connect(null, mapDispatchToProps)(FormLogin);
