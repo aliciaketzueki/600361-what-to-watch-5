@@ -1,10 +1,10 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {Player} from "./screen-player";
-import {Router as BrowserRouter} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 import browserHistory from "../../browser-history";
 
-const film = {
+export const film = {
   id: 1,
   name: `The Grand Budapest Hotel`,
   posterImage: `img/the-grand-budapest-hotel-poster.jpg`,
@@ -30,7 +30,7 @@ describe(`Render Player`, () => {
   it(`Should Player render correctly`, () => {
     const tree = renderer
       .create(
-          <BrowserRouter history={browserHistory}>
+          <BrowserRouter>
             <Player
               history={browserHistory}
               film={film}

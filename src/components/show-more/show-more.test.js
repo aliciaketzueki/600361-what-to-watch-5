@@ -23,7 +23,7 @@ const film = {
   isFavorite: false
 };
 
-const films = [film];
+export const films = [film];
 
 const noop = () => {};
 

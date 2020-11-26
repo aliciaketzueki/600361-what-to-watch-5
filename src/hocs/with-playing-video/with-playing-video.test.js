@@ -3,25 +3,6 @@ import renderer from "react-test-renderer";
 import withPlayingVideo from "./with-playing-video";
 import PropTypes from "prop-types";
 
-const MockComponent = (props) => {
-  const {children} = props;
-
-  return (
-    <div>
-      {children}
-    </div>
-  );
-};
-
-MockComponent.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]).isRequired,
-};
-
-const MockComponentWrapped = withPlayingVideo(MockComponent);
-
 const film = {
   id: 1,
   name: `The Grand Budapest Hotel`,
@@ -44,28 +25,47 @@ const film = {
 
 const noop = () => {};
 
+const MockComponent = (props) => {
+  const {children} = props;
+
+  return (
+    <div>
+      {children}
+    </div>
+  );
+};
+
+MockComponent.propTypes = {
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node
+  ]).isRequired,
+};
+
+const MockComponentWrapped = withPlayingVideo(MockComponent);
+
 describe(`Render withPlayingVideo`, () => {
   it(`Should withPlayingVideo render correctly`, () => {
-    const tree = renderer.create((
-      <MockComponentWrapped
-        film={film}
-        onExitBtnClick={noop}
-        isPlaying={false}
-        duration={1000}
-        progress={10}
-        // video
-        // progressBar
-        onPlay={noop}
-        onPause={noop}
-        onMouseDown={noop}
-        onFullScreen={noop}
-      >
-        <Fragment />
-      </MockComponentWrapped>), {
-      createNodeMock: () => {
-        return {};
-      }
-    }).toJSON();
+    const tree = renderer.create(
+        <MockComponentWrapped
+          film={film}
+          onExitBtnClick={noop}
+          isPlaying={false}
+          duration={1000}
+          progress={10}
+          // video
+          // progressBar
+          onPlay={noop}
+          onPause={noop}
+          onMouseDown={noop}
+          onFullScreen={noop}
+        >
+          <Fragment />
+        </MockComponentWrapped>, {
+          createNodeMock() {
+            return {};
+          }
+        }).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

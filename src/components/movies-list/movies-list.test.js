@@ -1,7 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import MoviesList from "./movies-list";
-import {BrowserRouter as Router} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 import {INITIAL_FILMS_NUM} from "../../utils/const";
 
 const film = {
@@ -30,12 +30,12 @@ describe(`Render MoviesList`, () => {
   it(`Should MoviesList render correctly`, () => {
     const tree = renderer
       .create(
-          <Router>
+          <BrowserRouter>
             <MoviesList
               films={films}
               filmsRendered={INITIAL_FILMS_NUM}
             />
-          </Router>
+          </BrowserRouter>
       )
       .toJSON();
 

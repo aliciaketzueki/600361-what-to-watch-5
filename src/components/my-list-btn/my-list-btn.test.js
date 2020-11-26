@@ -3,7 +3,7 @@ import renderer from "react-test-renderer";
 import {MyListBtn} from "./my-list-btn";
 import {AuthorizationStatus} from "../../utils/const";
 
-const film = {
+export const film = {
   id: 1,
   name: `The Grand Budapest Hotel`,
   posterImage: `img/the-grand-budapest-hotel-poster.jpg`,

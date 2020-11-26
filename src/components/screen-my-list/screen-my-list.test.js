@@ -1,10 +1,12 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {MyList} from "./screen-my-list";
-import {Router as BrowserRouter} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
-import browserHistory from "../../browser-history";
 import {store} from "../../index";
+// jest.mock(`../header/header`, () => `Header`);
+// jest.mock(`../footer/footer`, () => `Footer`);
+// jest.mock(`../movies-list/movies-list`, () => `MoviesList`);
 
 const film = {
   id: 1,
@@ -26,7 +28,7 @@ const film = {
   isFavorite: false
 };
 
-const films = [film];
+export const films = [film];
 
 const noop = () => {};
 
@@ -35,7 +37,7 @@ describe(`Render MyList`, () => {
     const tree = renderer
     .create(
         <Provider store={store}>
-          <BrowserRouter history={browserHistory}>
+          <BrowserRouter>
             <MyList
               films={films}
               loadFavourites={noop}

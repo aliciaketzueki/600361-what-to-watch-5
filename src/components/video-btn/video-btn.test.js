@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import {VideoBtn} from "./video-btn";
 
-const film = {
+export const film = {
   id: 1,
   name: `The Grand Budapest Hotel`,
   posterImage: `img/the-grand-budapest-hotel-poster.jpg`,

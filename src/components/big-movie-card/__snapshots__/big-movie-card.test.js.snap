@@ -7,218 +7,91 @@ exports[`Render BigMovieCard with form review 1`] = `
   <div
     className="movie-card__header"
   >
-    <div
-      className="movie-card__bg"
-    >
-      <img
-        alt="The Grand Budapest Hotel"
-        src="img/the-grand-budapest-hotel-bg.jpg"
-      />
-    </div>
-    <h1
-      className="visually-hidden"
-    >
-      WTW
-    </h1>
-    <header
-      className="page-header movie-card__head"
-    >
-      <div
-        className="logo"
-      >
-        <a
-          className="logo__link"
-          href="/"
-          onClick={[Function]}
-        >
-          <span
-            className="logo__letter logo__letter--1"
-          >
-            W
-          </span>
-          <span
-            className="logo__letter logo__letter--2"
-          >
-            T
-          </span>
-          <span
-            className="logo__letter logo__letter--3"
-          >
-            W
-          </span>
-        </a>
-      </div>
-      <nav
-        className="breadcrumbs"
-      >
-        <ul
-          className="breadcrumbs__list"
-        >
-          <li
-            className="breadcrumbs__item"
-          >
-            <a
-              className="breadcrumbs__link"
-              href="/films/1"
-              onClick={[Function]}
-            >
-              The Grand Budapest Hotel
-            </a>
-          </li>
-          <li
-            className="breadcrumbs__item"
-          >
-            <a
-              className="breadcrumbs__link"
-            >
-              Add review
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <div
-        className="user-block"
-      >
-        <a
-          className="user-block__link"
-          href="/login"
-          onClick={[Function]}
-        >
-          Sign in
-        </a>
-      </div>
-    </header>
-    <div
-      className="movie-card__poster movie-card__poster--small"
-    >
-      <img
-        alt="The Grand Budapest Hotel poster"
-        height="327"
-        src="img/the-grand-budapest-hotel-poster.jpg"
-        width="218"
-      />
-    </div>
+    <MovieCardHead
+      film={
+        Object {
+          "backgroundColor": "#ffffff",
+          "backgroundImage": "img/the-grand-budapest-hotel-bg.jpg",
+          "description": "In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.",
+          "director": "Wes Andreson",
+          "genre": "Comedy",
+          "id": 1,
+          "isFavorite": false,
+          "name": "The Grand Budapest Hotel",
+          "posterImage": "img/the-grand-budapest-hotel-poster.jpg",
+          "previewImage": "img/the-grand-budapest-hotel.jpg",
+          "previewVideoLink": "https://some-link",
+          "rating": 8.9,
+          "released": 2014,
+          "runTime": 99,
+          "scoresCount": 240,
+          "starring": Array [
+            "Bill Murray",
+            "Edward Norton",
+            "Jude Law",
+            "Willem Dafoe",
+            "Saoirse Ronan",
+          ],
+          "videoLink": "https://some-link",
+        }
+      }
+      headerNav={true}
+    />
+    <MovieCardPoster
+      classname="small"
+      film={
+        Object {
+          "backgroundColor": "#ffffff",
+          "backgroundImage": "img/the-grand-budapest-hotel-bg.jpg",
+          "description": "In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.",
+          "director": "Wes Andreson",
+          "genre": "Comedy",
+          "id": 1,
+          "isFavorite": false,
+          "name": "The Grand Budapest Hotel",
+          "posterImage": "img/the-grand-budapest-hotel-poster.jpg",
+          "previewImage": "img/the-grand-budapest-hotel.jpg",
+          "previewVideoLink": "https://some-link",
+          "rating": 8.9,
+          "released": 2014,
+          "runTime": 99,
+          "scoresCount": 240,
+          "starring": Array [
+            "Bill Murray",
+            "Edward Norton",
+            "Jude Law",
+            "Willem Dafoe",
+            "Saoirse Ronan",
+          ],
+          "videoLink": "https://some-link",
+        }
+      }
+    />
   </div>
   <div
     className="add-review"
   >
-    <form
-      action="#"
-      className="add-review__form"
-      onSubmit={[Function]}
-    >
-      <div
-        className="rating"
-      >
-        <div
-          className="rating__stars"
-        >
-          <input
-            className="rating__input"
-            defaultChecked={false}
-            id="star-1"
-            name="rating"
-            onChange={[Function]}
-            type="radio"
-            value={2}
-          />
-          <label
-            className="rating__label"
-            htmlFor="star-1"
-          >
-            Rating 
-            1
-          </label>
-          <input
-            className="rating__input"
-            defaultChecked={false}
-            id="star-2"
-            name="rating"
-            onChange={[Function]}
-            type="radio"
-            value={4}
-          />
-          <label
-            className="rating__label"
-            htmlFor="star-2"
-          >
-            Rating 
-            2
-          </label>
-          <input
-            className="rating__input"
-            defaultChecked="checked"
-            id="star-3"
-            name="rating"
-            onChange={[Function]}
-            type="radio"
-            value={6}
-          />
-          <label
-            className="rating__label"
-            htmlFor="star-3"
-          >
-            Rating 
-            3
-          </label>
-          <input
-            className="rating__input"
-            defaultChecked={false}
-            id="star-4"
-            name="rating"
-            onChange={[Function]}
-            type="radio"
-            value={8}
-          />
-          <label
-            className="rating__label"
-            htmlFor="star-4"
-          >
-            Rating 
-            4
-          </label>
-          <input
-            className="rating__input"
-            defaultChecked={false}
-            id="star-5"
-            name="rating"
-            onChange={[Function]}
-            type="radio"
-            value={10}
-          />
-          <label
-            className="rating__label"
-            htmlFor="star-5"
-          >
-            Rating 
-            5
-          </label>
-        </div>
-      </div>
-      <div
-        className="add-review__text"
-      >
-        <textarea
-          className="add-review__textarea"
-          id="text"
-          name="textReview"
-          onChange={[Function]}
-          placeholder="Review text"
-          value=""
-        />
-        <div
-          className="add-review__submit"
-        >
-          <button
-            className="add-review__btn"
-            disabled={true}
-            type="submit"
-          >
-            Post
-          </button>
-        </div>
-      </div>
-    </form>
+    <FormAddReview
+      checkValid={[Function]}
+      commentValid={true}
+      email=""
+      emailValid={true}
+      filmId={1}
+      formErrors={
+        Object {
+          "email": "",
+          "password": "",
+          "textReview": "",
+        }
+      }
+      formValid={false}
+      handleFieldChange={[Function]}
+      handleSubmit={[Function]}
+      password=""
+      passwordValid={true}
+      rating="3"
+      textReview=""
+    />
   </div>
 </section>
 `;
@@ -230,218 +103,91 @@ exports[`Render BigMovieCard with full content 1`] = `
   <div
     className="movie-card__header"
   >
-    <div
-      className="movie-card__bg"
-    >
-      <img
-        alt="The Grand Budapest Hotel"
-        src="img/the-grand-budapest-hotel-bg.jpg"
-      />
-    </div>
-    <h1
-      className="visually-hidden"
-    >
-      WTW
-    </h1>
-    <header
-      className="page-header movie-card__head"
-    >
-      <div
-        className="logo"
-      >
-        <a
-          className="logo__link"
-          href="/"
-          onClick={[Function]}
-        >
-          <span
-            className="logo__letter logo__letter--1"
-          >
-            W
-          </span>
-          <span
-            className="logo__letter logo__letter--2"
-          >
-            T
-          </span>
-          <span
-            className="logo__letter logo__letter--3"
-          >
-            W
-          </span>
-        </a>
-      </div>
-      <nav
-        className="breadcrumbs"
-      >
-        <ul
-          className="breadcrumbs__list"
-        >
-          <li
-            className="breadcrumbs__item"
-          >
-            <a
-              className="breadcrumbs__link"
-              href="/films/1"
-              onClick={[Function]}
-            >
-              The Grand Budapest Hotel
-            </a>
-          </li>
-          <li
-            className="breadcrumbs__item"
-          >
-            <a
-              className="breadcrumbs__link"
-            >
-              Add review
-            </a>
-          </li>
-        </ul>
-      </nav>
-      <div
-        className="user-block"
-      >
-        <a
-          className="user-block__link"
-          href="/login"
-          onClick={[Function]}
-        >
-          Sign in
-        </a>
-      </div>
-    </header>
-    <div
-      className="movie-card__poster movie-card__poster--small"
-    >
-      <img
-        alt="The Grand Budapest Hotel poster"
-        height="327"
-        src="img/the-grand-budapest-hotel-poster.jpg"
-        width="218"
-      />
-    </div>
+    <MovieCardHead
+      film={
+        Object {
+          "backgroundColor": "#ffffff",
+          "backgroundImage": "img/the-grand-budapest-hotel-bg.jpg",
+          "description": "In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.",
+          "director": "Wes Andreson",
+          "genre": "Comedy",
+          "id": 1,
+          "isFavorite": false,
+          "name": "The Grand Budapest Hotel",
+          "posterImage": "img/the-grand-budapest-hotel-poster.jpg",
+          "previewImage": "img/the-grand-budapest-hotel.jpg",
+          "previewVideoLink": "https://some-link",
+          "rating": 8.9,
+          "released": 2014,
+          "runTime": 99,
+          "scoresCount": 240,
+          "starring": Array [
+            "Bill Murray",
+            "Edward Norton",
+            "Jude Law",
+            "Willem Dafoe",
+            "Saoirse Ronan",
+          ],
+          "videoLink": "https://some-link",
+        }
+      }
+      headerNav={true}
+    />
+    <MovieCardPoster
+      classname="small"
+      film={
+        Object {
+          "backgroundColor": "#ffffff",
+          "backgroundImage": "img/the-grand-budapest-hotel-bg.jpg",
+          "description": "In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.",
+          "director": "Wes Andreson",
+          "genre": "Comedy",
+          "id": 1,
+          "isFavorite": false,
+          "name": "The Grand Budapest Hotel",
+          "posterImage": "img/the-grand-budapest-hotel-poster.jpg",
+          "previewImage": "img/the-grand-budapest-hotel.jpg",
+          "previewVideoLink": "https://some-link",
+          "rating": 8.9,
+          "released": 2014,
+          "runTime": 99,
+          "scoresCount": 240,
+          "starring": Array [
+            "Bill Murray",
+            "Edward Norton",
+            "Jude Law",
+            "Willem Dafoe",
+            "Saoirse Ronan",
+          ],
+          "videoLink": "https://some-link",
+        }
+      }
+    />
   </div>
   <div
     className="add-review"
   >
-    <form
-      action="#"
-      className="add-review__form"
-      onSubmit={[Function]}
-    >
-      <div
-        className="rating"
-      >
-        <div
-          className="rating__stars"
-        >
-          <input
-            className="rating__input"
-            defaultChecked={false}
-            id="star-1"
-            name="rating"
-            onChange={[Function]}
-            type="radio"
-            value={2}
-          />
-          <label
-            className="rating__label"
-            htmlFor="star-1"
-          >
-            Rating 
-            1
-          </label>
-          <input
-            className="rating__input"
-            defaultChecked={false}
-            id="star-2"
-            name="rating"
-            onChange={[Function]}
-            type="radio"
-            value={4}
-          />
-          <label
-            className="rating__label"
-            htmlFor="star-2"
-          >
-            Rating 
-            2
-          </label>
-          <input
-            className="rating__input"
-            defaultChecked="checked"
-            id="star-3"
-            name="rating"
-            onChange={[Function]}
-            type="radio"
-            value={6}
-          />
-          <label
-            className="rating__label"
-            htmlFor="star-3"
-          >
-            Rating 
-            3
-          </label>
-          <input
-            className="rating__input"
-            defaultChecked={false}
-            id="star-4"
-            name="rating"
-            onChange={[Function]}
-            type="radio"
-            value={8}
-          />
-          <label
-            className="rating__label"
-            htmlFor="star-4"
-          >
-            Rating 
-            4
-          </label>
-          <input
-            className="rating__input"
-            defaultChecked={false}
-            id="star-5"
-            name="rating"
-            onChange={[Function]}
-            type="radio"
-            value={10}
-          />
-          <label
-            className="rating__label"
-            htmlFor="star-5"
-          >
-            Rating 
-            5
-          </label>
-        </div>
-      </div>
-      <div
-        className="add-review__text"
-      >
-        <textarea
-          className="add-review__textarea"
-          id="text"
-          name="textReview"
-          onChange={[Function]}
-          placeholder="Review text"
-          value=""
-        />
-        <div
-          className="add-review__submit"
-        >
-          <button
-            className="add-review__btn"
-            disabled={true}
-            type="submit"
-          >
-            Post
-          </button>
-        </div>
-      </div>
-    </form>
+    <FormAddReview
+      checkValid={[Function]}
+      commentValid={true}
+      email=""
+      emailValid={true}
+      filmId={1}
+      formErrors={
+        Object {
+          "email": "",
+          "password": "",
+          "textReview": "",
+        }
+      }
+      formValid={false}
+      handleFieldChange={[Function]}
+      handleSubmit={[Function]}
+      password=""
+      passwordValid={true}
+      rating="3"
+      textReview=""
+    />
   </div>
 </section>
 `;
@@ -453,132 +199,67 @@ exports[`Render BigMovieCard without form review 1`] = `
   <div
     className="movie-card__hero"
   >
-    <div
-      className="movie-card__bg"
-    >
-      <img
-        alt="The Grand Budapest Hotel"
-        src="img/the-grand-budapest-hotel-bg.jpg"
-      />
-    </div>
-    <h1
-      className="visually-hidden"
-    >
-      WTW
-    </h1>
-    <header
-      className="page-header movie-card__head"
-    >
-      <div
-        className="logo"
-      >
-        <a
-          className="logo__link"
-          href="/"
-          onClick={[Function]}
-        >
-          <span
-            className="logo__letter logo__letter--1"
-          >
-            W
-          </span>
-          <span
-            className="logo__letter logo__letter--2"
-          >
-            T
-          </span>
-          <span
-            className="logo__letter logo__letter--3"
-          >
-            W
-          </span>
-        </a>
-      </div>
-      <div
-        className="user-block"
-      >
-        <a
-          className="user-block__link"
-          href="/login"
-          onClick={[Function]}
-        >
-          Sign in
-        </a>
-      </div>
-    </header>
+    <MovieCardHead
+      film={
+        Object {
+          "backgroundColor": "#ffffff",
+          "backgroundImage": "img/the-grand-budapest-hotel-bg.jpg",
+          "description": "In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.",
+          "director": "Wes Andreson",
+          "genre": "Comedy",
+          "id": 1,
+          "isFavorite": false,
+          "name": "The Grand Budapest Hotel",
+          "posterImage": "img/the-grand-budapest-hotel-poster.jpg",
+          "previewImage": "img/the-grand-budapest-hotel.jpg",
+          "previewVideoLink": "https://some-link",
+          "rating": 8.9,
+          "released": 2014,
+          "runTime": 99,
+          "scoresCount": 240,
+          "starring": Array [
+            "Bill Murray",
+            "Edward Norton",
+            "Jude Law",
+            "Willem Dafoe",
+            "Saoirse Ronan",
+          ],
+          "videoLink": "https://some-link",
+        }
+      }
+    />
     <div
       className="movie-card__wrap"
     >
-      <div
-        className="movie-card__desc"
-      >
-        <h2
-          className="movie-card__title"
-        >
-          The Grand Budapest Hotel
-        </h2>
-        <p
-          className="movie-card__meta"
-        >
-          <span
-            className="movie-card__genre"
-          >
-            Comedy
-          </span>
-          <span
-            className="movie-card__year"
-          >
-            2014
-          </span>
-        </p>
-        <div
-          className="movie-card__buttons"
-        >
-          <button
-            className="btn btn--play movie-card__button"
-            onClick={[Function]}
-            type="button"
-          >
-            <svg
-              height="19"
-              viewBox="0 0 19 19"
-              width="19"
-            >
-              <use
-                xlinkHref="#play-s"
-              />
-            </svg>
-            <span>
-              Play
-            </span>
-          </button>
-          <button
-            className="btn btn--list movie-card__button"
-            onClick={[Function]}
-            type="button"
-          >
-            <svg
-              height="20"
-              viewBox="0 0 19 20"
-              width="19"
-            >
-              <use
-                xlinkHref="#add"
-              />
-            </svg>
-            <span>
-              My list
-            </span>
-          </button>
-          <a
-            className="btn movie-card__button"
-            href="/films/1/review"
-            onClick={[Function]}
-          >
-            Add review
-          </a>
-        </div>
-      </div>
+      <MovieCardDescr
+        film={
+          Object {
+            "backgroundColor": "#ffffff",
+            "backgroundImage": "img/the-grand-budapest-hotel-bg.jpg",
+            "description": "In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.",
+            "director": "Wes Andreson",
+            "genre": "Comedy",
+            "id": 1,
+            "isFavorite": false,
+            "name": "The Grand Budapest Hotel",
+            "posterImage": "img/the-grand-budapest-hotel-poster.jpg",
+            "previewImage": "img/the-grand-budapest-hotel.jpg",
+            "previewVideoLink": "https://some-link",
+            "rating": 8.9,
+            "released": 2014,
+            "runTime": 99,
+            "scoresCount": 240,
+            "starring": Array [
+              "Bill Murray",
+              "Edward Norton",
+              "Jude Law",
+              "Willem Dafoe",
+              "Saoirse Ronan",
+            ],
+            "videoLink": "https://some-link",
+          }
+        }
+      />
     </div>
   </div>
   <div
@@ -587,16 +268,36 @@ exports[`Render BigMovieCard without form review 1`] = `
     <div
       className="movie-card__info"
     >
-      <div
-        className="movie-card__poster movie-card__poster--big"
-      >
-        <img
-          alt="The Grand Budapest Hotel poster"
-          height="327"
-          src="img/the-grand-budapest-hotel-poster.jpg"
-          width="218"
-        />
-      </div>
+      <MovieCardPoster
+        classname="big"
+        film={
+          Object {
+            "backgroundColor": "#ffffff",
+            "backgroundImage": "img/the-grand-budapest-hotel-bg.jpg",
+            "description": "In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.",
+            "director": "Wes Andreson",
+            "genre": "Comedy",
+            "id": 1,
+            "isFavorite": false,
+            "name": "The Grand Budapest Hotel",
+            "posterImage": "img/the-grand-budapest-hotel-poster.jpg",
+            "previewImage": "img/the-grand-budapest-hotel.jpg",
+            "previewVideoLink": "https://some-link",
+            "rating": 8.9,
+            "released": 2014,
+            "runTime": 99,
+            "scoresCount": 240,
+            "starring": Array [
+              "Bill Murray",
+              "Edward Norton",
+              "Jude Law",
+              "Willem Dafoe",
+              "Saoirse Ronan",
+            ],
+            "videoLink": "https://some-link",
+          }
+        }
+      />
       <div
         className="movie-card__desc"
       >
@@ -705,145 +406,99 @@ exports[`Render BigMovieCard without full content 1`] = `
 <section
   className="movie-card "
 >
-  <div
-    className="movie-card__bg"
-  >
-    <img
-      alt="The Grand Budapest Hotel"
-      src="img/the-grand-budapest-hotel-bg.jpg"
-    />
-  </div>
-  <h1
-    className="visually-hidden"
-  >
-    WTW
-  </h1>
-  <header
-    className="page-header movie-card__head"
-  >
-    <div
-      className="logo"
-    >
-      <a
-        className="logo__link"
-        href="/"
-        onClick={[Function]}
-      >
-        <span
-          className="logo__letter logo__letter--1"
-        >
-          W
-        </span>
-        <span
-          className="logo__letter logo__letter--2"
-        >
-          T
-        </span>
-        <span
-          className="logo__letter logo__letter--3"
-        >
-          W
-        </span>
-      </a>
-    </div>
-    <div
-      className="user-block"
-    >
-      <a
-        className="user-block__link"
-        href="/login"
-        onClick={[Function]}
-      >
-        Sign in
-      </a>
-    </div>
-  </header>
+  <MovieCardHead
+    film={
+      Object {
+        "backgroundColor": "#ffffff",
+        "backgroundImage": "img/the-grand-budapest-hotel-bg.jpg",
+        "description": "In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.",
+        "director": "Wes Andreson",
+        "genre": "Comedy",
+        "id": 1,
+        "isFavorite": false,
+        "name": "The Grand Budapest Hotel",
+        "posterImage": "img/the-grand-budapest-hotel-poster.jpg",
+        "previewImage": "img/the-grand-budapest-hotel.jpg",
+        "previewVideoLink": "https://some-link",
+        "rating": 8.9,
+        "released": 2014,
+        "runTime": 99,
+        "scoresCount": 240,
+        "starring": Array [
+          "Bill Murray",
+          "Edward Norton",
+          "Jude Law",
+          "Willem Dafoe",
+          "Saoirse Ronan",
+        ],
+        "videoLink": "https://some-link",
+      }
+    }
+  />
   <div
     className="movie-card__wrap"
   >
     <div
       className="movie-card__info"
     >
-      <div
-        className="movie-card__poster "
-      >
-        <img
-          alt="The Grand Budapest Hotel poster"
-          height="327"
-          src="img/the-grand-budapest-hotel-poster.jpg"
-          width="218"
-        />
-      </div>
-      <div
-        className="movie-card__desc"
-      >
-        <h2
-          className="movie-card__title"
-        >
-          The Grand Budapest Hotel
-        </h2>
-        <p
-          className="movie-card__meta"
-        >
-          <span
-            className="movie-card__genre"
-          >
-            Comedy
-          </span>
-          <span
-            className="movie-card__year"
-          >
-            2014
-          </span>
-        </p>
-        <div
-          className="movie-card__buttons"
-        >
-          <button
-            className="btn btn--play movie-card__button"
-            onClick={[Function]}
-            type="button"
-          >
-            <svg
-              height="19"
-              viewBox="0 0 19 19"
-              width="19"
-            >
-              <use
-                xlinkHref="#play-s"
-              />
-            </svg>
-            <span>
-              Play
-            </span>
-          </button>
-          <button
-            className="btn btn--list movie-card__button"
-            onClick={[Function]}
-            type="button"
-          >
-            <svg
-              height="20"
-              viewBox="0 0 19 20"
-              width="19"
-            >
-              <use
-                xlinkHref="#add"
-              />
-            </svg>
-            <span>
-              My list
-            </span>
-          </button>
-          <a
-            className="btn movie-card__button"
-            href="/films/1/review"
-            onClick={[Function]}
-          >
-            Add review
-          </a>
-        </div>
-      </div>
+      <MovieCardPoster
+        film={
+          Object {
+            "backgroundColor": "#ffffff",
+            "backgroundImage": "img/the-grand-budapest-hotel-bg.jpg",
+            "description": "In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.",
+            "director": "Wes Andreson",
+            "genre": "Comedy",
+            "id": 1,
+            "isFavorite": false,
+            "name": "The Grand Budapest Hotel",
+            "posterImage": "img/the-grand-budapest-hotel-poster.jpg",
+            "previewImage": "img/the-grand-budapest-hotel.jpg",
+            "previewVideoLink": "https://some-link",
+            "rating": 8.9,
+            "released": 2014,
+            "runTime": 99,
+            "scoresCount": 240,
+            "starring": Array [
+              "Bill Murray",
+              "Edward Norton",
+              "Jude Law",
+              "Willem Dafoe",
+              "Saoirse Ronan",
+            ],
+            "videoLink": "https://some-link",
+          }
+        }
+      />
+      <MovieCardDescr
+        film={
+          Object {
+            "backgroundColor": "#ffffff",
+            "backgroundImage": "img/the-grand-budapest-hotel-bg.jpg",
+            "description": "In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.",
+            "director": "Wes Andreson",
+            "genre": "Comedy",
+            "id": 1,
+            "isFavorite": false,
+            "name": "The Grand Budapest Hotel",
+            "posterImage": "img/the-grand-budapest-hotel-poster.jpg",
+            "previewImage": "img/the-grand-budapest-hotel.jpg",
+            "previewVideoLink": "https://some-link",
+            "rating": 8.9,
+            "released": 2014,
+            "runTime": 99,
+            "scoresCount": 240,
+            "starring": Array [
+              "Bill Murray",
+              "Edward Norton",
+              "Jude Law",
+              "Willem Dafoe",
+              "Saoirse Ronan",
+            ],
+            "videoLink": "https://some-link",
+          }
+        }
+      />
     </div>
   </div>
 </section>

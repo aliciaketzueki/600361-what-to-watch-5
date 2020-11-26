@@ -4,9 +4,9 @@ import {FormLogin} from "./form-login";
 import {Validation} from "../../utils/const";
 const {PASSWORD, COMMENT_MAX, COMMENT_MIN} = Validation;
 
-const noop = () => {};
+export const noop = () => {};
 
-const formErrors = {
+export const formErrors = {
   email: `Please enter a valid email address`,
   password: `Password must be at least ${PASSWORD} characters`,
   textReview: `Review text must be at least ${COMMENT_MIN} and no more than ${COMMENT_MAX} characters`,
@@ -20,8 +20,8 @@ describe(`Render FormLogin`, () => {
     const tree = renderer
       .create(
           <FormLogin
-            email={`aliciaketzueki@gmail.com`}
-            password={`12345678990`}
+            email={``}
+            password={``}
             emailValid={true}
             passwordValid={true}
             formErrors={formErrors}

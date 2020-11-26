@@ -1,4 +1,5 @@
 import React, {useEffect} from "react";
+import BigMovieCard from "../big-movie-card/big-movie-card";
 import MoviesList from "../movies-list/movies-list";
 import Footer from "../footer/footer";
 import {MORE_LIKE_NUM} from "../../utils/const";
@@ -6,7 +7,7 @@ import {filterFilms} from "../../utils/utils";
 import {getFilms, getFilm, getReviews} from "../../store/selectors";
 import {fetchFilm, fetchReviews} from "../../store/actions/api-actions";
 import {connect} from "react-redux";
-import BigMovieCard from "../big-movie-card/big-movie-card";
+
 import {validArrayOfShape, validNum, validFunc} from "../../utils/props";
 import PropTypes from "prop-types";
 

@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import VideoPlayer from "./video";
 
-const film = {
+export const film = {
   id: 1,
   name: `The Grand Budapest Hotel`,
   posterImage: `img/the-grand-budapest-hotel-poster.jpg`,
@@ -22,7 +22,7 @@ const film = {
   isFavorite: false
 };
 
-const noop = () => {};
+export const noop = () => {};
 
 describe(`Render VideoPlayer`, () => {
   test.each([

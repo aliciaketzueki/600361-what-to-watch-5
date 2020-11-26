@@ -23,6 +23,10 @@ const withPlayingVideo = (Component) => {
     componentDidMount() {
       const video = this.video.current;
 
+      // if (!video) {
+      //   return false;
+      // }
+
       video.onstarted = () => {
         this.setState({
           duration: video.duration,

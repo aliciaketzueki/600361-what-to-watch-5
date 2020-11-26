@@ -1,20 +1,19 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import Login from "./screen-login";
-import {Router as BrowserRouter} from "react-router-dom";
-import {Provider} from "react-redux";
-import browserHistory from "../../browser-history";
-import {store} from "../../index";
+import {BrowserRouter} from "react-router-dom";
+
+jest.mock(`../header/header`, () => `Header`);
+jest.mock(`../footer/footer`, () => `Footer`);
+jest.mock(`../form-login/form-login`, () => `FormLogin`);
 
 describe(`Render Login`, () => {
   it(`Should Login render correctly`, () => {
     const tree = renderer
     .create(
-        <Provider store={store}>
-          <BrowserRouter history={browserHistory}>
-            <Login />
-          </BrowserRouter>
-        </Provider>
+        <BrowserRouter>
+          <Login />
+        </BrowserRouter>
     )
     .toJSON();
 

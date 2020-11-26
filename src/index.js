@@ -37,4 +37,7 @@ Promise.all([
       </Provider>,
       document.querySelector(`#root`)
   );
+})
+.catch(() => {
+  throw Error(`Ошибка загруки всего`);
 });
