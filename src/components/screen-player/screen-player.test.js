@@ -2,7 +2,6 @@ import React from "react";
 import renderer from "react-test-renderer";
 import {Player} from "./screen-player";
 import {BrowserRouter} from "react-router-dom";
-import browserHistory from "../../browser-history";
 
 export const film = {
   id: 1,
@@ -24,7 +23,7 @@ export const film = {
   isFavorite: false
 };
 
-const noop = () => {};
+export const noop = () => {};
 
 describe(`Render Player`, () => {
   it(`Should Player render correctly`, () => {
@@ -32,10 +31,10 @@ describe(`Render Player`, () => {
       .create(
           <BrowserRouter>
             <Player
-              history={browserHistory}
               film={film}
               loadCurrentFilm={noop}
               filmId={0}
+              onExitBtnClick={noop}
             />
           </BrowserRouter>, {
             createNodeMock: () => {

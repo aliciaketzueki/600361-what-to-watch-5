@@ -11,7 +11,7 @@ const MockComponentWrapped = withActiveItem(MockComponent);
 describe(`Change state after tabs clicking`, () => {
   it(`Should state changing depending on tabs click`, () => {
     const wrapper = shallow(
-        <MockComponentWrapped/>
+        <MockComponentWrapped />
     );
 
     expect(wrapper.state().tabIndex).toEqual(0);

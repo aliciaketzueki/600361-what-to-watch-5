@@ -4,12 +4,6 @@ exports[`Render VideoPlayer with playing 1`] = `
 <div
   className="player"
 >
-  <video
-    className="player__video"
-    poster="img/the-grand-budapest-hotel-bg.jpg"
-    preload="metadata"
-    src="https://some-link"
-  />
   <button
     className="player__exit"
     onClick={[Function]}
@@ -102,12 +96,6 @@ exports[`Render VideoPlayer without playing 1`] = `
 <div
   className="player"
 >
-  <video
-    className="player__video"
-    poster="img/the-grand-budapest-hotel-bg.jpg"
-    preload="metadata"
-    src="https://some-link"
-  />
   <button
     className="player__exit"
     onClick={[Function]}

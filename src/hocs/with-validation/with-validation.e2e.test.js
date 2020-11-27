@@ -12,7 +12,7 @@ const MockComponentWrapped = withValidation(MockComponent);
 describe(`Change state after form errors`, () => {
   it(`Should state changing depending on form errors`, () => {
     const wrapper = shallow(
-        <MockComponentWrapped/>
+        <MockComponentWrapped />
     );
 
     // Ошибка email

@@ -1,22 +1,17 @@
 import React from "react";
 import moment from "moment";
 import {validFunc, validBool, validNum, validOneOfType, validFilm} from "../../utils/props";
+import PropTypes from "prop-types";
 import {SECOND} from "../../utils/const";
 
 const VideoPlayer = (props) => {
-  const {onExitBtnClick, isPlaying, duration, progress, video, progressBar, onPlay, onPause, onMouseDown, onFullScreen, film} = props;
+  const {onExitBtnClick, isPlaying, duration, progress, progressBar, onPlay, onPause, onMouseDown, onFullScreen, film, children} = props;
 
-  const {videoLink, backgroundImage, name} = film;
+  const {name} = film;
 
   return (
     <div className="player">
-      <video
-        ref={video}
-        preload="metadata"
-        src={videoLink}
-        className="player__video"
-        poster={backgroundImage}
-      />
+      {children}
 
       <button type="button" className="player__exit" onClick={onExitBtnClick}>Exit</button>
 
@@ -91,9 +86,9 @@ VideoPlayer.propTypes = {
   isPlaying: validBool,
   duration: validNum,
   progress: validNum,
-  video: validOneOfType,
   progressBar: validOneOfType,
-  film: validFilm
+  film: validFilm,
+  children: PropTypes.node,
 };
 
 export default VideoPlayer;

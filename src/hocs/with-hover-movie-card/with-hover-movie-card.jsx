@@ -41,7 +41,9 @@ const withHoverMovieCard = (Component) => {
           onMouseEnter={this.handleMouseEnter}
           onMouseLeave={this.handleMouseLeave}
           video={this.video}
-        />
+        >
+          <video ref={this.video}/>
+        </Component>
       );
     }
   }

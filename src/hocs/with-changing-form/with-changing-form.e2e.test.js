@@ -14,7 +14,7 @@ const mockPassword = `12345678796`;
 describe(`Change state after form changing`, () => {
   it(`Should state changing depending on form change`, () => {
     const wrapper = shallow(
-        <MockComponentWrapped/>
+        <MockComponentWrapped />
     );
 
     // Изменение email вносит изменения в стейт

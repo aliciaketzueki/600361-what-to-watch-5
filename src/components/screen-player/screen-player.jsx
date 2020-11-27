@@ -2,14 +2,14 @@ import React, {useEffect} from "react";
 import {connect} from "react-redux";
 import Video from "../video/video";
 import withPlayingVideo from "../../hocs/with-playing-video/with-playing-video";
-import {validOneOfType, validShape, validFilm, validFunc, validNum} from "../../utils/props";
+import {validOneOfType, validFilm, validFunc, validNum} from "../../utils/props";
 import {getFilm} from "../../store/selectors";
 import {fetchFilm} from "../../store/actions/api-actions";
 
 const VideoPlayer = withPlayingVideo(Video);
 
 const Player = (props) => {
-  const {history, filmId, video, film, loadCurrentFilm} = props;
+  const {onExitBtnClick, filmId, video, film, loadCurrentFilm} = props;
 
   useEffect(() => {
     loadCurrentFilm(filmId);
@@ -18,10 +18,6 @@ const Player = (props) => {
   if (!film) {
     return null;
   }
-
-  const onExitBtnClick = () => {
-    history.goBack();
-  };
 
   return (
     <VideoPlayer
@@ -33,8 +29,8 @@ const Player = (props) => {
 };
 
 Player.propTypes = {
+  onExitBtnClick: validFunc,
   video: validOneOfType,
-  history: validShape,
   filmId: validNum,
   film: validFilm,
   loadCurrentFilm: validFunc

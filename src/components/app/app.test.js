@@ -12,7 +12,7 @@ jest.mock(`../screen-add-review/screen-add-review`, () => `AddReview`);
 jest.mock(`../screen-player/screen-player`, () => `Player`);
 
 describe(`Render App`, () => {
-  it(`Render App`, () => {
+  it(`Should App render correctly`, () => {
     const tree = renderer
       .create(
           <BrowserRouter history={browserHistory}>

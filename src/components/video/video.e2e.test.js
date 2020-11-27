@@ -94,4 +94,26 @@ describe(`Playing Video`, () => {
     wrapper.find(`.player__full-screen`).simulate(`click`);
     expect(handleFullScreenBtnClick).toHaveBeenCalledTimes(1);
   });
+
+  // Клик по кнопке ExitBtn
+  it(`Should ExitBtn be clicked`, () => {
+    const handleExitBtnClick = jest.fn();
+
+    const wrapper = shallow(
+        <VideoPlayer
+          onExitBtnClick={handleExitBtnClick}
+          isPlaying={true}
+          duration={1000}
+          progress={10}
+          onPlay={noop}
+          onPause={noop}
+          onMouseDown={noop}
+          onFullScreen={noop}
+          film={film}
+        />
+    );
+
+    wrapper.find(`.player__exit`).simulate(`click`);
+    expect(handleExitBtnClick).toHaveBeenCalledTimes(1);
+  });
 });

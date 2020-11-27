@@ -1,4 +1,5 @@
 import React, {PureComponent, createRef} from "react";
+import {validFunc, validFilm} from "../../utils/props";
 
 const withPlayingVideo = (Component) => {
   class WithPlayingVideo extends PureComponent {
@@ -22,10 +23,6 @@ const withPlayingVideo = (Component) => {
 
     componentDidMount() {
       const video = this.video.current;
-
-      // if (!video) {
-      //   return false;
-      // }
 
       video.onstarted = () => {
         this.setState({
@@ -108,6 +105,8 @@ const withPlayingVideo = (Component) => {
 
     render() {
       const {isPlaying, duration, progress} = this.state;
+      const {onExitBtnClick, film} = this.props;
+      const {backgroundImage, videoLink} = film;
 
       return (
         <Component
@@ -115,16 +114,29 @@ const withPlayingVideo = (Component) => {
           isPlaying={isPlaying}
           duration={duration}
           progress={progress}
-          video={this.video}
           progressBar={this.progressBar}
           onPlay={this.onPlay}
           onPause={this.onPause}
           onMouseDown={this.onMouseDown}
           onFullScreen={this.onFullScreen}
-        />
+          onExitBtnClick={onExitBtnClick}
+        >
+          <video
+            ref={this.video}
+            preload="metadata"
+            src={videoLink}
+            className="player__video"
+            poster={backgroundImage}
+          />
+        </Component>
       );
     }
   }
+
+  WithPlayingVideo.propTypes = {
+    onExitBtnClick: validFunc,
+    film: validFilm
+  };
 
   return WithPlayingVideo;
 };
