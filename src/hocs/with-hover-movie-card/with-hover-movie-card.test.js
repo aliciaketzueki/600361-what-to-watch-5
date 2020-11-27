@@ -24,11 +24,15 @@ const MockComponentWrapped = withHoverMovieCard(MockComponent);
 
 describe(`Render withHoverMovieCard`, () => {
   it(`Should withHoverMovieCard render correctly`, () => {
-    const tree = renderer.create((
-      <MockComponentWrapped>
-        <Fragment />
-      </MockComponentWrapped>
-    )).toJSON();
+    const tree = renderer.create(
+        <MockComponentWrapped>
+          <Fragment />
+        </MockComponentWrapped>, {
+          createNodeMock() {
+            return {};
+          }
+        }
+    ).toJSON();
 
     expect(tree).toMatchSnapshot();
   });

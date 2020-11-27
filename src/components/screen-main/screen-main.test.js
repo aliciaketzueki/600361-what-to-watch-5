@@ -1,10 +1,11 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {Main} from "./screen-main";
-import {Router as BrowserRouter} from "react-router-dom";
-import {Provider} from "react-redux";
-import browserHistory from "../../browser-history";
-import {store} from "../../index";
+import {BrowserRouter} from "react-router-dom";
+
+jest.mock(`../big-movie-card/big-movie-card`, () => `BigMovieCard`);
+jest.mock(`../footer/footer`, () => `Footer`);
+jest.mock(`../movies-by-genres/movies-by-genres`, () => `MoviesByGenres`);
 
 const film = {
   id: 1,
@@ -30,13 +31,11 @@ describe(`Render Main`, () => {
   it(`Render Main`, () => {
     const tree = renderer
       .create(
-          <Provider store={store}>
-            <BrowserRouter history={browserHistory}>
-              <Main
-                promoFilm={film}
-              />
-            </BrowserRouter>
-          </Provider>
+          <BrowserRouter>
+            <Main
+              promoFilm={film}
+            />
+          </BrowserRouter>
       )
       .toJSON();
 

@@ -1,12 +1,14 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {Film} from "./screen-film";
-import {Router as BrowserRouter} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
-import browserHistory from "../../browser-history";
 import {store} from "../../index";
+// jest.mock(`../movies-list/movies-list`, () => `MoviesList`);
+// jest.mock(`../footer/footer`, () => `Footer`);
+// jest.mock(`../big-movie-card/big-movie-card`, () => `BigMovieCard`);
 
-const film = {
+export const film = {
   id: 1,
   name: `The Grand Budapest Hotel`,
   posterImage: `img/the-grand-budapest-hotel-poster.jpg`,
@@ -26,7 +28,7 @@ const film = {
   isFavorite: false
 };
 
-const films = [film];
+export const films = [film];
 
 const review = {
   id: 1,
@@ -39,7 +41,7 @@ const review = {
   date: `2019-05-08T14:13:56.569Z`
 };
 
-const reviews = [review];
+export const reviews = [review];
 
 const noop = () => {};
 
@@ -48,7 +50,7 @@ describe(`Render Film`, () => {
     const tree = renderer
     .create(
         <Provider store={store}>
-          <BrowserRouter history={browserHistory}>
+          <BrowserRouter>
             <Film
               films={films}
               filmId={0}

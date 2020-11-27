@@ -1,10 +1,10 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {Header} from "./header";
-import {BrowserRouter as Router} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 import {AuthorizationStatus} from "../../utils/const";
 
-const film = {
+export const film = {
   id: 1,
   name: `The Grand Budapest Hotel`,
   posterImage: `img/the-grand-budapest-hotel-poster.jpg`,
@@ -24,12 +24,12 @@ const film = {
   isFavorite: false
 };
 
-const userData = {
+export const userData = {
   "email": `Oliver.conner@gmail.com`,
   "password": `12345678`
 };
 
-const header = {
+export const header = {
   title: true,
   headClass: `movie-card__head`,
   nav: true
@@ -44,7 +44,7 @@ describe(`Render Header`, () => {
   ])(`%s auth`, (_expected, login) => {
     const tree = renderer
       .create(
-          <Router>
+          <BrowserRouter>
             <Header
               header={header}
               login={login}
@@ -52,7 +52,7 @@ describe(`Render Header`, () => {
               film={film}
               moveToPage={noop}
             />
-          </Router>
+          </BrowserRouter>
       )
       .toJSON();
 

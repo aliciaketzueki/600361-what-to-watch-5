@@ -12,6 +12,12 @@ export const Validation = {
   COMMENT_MAX: 400
 };
 
+export const Errors = {
+  EMAIL: `Please enter a valid email address`,
+  PASSWORD: `Password must be at least ${Validation.PASSWORD} characters`,
+  TEXT_REVIEW: `Review text must be at least ${Validation.COMMENT_MIN} and no more than ${Validation.COMMENT_MAX} characters`
+};
+
 export const tabs = [{
   name: `Overview`,
   id: 0,

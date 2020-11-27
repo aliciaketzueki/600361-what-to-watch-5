@@ -1,10 +1,10 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import MovieCardDescr from "./movie-card-descr";
-import {Router as BrowserRouter} from "react-router-dom";
-import {Provider} from "react-redux";
-import browserHistory from "../../browser-history";
-import {store} from "../../index";
+import {BrowserRouter} from "react-router-dom";
+
+jest.mock(`../video-btn/video-btn`, () => `VideoBtn`);
+jest.mock(`../my-list-btn/my-list-btn`, () => `MyListBtn`);
 
 const film = {
   id: 1,
@@ -30,13 +30,11 @@ describe(`Render MovieCardDescr`, () => {
   it(`Should MovieCardDescr render correctly`, () => {
     const tree = renderer
     .create(
-        <Provider store={store}>
-          <BrowserRouter history={browserHistory}>
-            <MovieCardDescr
-              film={film}
-            />
-          </BrowserRouter>
-        </Provider>
+        <BrowserRouter>
+          <MovieCardDescr
+            film={film}
+          />
+        </BrowserRouter>
     )
     .toJSON();
 

@@ -15,74 +15,41 @@ Array [
   >
     WTW
   </h1>,
-  <header
-    className="page-header movie-card__head"
-  >
-    <div
-      className="logo"
-    >
-      <a
-        className="logo__link"
-        href="/"
-        onClick={[Function]}
-      >
-        <span
-          className="logo__letter logo__letter--1"
-        >
-          W
-        </span>
-        <span
-          className="logo__letter logo__letter--2"
-        >
-          T
-        </span>
-        <span
-          className="logo__letter logo__letter--3"
-        >
-          W
-        </span>
-      </a>
-    </div>
-    <nav
-      className="breadcrumbs"
-    >
-      <ul
-        className="breadcrumbs__list"
-      >
-        <li
-          className="breadcrumbs__item"
-        >
-          <a
-            className="breadcrumbs__link"
-            href="/films/1"
-            onClick={[Function]}
-          >
-            The Grand Budapest Hotel
-          </a>
-        </li>
-        <li
-          className="breadcrumbs__item"
-        >
-          <a
-            className="breadcrumbs__link"
-          >
-            Add review
-          </a>
-        </li>
-      </ul>
-    </nav>
-    <div
-      className="user-block"
-    >
-      <a
-        className="user-block__link"
-        href="/login"
-        onClick={[Function]}
-      >
-        Sign in
-      </a>
-    </div>
-  </header>,
+  <Header
+    film={
+      Object {
+        "backgroundColor": "#ffffff",
+        "backgroundImage": "img/the-grand-budapest-hotel-bg.jpg",
+        "description": "In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.",
+        "director": "Wes Andreson",
+        "genre": "Comedy",
+        "id": 1,
+        "isFavorite": false,
+        "name": "The Grand Budapest Hotel",
+        "posterImage": "img/the-grand-budapest-hotel-poster.jpg",
+        "previewImage": "img/the-grand-budapest-hotel.jpg",
+        "previewVideoLink": "https://some-link",
+        "rating": 8.9,
+        "released": 2014,
+        "runTime": 99,
+        "scoresCount": 240,
+        "starring": Array [
+          "Bill Murray",
+          "Edward Norton",
+          "Jude Law",
+          "Willem Dafoe",
+          "Saoirse Ronan",
+        ],
+        "videoLink": "https://some-link",
+      }
+    }
+    header={
+      Object {
+        "headClass": "movie-card__head",
+        "nav": true,
+      }
+    }
+  />,
 ]
 `;
 
@@ -101,45 +68,40 @@ Array [
   >
     WTW
   </h1>,
-  <header
-    className="page-header movie-card__head"
-  >
-    <div
-      className="logo"
-    >
-      <a
-        className="logo__link"
-        href="/"
-        onClick={[Function]}
-      >
-        <span
-          className="logo__letter logo__letter--1"
-        >
-          W
-        </span>
-        <span
-          className="logo__letter logo__letter--2"
-        >
-          T
-        </span>
-        <span
-          className="logo__letter logo__letter--3"
-        >
-          W
-        </span>
-      </a>
-    </div>
-    <div
-      className="user-block"
-    >
-      <a
-        className="user-block__link"
-        href="/login"
-        onClick={[Function]}
-      >
-        Sign in
-      </a>
-    </div>
-  </header>,
+  <Header
+    film={
+      Object {
+        "backgroundColor": "#ffffff",
+        "backgroundImage": "img/the-grand-budapest-hotel-bg.jpg",
+        "description": "In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.",
+        "director": "Wes Andreson",
+        "genre": "Comedy",
+        "id": 1,
+        "isFavorite": false,
+        "name": "The Grand Budapest Hotel",
+        "posterImage": "img/the-grand-budapest-hotel-poster.jpg",
+        "previewImage": "img/the-grand-budapest-hotel.jpg",
+        "previewVideoLink": "https://some-link",
+        "rating": 8.9,
+        "released": 2014,
+        "runTime": 99,
+        "scoresCount": 240,
+        "starring": Array [
+          "Bill Murray",
+          "Edward Norton",
+          "Jude Law",
+          "Willem Dafoe",
+          "Saoirse Ronan",
+        ],
+        "videoLink": "https://some-link",
+      }
+    }
+    header={
+      Object {
+        "headClass": "movie-card__head",
+        "nav": false,
+      }
+    }
+  />,
 ]
 `;

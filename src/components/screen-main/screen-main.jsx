@@ -1,10 +1,10 @@
 import React from "react";
+import BigMovieCard from "../big-movie-card/big-movie-card";
 import Footer from "../footer/footer";
 import MoviesByGenres from "../movies-by-genres/movies-by-genres";
 import {connect} from "react-redux";
 import {getPromoFilm} from "../../store/selectors";
 import {validFilm} from "../../utils/props";
-import BigMovieCard from "../big-movie-card/big-movie-card";
 
 const Main = (props) => {
   const {promoFilm} = props;

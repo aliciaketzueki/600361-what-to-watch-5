@@ -1,11 +1,12 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {MoviesByGenres} from "./movies-by-genres";
-import {Router as BrowserRouter} from "react-router-dom";
-import {Provider} from "react-redux";
-import browserHistory from "../../browser-history";
-import {store} from "../../index";
+import {BrowserRouter} from "react-router-dom";
 import {INITIAL_FILMS_NUM} from "../../utils/const";
+
+jest.mock(`../movies-list/movies-list`, () => `MoviesList`);
+jest.mock(`../genres-list/genres-list`, () => `GenresList`);
+jest.mock(`../show-more/show-more`, () => `ShowMore`);
 
 const film = {
   id: 1,
@@ -35,15 +36,13 @@ describe(`Render MoviesByGenres`, () => {
   it(`Should MoviesByGenres render correctly`, () => {
     const tree = renderer
       .create(
-          <Provider store={store}>
-            <BrowserRouter history={browserHistory}>
-              <MoviesByGenres
-                films={films}
-                genres={genres}
-                filmsRendered={INITIAL_FILMS_NUM}
-              />
-            </BrowserRouter>
-          </Provider>
+          <BrowserRouter>
+            <MoviesByGenres
+              films={films}
+              genres={genres}
+              filmsRendered={INITIAL_FILMS_NUM}
+            />
+          </BrowserRouter>
       )
       .toJSON();
 

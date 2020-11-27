@@ -1,10 +1,9 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {Player} from "./screen-player";
-import {Router as BrowserRouter} from "react-router-dom";
-import browserHistory from "../../browser-history";
+import {BrowserRouter} from "react-router-dom";
 
-const film = {
+export const film = {
   id: 1,
   name: `The Grand Budapest Hotel`,
   posterImage: `img/the-grand-budapest-hotel-poster.jpg`,
@@ -24,18 +23,18 @@ const film = {
   isFavorite: false
 };
 
-const noop = () => {};
+export const noop = () => {};
 
 describe(`Render Player`, () => {
   it(`Should Player render correctly`, () => {
     const tree = renderer
       .create(
-          <BrowserRouter history={browserHistory}>
+          <BrowserRouter>
             <Player
-              history={browserHistory}
               film={film}
               loadCurrentFilm={noop}
               filmId={0}
+              onExitBtnClick={noop}
             />
           </BrowserRouter>, {
             createNodeMock: () => {

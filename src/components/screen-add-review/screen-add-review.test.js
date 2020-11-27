@@ -1,12 +1,12 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {AddReview} from "./screen-add-review";
-import {Router as BrowserRouter} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
-import browserHistory from "../../browser-history";
 import {store} from "../../index";
+// jest.mock(`../big-movie-card/big-movie-card`, () => `BigMovieCard`);
 
-const film = {
+export const film = {
   id: 1,
   name: `The Grand Budapest Hotel`,
   posterImage: `img/the-grand-budapest-hotel-poster.jpg`,
@@ -33,7 +33,7 @@ describe(`Render AddReview`, () => {
     const tree = renderer
     .create(
         <Provider store={store}>
-          <BrowserRouter history={browserHistory}>
+          <BrowserRouter>
             <AddReview
               film={film}
               filmId={0}

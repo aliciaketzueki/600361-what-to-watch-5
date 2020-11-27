@@ -1,10 +1,12 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import BigMovieCard from "./big-movie-card";
-import {Router as BrowserRouter} from "react-router-dom";
-import {Provider} from "react-redux";
-import browserHistory from "../../browser-history";
-import {store} from "../../index";
+import {BrowserRouter} from "react-router-dom";
+
+jest.mock(`../movie-card-head/movie-card-head`, () => `MovieCardHead`);
+jest.mock(`../movie-card-descr/movie-card-descr`, () => `MovieCardDescr`);
+jest.mock(`../movie-card-poster/movie-card-poster`, () => `MovieCardPoster`);
+jest.mock(`../form-add-review/form-add-review`, () => `FormAddReview`);
 
 const film = {
   id: 1,
@@ -40,44 +42,42 @@ const review = {
 const reviews = [review];
 
 describe(`Render BigMovieCard`, () => {
+  // with full content
   test.each([
     [`with`, true],
     [`without`, false],
   ])(`%s full content`, (_expected, isFull) => {
     const tree = renderer
       .create(
-          <Provider store={store}>
-            <BrowserRouter history={browserHistory}>
-              <BigMovieCard
-                isFull={isFull}
-                isReview={true}
-                film={film}
-                reviews={reviews}
-              />
-            </BrowserRouter>
-          </Provider>
+          <BrowserRouter>
+            <BigMovieCard
+              isFull={isFull}
+              isReview={true}
+              film={film}
+              reviews={reviews}
+            />
+          </BrowserRouter>
       )
       .toJSON();
 
     expect(tree).toMatchSnapshot();
   });
 
+  // with review
   test.each([
     [`with`, true],
     [`without`, false],
   ])(`%s form review`, (_expected, isReview) => {
     const tree = renderer
       .create(
-          <Provider store={store}>
-            <BrowserRouter history={browserHistory}>
-              <BigMovieCard
-                isFull={true}
-                isReview={isReview}
-                film={film}
-                reviews={reviews}
-              />
-            </BrowserRouter>
-          </Provider>
+          <BrowserRouter>
+            <BigMovieCard
+              isFull={true}
+              isReview={isReview}
+              film={film}
+              reviews={reviews}
+            />
+          </BrowserRouter>
       )
       .toJSON();
 

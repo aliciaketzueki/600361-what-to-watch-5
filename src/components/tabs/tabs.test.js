@@ -1,9 +1,9 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import Tabs from "./tabs";
-import {BrowserRouter as Router} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 
-const film = {
+export const film = {
   id: 1,
   name: `The Grand Budapest Hotel`,
   posterImage: `img/the-grand-budapest-hotel-poster.jpg`,
@@ -34,9 +34,9 @@ const review = {
   date: `2019-05-08T14:13:56.569Z`
 };
 
-const reviews = [review];
+export const reviews = [review];
 
-const noop = () => {};
+export const noop = () => {};
 
 describe(`Render Tabs`, () => {
   test.each([
@@ -46,14 +46,14 @@ describe(`Render Tabs`, () => {
   ])(`%s tabindex`, (_expected, tabindex) => {
     const tree = renderer
     .create(
-        <Router>
+        <BrowserRouter>
           <Tabs
             reviews={reviews}
             tabIndex={tabindex}
             onClick={noop}
             film={film}
           />
-        </Router>
+        </BrowserRouter>
     )
     .toJSON();
 

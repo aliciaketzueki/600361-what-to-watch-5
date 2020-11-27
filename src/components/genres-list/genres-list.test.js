@@ -1,25 +1,25 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {GenresList} from "./genres-list";
-import {BrowserRouter as Router} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 import {ALL_GENRES} from "../../utils/const";
 
-const noop = () => {};
+export const noop = () => {};
 
-const genres = [`All genres`, `Crime`];
+export const genres = [`All genres`, `Crime`];
 
 describe(`Render GenresList`, () => {
   it(`Should GenresList render correctly`, () => {
     const tree = renderer
       .create(
-          <Router>
+          <BrowserRouter>
             <GenresList
               genres={genres}
               onGenreClick={noop}
               onClick={noop}
               activeGenre={ALL_GENRES}
             />
-          </Router>
+          </BrowserRouter>
       )
       .toJSON();
 

@@ -1,9 +1,9 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import SmallMovieCard from "./small-movie-card";
-import {BrowserRouter as Router} from "react-router-dom";
+import {BrowserRouter} from "react-router-dom";
 
-const film = {
+export const film = {
   id: 1,
   name: `The Grand Budapest Hotel`,
   posterImage: `img/the-grand-budapest-hotel-poster.jpg`,
@@ -23,19 +23,19 @@ const film = {
   isFavorite: false
 };
 
-const noop = () => {};
+export const noop = () => {};
 
 describe(`Render SmallMovieCard`, () => {
   it(`Should SmallMovieCard render correctly`, () => {
     const tree = renderer
       .create(
-          <Router>
+          <BrowserRouter>
             <SmallMovieCard
               film={film}
               onMouseEnter={noop}
               onMouseLeave={noop}
             />
-          </Router>
+          </BrowserRouter>
       )
       .toJSON();
 

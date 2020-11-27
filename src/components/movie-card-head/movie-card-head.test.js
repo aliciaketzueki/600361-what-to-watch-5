@@ -1,10 +1,9 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import MovieCardHead from "./movie-card-head";
-import {Router as BrowserRouter} from "react-router-dom";
-import {Provider} from "react-redux";
-import browserHistory from "../../browser-history";
-import {store} from "../../index";
+import {BrowserRouter} from "react-router-dom";
+
+jest.mock(`../header/header`, () => `Header`);
 
 const film = {
   id: 1,
@@ -33,14 +32,12 @@ describe(`Render MovieCardHead`, () => {
   ])(`%s header nav`, (_expected, headerNav) => {
     const tree = renderer
     .create(
-        <Provider store={store}>
-          <BrowserRouter history={browserHistory}>
-            <MovieCardHead
-              film={film}
-              headerNav={headerNav}
-            />
-          </BrowserRouter>
-        </Provider>
+        <BrowserRouter>
+          <MovieCardHead
+            film={film}
+            headerNav={headerNav}
+          />
+        </BrowserRouter>
     )
     .toJSON();
 

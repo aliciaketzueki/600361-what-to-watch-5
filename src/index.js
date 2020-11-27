@@ -37,4 +37,5 @@ Promise.all([
       </Provider>,
       document.querySelector(`#root`)
   );
-});
+})
+.catch(() => {});

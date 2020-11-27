@@ -2,7 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import {FormAddReview} from "./form-add-review";
 
-const noop = () => {};
+export const noop = () => {};
 
 describe(`Render FormAddReview`, () => {
   test.each([
@@ -12,8 +12,8 @@ describe(`Render FormAddReview`, () => {
     const tree = renderer
       .create(
           <FormAddReview
-            rating={`5`}
-            textReview={`Текст комментария в форме`}
+            rating={``}
+            textReview={``}
             handleSubmit={noop}
             handleFieldChange={noop}
             checkValid={noop}

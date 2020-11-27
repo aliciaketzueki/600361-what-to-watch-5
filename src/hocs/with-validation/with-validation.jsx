@@ -1,5 +1,5 @@
 import React, {PureComponent} from "react";
-import {Validation} from "../../utils/const";
+import {Validation, Errors} from "../../utils/const";
 
 const withValidation = (Component) => {
   class WithValidation extends PureComponent {
@@ -31,15 +31,15 @@ const withValidation = (Component) => {
       switch (fieldName) {
         case `email`:
           emailValid = EMAIL.test(value);
-          formErrors.email = emailValid ? `` : `Please enter a valid email address`;
+          formErrors.email = emailValid ? `` : Errors.EMAIL;
           break;
         case `password`:
           passwordValid = value.length >= PASSWORD;
-          formErrors.password = passwordValid ? `` : `Password must be at least ${PASSWORD} characters`;
+          formErrors.password = passwordValid ? `` : Errors.PASSWORD;
           break;
         case `textReview`:
           commentValid = (value.length >= COMMENT_MIN && value.length <= COMMENT_MAX);
-          formErrors.textReview = commentValid ? `` : `Review text must be at least ${COMMENT_MIN} and no more than ${COMMENT_MAX} characters`;
+          formErrors.textReview = commentValid ? `` : Errors.TEXT_REVIEW;
           break;
         default:
           break;
