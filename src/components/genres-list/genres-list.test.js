@@ -3,10 +3,7 @@ import renderer from "react-test-renderer";
 import {GenresList} from "./genres-list";
 import {BrowserRouter} from "react-router-dom";
 import {ALL_GENRES} from "../../utils/const";
-
-export const noop = () => {};
-
-export const genres = [`All genres`, `Crime`];
+import {NOOP, GENRES_LIST} from "../../mocks";
 
 describe(`Render GenresList`, () => {
   it(`Should GenresList render correctly`, () => {
@@ -14,9 +11,8 @@ describe(`Render GenresList`, () => {
       .create(
           <BrowserRouter>
             <GenresList
-              genres={genres}
-              onGenreClick={noop}
-              onClick={noop}
+              genres={GENRES_LIST}
+              onGenreClick={NOOP}
               activeGenre={ALL_GENRES}
             />
           </BrowserRouter>

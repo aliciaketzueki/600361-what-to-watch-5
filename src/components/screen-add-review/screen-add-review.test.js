@@ -4,29 +4,7 @@ import {AddReview} from "./screen-add-review";
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import {store} from "../../index";
-// jest.mock(`../big-movie-card/big-movie-card`, () => `BigMovieCard`);
-
-export const film = {
-  id: 1,
-  name: `The Grand Budapest Hotel`,
-  posterImage: `img/the-grand-budapest-hotel-poster.jpg`,
-  previewImage: `img/the-grand-budapest-hotel.jpg`,
-  backgroundImage: `img/the-grand-budapest-hotel-bg.jpg`,
-  backgroundColor: `#ffffff`,
-  videoLink: `https://some-link`,
-  previewVideoLink: `https://some-link`,
-  description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.`,
-  rating: 8.9,
-  scoresCount: 240,
-  director: `Wes Andreson`,
-  starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
-  runTime: 99,
-  genre: `Comedy`,
-  released: 2014,
-  isFavorite: false
-};
-
-const noop = () => {};
+import {FILM, NOOP, FILM_ID} from "../../mocks";
 
 describe(`Render AddReview`, () => {
   it(`Should AddReview render correctly`, () => {
@@ -35,9 +13,9 @@ describe(`Render AddReview`, () => {
         <Provider store={store}>
           <BrowserRouter>
             <AddReview
-              film={film}
-              filmId={0}
-              loadCurrentFilm={noop}
+              film={FILM}
+              filmId={FILM_ID}
+              loadCurrentFilm={NOOP}
             />
           </BrowserRouter>
         </Provider>

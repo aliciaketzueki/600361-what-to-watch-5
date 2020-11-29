@@ -2,7 +2,8 @@ import React from "react";
 import {configure, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import {FormLogin} from "./form-login";
-import {noop, formErrors} from "./form-login.test";
+import {Errors, SHORT_TIMEOUT} from "../../utils/const";
+import {NOOP, MOCK_EMAIL, MOCK_PASSWORD} from "../../mocks";
 
 configure({adapter: new Adapter()});
 
@@ -14,27 +15,30 @@ describe(`Change FormLogin`, () => {
   ])(
       `%s validation`,
       (_expected, isValid) => {
-        const handleEmailChange = jest.fn();
         const handleCheckValid = jest.fn();
 
         const wrapper = shallow(
             <FormLogin
-              email={`kate@mail.ru`}
-              password={`12345`}
               emailValid={true}
               passwordValid={true}
-              formErrors={formErrors}
+              formErrors={Errors}
               formValid={isValid}
-              handleSubmit={noop}
-              handleFieldChange={handleEmailChange}
               checkValid={handleCheckValid}
-              onSubmit={noop}
+              onSubmit={NOOP}
             />
         );
 
-        wrapper.find(`.sign-in__input`).at(0).simulate(`change`);
-        expect(handleEmailChange).toHaveBeenCalledTimes(1);
+        const emailInput = wrapper.find(`.sign-in__input`).at(0);
+
+        expect(emailInput.text()).toEqual(``);
+        emailInput.simulate(`change`, {target: {value: MOCK_EMAIL}});
         expect(handleCheckValid).toHaveBeenCalledTimes(1);
+
+        setTimeout(() => {
+          expect(emailInput.text()).toEqual(MOCK_EMAIL);
+
+          wrapper.unmount();
+        }, SHORT_TIMEOUT);
       });
 
   // Изменение input'а пароля
@@ -44,51 +48,51 @@ describe(`Change FormLogin`, () => {
   ])(
       `%s validation`,
       (_expected, isValid) => {
-        const handlePasswordChange = jest.fn();
         const handleCheckValid = jest.fn();
 
         const wrapper = shallow(
             <FormLogin
-              email={``}
-              password={``}
               emailValid={true}
               passwordValid={true}
-              formErrors={formErrors}
+              formErrors={Errors}
               formValid={isValid}
-              handleSubmit={noop}
-              handleFieldChange={handlePasswordChange}
               checkValid={handleCheckValid}
-              onSubmit={noop}
+              onSubmit={NOOP}
             />
         );
 
-        wrapper.find(`.sign-in__input`).at(1).simulate(`change`);
-        expect(handlePasswordChange).toHaveBeenCalledTimes(1);
+        const passwordInput = wrapper.find(`.sign-in__input`).at(1);
+
+        expect(passwordInput.text()).toEqual(``);
+        passwordInput.simulate(`change`, {target: {value: MOCK_PASSWORD}});
         expect(handleCheckValid).toHaveBeenCalledTimes(1);
+
+        setTimeout(() => {
+          expect(passwordInput.text()).toEqual(MOCK_PASSWORD);
+
+          wrapper.unmount();
+        }, SHORT_TIMEOUT);
       });
 
   // Отправка формы
   it(`Should FormLogin be submited`, () => {
-    const handleSubmitForm = jest.fn();
     const handleOnSubmit = jest.fn();
 
     const wrapper = shallow(
         <FormLogin
-          email={``}
-          password={``}
           emailValid={false}
           passwordValid={false}
-          formErrors={formErrors}
+          formErrors={Errors}
           formValid={true}
-          handleSubmit={ handleSubmitForm}
-          handleFieldChange={noop}
-          checkValid={noop}
+          checkValid={NOOP}
           onSubmit={handleOnSubmit}
         />
     );
 
-    wrapper.find(`.sign-in__form`).simulate(`submit`);
-    expect(handleSubmitForm).toHaveBeenCalledTimes(1);
+    wrapper.find(`.sign-in__form`).simulate(`submit`, {
+      preventDefault: NOOP,
+      stopPropagation: NOOP
+    });
     expect(handleOnSubmit).toHaveBeenCalledTimes(1);
   });
 });

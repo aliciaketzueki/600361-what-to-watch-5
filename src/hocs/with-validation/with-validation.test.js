@@ -1,26 +1,9 @@
 import React, {Fragment} from "react";
 import renderer from "react-test-renderer";
 import withValidation from "./with-validation";
-import PropTypes from "prop-types";
+import {MOCK_COMPONENT_WITH_CHILDREN} from "../../mocks";
 
-const MockComponent = (props) => {
-  const {children} = props;
-
-  return (
-    <div>
-      {children}
-    </div>
-  );
-};
-
-MockComponent.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.node),
-    PropTypes.node
-  ]).isRequired,
-};
-
-const MockComponentWrapped = withValidation(MockComponent);
+const MockComponentWrapped = withValidation(MOCK_COMPONENT_WITH_CHILDREN);
 
 describe(`Render withValidation`, () => {
   it(`Should withValidation render correctly`, () => {

@@ -1,10 +1,12 @@
-import React from "react";
+import React, {useState} from "react";
 import {connect} from "react-redux";
-import {validFunc, validString, validBool, validNum} from "../../utils/props";
+import {validFunc, validBool, validNum} from "../../utils/props";
 import {addReview} from "../../store/actions/api-actions";
 
 const FormAddReview = (props) => {
-  const {rating, textReview, handleSubmit, handleFieldChange, checkValid, onSubmit, filmId, formValid} = props;
+  const {checkValid, onSubmit, filmId, formValid} = props;
+  const [rating, setRating] = useState(3);
+  const [textReview, setText] = useState(``);
 
   const addRating = () => {
     const maxRate = 5;
@@ -20,7 +22,10 @@ const FormAddReview = (props) => {
               name="rating"
               value={i * 2}
               defaultChecked={i === parseInt(rating, 10) ? `checked` : !`checked`}
-              onChange={handleFieldChange} />
+              onChange={(e) => {
+                setRating(e.target.value);
+              }}
+            />
             <label className="rating__label" htmlFor={`star-${i}`}>Rating {i}</label>
           </React.Fragment>
       );
@@ -34,7 +39,8 @@ const FormAddReview = (props) => {
       action="#"
       className="add-review__form"
       onSubmit={(e) => {
-        handleSubmit(e);
+        e.preventDefault();
+        e.stopPropagation();
         onSubmit(filmId, rating, textReview);
       }
       }>
@@ -52,7 +58,7 @@ const FormAddReview = (props) => {
           placeholder="Review text"
           value={textReview}
           onChange={(e) => {
-            handleFieldChange(e);
+            setText(e.target.value);
             checkValid(e);
           }}
         />
@@ -71,12 +77,8 @@ const FormAddReview = (props) => {
 };
 
 FormAddReview.propTypes = {
-  handleSubmit: validFunc,
-  handleFieldChange: validFunc,
   checkValid: validFunc,
   onSubmit: validFunc,
-  textReview: validString,
-  rating: validString,
   filmId: validNum,
   formValid: validBool
 };

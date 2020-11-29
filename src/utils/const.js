@@ -2,6 +2,7 @@ export const MORE_LIKE_NUM = 4;
 export const MAX_ACTORS_NUM = 4;
 export const MAX_GENRES_NUM = 10;
 export const SECOND = 1000;
+export const SHORT_TIMEOUT = 10;
 export const INITIAL_FILMS_NUM = 8;
 export const ALL_GENRES = `All genres`;
 

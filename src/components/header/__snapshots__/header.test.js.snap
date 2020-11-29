@@ -31,7 +31,9 @@ exports[`Render Header with auth 1`] = `
   </div>
   <h1
     className="page-title user-page__title"
-  />
+  >
+    My list
+  </h1>
   <nav
     className="breadcrumbs"
   >
@@ -108,7 +110,9 @@ exports[`Render Header without auth 1`] = `
   </div>
   <h1
     className="page-title user-page__title"
-  />
+  >
+    My list
+  </h1>
   <nav
     className="breadcrumbs"
   >

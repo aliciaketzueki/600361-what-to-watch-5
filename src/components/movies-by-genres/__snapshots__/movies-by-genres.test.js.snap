@@ -9,8 +9,6 @@ Array [
         "Crime",
       ]
     }
-    onClick={[Function]}
-    tabIndex={0}
   />,
   <MoviesList
     films={

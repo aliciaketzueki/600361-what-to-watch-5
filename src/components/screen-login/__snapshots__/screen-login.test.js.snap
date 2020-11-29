@@ -19,7 +19,6 @@ exports[`Render Login Should Login render correctly 1`] = `
     <FormLogin
       checkValid={[Function]}
       commentValid={true}
-      email=""
       emailValid={true}
       formErrors={
         Object {
@@ -29,12 +28,7 @@ exports[`Render Login Should Login render correctly 1`] = `
         }
       }
       formValid={false}
-      handleFieldChange={[Function]}
-      handleSubmit={[Function]}
-      password=""
       passwordValid={true}
-      rating="3"
-      textReview=""
     />
   </div>
   <Footer />

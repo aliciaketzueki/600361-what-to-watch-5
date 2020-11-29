@@ -1,14 +1,17 @@
-import React from "react";
-import {validFunc, validString, validShape, validBool} from "../../utils/props";
+import React, {useState} from "react";
+import {validFunc, validShape, validBool} from "../../utils/props";
 import {connect} from "react-redux";
-import {login, checkAuth} from "../../store/actions/api-actions";
+import {login} from "../../store/actions/api-actions";
 
 const FormLogin = (props) => {
-  const {email, password, emailValid, passwordValid, formErrors, formValid, handleSubmit, handleFieldChange, checkValid, onSubmit} = props;
+  const {emailValid, passwordValid, formErrors, formValid, checkValid, onSubmit} = props;
+  const [email, setEmail] = useState(``);
+  const [password, setPassword] = useState(``);
 
   return (
     <form action="#" className="sign-in__form" onSubmit={(e) => {
-      handleSubmit(e);
+      e.preventDefault();
+      e.stopPropagation();
       onSubmit({email, password});
     }}
     >
@@ -38,7 +41,7 @@ const FormLogin = (props) => {
             id="email"
             value={email}
             onChange={(e) => {
-              handleFieldChange(e);
+              setEmail(e.target.value);
               checkValid(e);
             }}
           />
@@ -53,7 +56,7 @@ const FormLogin = (props) => {
             id="password"
             value={password}
             onChange={(e) => {
-              handleFieldChange(e);
+              setPassword(e.target.value);
               checkValid(e);
             }}
           />
@@ -75,11 +78,7 @@ const FormLogin = (props) => {
 
 FormLogin.propTypes = {
   onSubmit: validFunc,
-  handleSubmit: validFunc,
-  handleFieldChange: validFunc,
   checkValid: validFunc,
-  email: validString,
-  password: validString,
   formErrors: validShape,
   emailValid: validBool,
   passwordValid: validBool,
@@ -87,9 +86,6 @@ FormLogin.propTypes = {
 };
 
 const mapDispatchToProps = (dispatch) => ({
-  isAuth() {
-    dispatch(checkAuth());
-  },
   onSubmit(authData) {
     dispatch(login(authData));
   }

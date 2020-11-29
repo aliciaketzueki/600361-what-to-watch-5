@@ -2,7 +2,8 @@ import React from "react";
 import {configure, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import VideoPlayer from "./video";
-import {film, noop} from "./video.test";
+import {FILM, NOOP, MOVIE} from "../../mocks";
+const {duration, progress} = MOVIE;
 
 configure({adapter: new Adapter()});
 
@@ -13,15 +14,15 @@ describe(`Playing Video`, () => {
 
     const wrapper = shallow(
         <VideoPlayer
-          onExitBtnClick={noop}
+          onExitBtnClick={NOOP}
           isPlaying={false}
-          duration={1000}
-          progress={10}
+          duration={duration}
+          progress={progress}
           onPlay={handleVideoPlayBtnClick}
-          onPause={noop}
-          onMouseDown={noop}
-          onFullScreen={noop}
-          film={film}
+          onPause={NOOP}
+          onMouseDown={NOOP}
+          onFullScreen={NOOP}
+          film={FILM}
         />
     );
 
@@ -35,15 +36,15 @@ describe(`Playing Video`, () => {
 
     const wrapper = shallow(
         <VideoPlayer
-          onExitBtnClick={noop}
+          onExitBtnClick={NOOP}
           isPlaying={true}
-          duration={1000}
-          progress={10}
-          onPlay={noop}
+          duration={duration}
+          progress={progress}
+          onPlay={NOOP}
           onPause={handleVideoPauseBtnClick}
-          onMouseDown={noop}
-          onFullScreen={noop}
-          film={film}
+          onMouseDown={NOOP}
+          onFullScreen={NOOP}
+          film={FILM}
         />
     );
 
@@ -57,15 +58,15 @@ describe(`Playing Video`, () => {
 
     const wrapper = shallow(
         <VideoPlayer
-          onExitBtnClick={noop}
+          onExitBtnClick={NOOP}
           isPlaying={true}
-          duration={1000}
-          progress={10}
-          onPlay={noop}
-          onPause={noop}
+          duration={duration}
+          progress={progress}
+          onPlay={NOOP}
+          onPause={NOOP}
           onMouseDown={handleVideoTogglerMouseDown}
-          onFullScreen={noop}
-          film={film}
+          onFullScreen={NOOP}
+          film={FILM}
         />
     );
 
@@ -79,15 +80,15 @@ describe(`Playing Video`, () => {
 
     const wrapper = shallow(
         <VideoPlayer
-          onExitBtnClick={noop}
+          onExitBtnClick={NOOP}
           isPlaying={true}
-          duration={1000}
-          progress={10}
-          onPlay={noop}
-          onPause={noop}
-          onMouseDown={noop}
+          duration={duration}
+          progress={progress}
+          onPlay={NOOP}
+          onPause={NOOP}
+          onMouseDown={NOOP}
           onFullScreen={handleFullScreenBtnClick}
-          film={film}
+          film={FILM}
         />
     );
 
@@ -103,13 +104,13 @@ describe(`Playing Video`, () => {
         <VideoPlayer
           onExitBtnClick={handleExitBtnClick}
           isPlaying={true}
-          duration={1000}
-          progress={10}
-          onPlay={noop}
-          onPause={noop}
-          onMouseDown={noop}
-          onFullScreen={noop}
-          film={film}
+          duration={duration}
+          progress={progress}
+          onPlay={NOOP}
+          onPause={NOOP}
+          onMouseDown={NOOP}
+          onFullScreen={NOOP}
+          film={FILM}
         />
     );
 

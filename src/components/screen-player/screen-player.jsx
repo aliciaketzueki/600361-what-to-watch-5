@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import {connect} from "react-redux";
 import Video from "../video/video";
 import withPlayingVideo from "../../hocs/with-playing-video/with-playing-video";
-import {validOneOfType, validFilm, validFunc, validNum} from "../../utils/props";
+import {validOneOfType, validLoadedFilm, validFunc, validNum} from "../../utils/props";
 import {getFilm} from "../../store/selectors";
 import {fetchFilm} from "../../store/actions/api-actions";
 
@@ -32,7 +32,7 @@ Player.propTypes = {
   onExitBtnClick: validFunc,
   video: validOneOfType,
   filmId: validNum,
-  film: validFilm,
+  film: validLoadedFilm,
   loadCurrentFilm: validFunc
 };
 

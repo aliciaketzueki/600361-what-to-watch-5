@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import MoviesList from "../movies-list/movies-list";
-import {validArrayOfShape, validFunc} from "../../utils/props";
+import {validFilms, validFunc} from "../../utils/props";
 import {fetchFavourites} from "../../store/actions/api-actions";
 import {getFavourites} from "../../store/selectors";
 
@@ -41,7 +41,7 @@ const MyList = (props) => {
 };
 
 MyList.propTypes = {
-  films: validArrayOfShape,
+  films: validFilms,
   loadFavourites: validFunc
 };
 

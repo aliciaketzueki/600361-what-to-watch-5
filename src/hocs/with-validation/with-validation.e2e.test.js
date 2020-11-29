@@ -3,11 +3,11 @@ import {configure, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import withValidation from "./with-validation";
 import {Errors} from "../../utils/const";
+import {MOCK_COMPONENT} from "../../mocks";
 
 configure({adapter: new Adapter()});
 
-const MockComponent = () => <div />;
-const MockComponentWrapped = withValidation(MockComponent);
+const MockComponentWrapped = withValidation(MOCK_COMPONENT);
 
 describe(`Change state after form errors`, () => {
   it(`Should state changing depending on form errors`, () => {

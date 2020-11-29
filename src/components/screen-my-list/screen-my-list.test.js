@@ -4,33 +4,7 @@ import {MyList} from "./screen-my-list";
 import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 import {store} from "../../index";
-// jest.mock(`../header/header`, () => `Header`);
-// jest.mock(`../footer/footer`, () => `Footer`);
-// jest.mock(`../movies-list/movies-list`, () => `MoviesList`);
-
-const film = {
-  id: 1,
-  name: `The Grand Budapest Hotel`,
-  posterImage: `img/the-grand-budapest-hotel-poster.jpg`,
-  previewImage: `img/the-grand-budapest-hotel.jpg`,
-  backgroundImage: `img/the-grand-budapest-hotel-bg.jpg`,
-  backgroundColor: `#ffffff`,
-  videoLink: `https://some-link`,
-  previewVideoLink: `https://some-link`,
-  description: `In the 1930s, the Grand Budapest Hotel is a popular European ski resort, presided over by concierge Gustave H. (Ralph Fiennes). Zero, a junior lobby boy, becomes Gustave's friend and protege.`,
-  rating: 8.9,
-  scoresCount: 240,
-  director: `Wes Andreson`,
-  starring: [`Bill Murray`, `Edward Norton`, `Jude Law`, `Willem Dafoe`, `Saoirse Ronan`],
-  runTime: 99,
-  genre: `Comedy`,
-  released: 2014,
-  isFavorite: false
-};
-
-export const films = [film];
-
-const noop = () => {};
+import {FILMS, NOOP} from "../../mocks";
 
 describe(`Render MyList`, () => {
   it(`Should MyList render correctly`, () => {
@@ -39,8 +13,8 @@ describe(`Render MyList`, () => {
         <Provider store={store}>
           <BrowserRouter>
             <MyList
-              films={films}
-              loadFavourites={noop}
+              films={FILMS}
+              loadFavourites={NOOP}
             />
           </BrowserRouter>
         </Provider>

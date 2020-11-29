@@ -1,6 +1,6 @@
 import React from "react";
 import moment from "moment";
-import {validShape} from "../../utils/props";
+import {validReview} from "../../utils/props";
 
 const Review = (props) => {
   const {review} = props;
@@ -23,7 +23,7 @@ const Review = (props) => {
 };
 
 Review.propTypes = {
-  review: validShape,
+  review: validReview,
 };
 
 export default Review;

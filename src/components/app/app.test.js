@@ -24,6 +24,3 @@ describe(`Render App`, () => {
     expect(tree).toMatchSnapshot();
   });
 });
-
-// npm run test.jest -s -- -t 'Render App'
-// npm run test.jest -- -u

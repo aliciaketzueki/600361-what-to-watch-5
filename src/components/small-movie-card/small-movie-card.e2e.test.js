@@ -2,7 +2,7 @@ import React from "react";
 import {configure, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import SmallMovieCard from "./small-movie-card";
-import {film, noop} from "./small-movie-card.test";
+import {FILM, NOOP} from "../../mocks";
 
 configure({adapter: new Adapter()});
 
@@ -13,9 +13,9 @@ describe(`Hover SmallMovieCard`, () => {
 
     const wrapper = shallow(
         <SmallMovieCard
-          film={film}
+          film={FILM}
           onMouseEnter={handleMouseEnter}
-          onMouseLeave={noop}
+          onMouseLeave={NOOP}
         />
     );
 
@@ -29,8 +29,8 @@ describe(`Hover SmallMovieCard`, () => {
 
     const wrapper = shallow(
         <SmallMovieCard
-          film={film}
-          onMouseEnter={noop}
+          film={FILM}
+          onMouseEnter={NOOP}
           onMouseLeave={handleMouseLeave}
         />
     );

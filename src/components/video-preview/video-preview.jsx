@@ -1,5 +1,5 @@
 import React from "react";
-import {validShape, validOneOfType} from "../../utils/props";
+import {validLoadedFilm, validOneOfType} from "../../utils/props";
 import {convertFilmProps} from "../../utils/utils";
 
 const VideoPreview = (props) => {
@@ -23,7 +23,7 @@ const VideoPreview = (props) => {
 };
 
 VideoPreview.propTypes = {
-  film: validShape,
+  film: validLoadedFilm,
   video: validOneOfType
 };
 

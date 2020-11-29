@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import {showMore} from "../../store/actions/action";
 import {getFilmsByGenre, getRenderedFilms} from "../../store/selectors";
-import {validFunc, validNum, validArrayOfShape} from "../../utils/props";
+import {validFunc, validNum, validFilms} from "../../utils/props";
 
 const ShowMore = (props) => {
   const {filmsRendered, onShowMoreClick, films} = props;
@@ -25,7 +25,7 @@ const ShowMore = (props) => {
 
 ShowMore.propTypes = {
   filmsRendered: validNum,
-  films: validArrayOfShape,
+  films: validFilms,
   onShowMoreClick: validFunc
 };
 

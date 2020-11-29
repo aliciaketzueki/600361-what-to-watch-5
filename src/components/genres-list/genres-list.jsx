@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import {connect} from "react-redux";
 import {changeGenre} from "../../store/actions/action";
@@ -7,7 +7,8 @@ import {MAX_GENRES_NUM} from "../../utils/const";
 import {validArrayOfString, validFunc, validString} from "../../utils/props";
 
 const GenresList = (props) => {
-  const {genres, onGenreClick, onClick, activeGenre} = props;
+  const {genres, onGenreClick, activeGenre} = props;
+  const [tabIndex, setTabIndex] = useState(0);
 
   return (
     <ul className="catalog__genres-list">
@@ -21,7 +22,7 @@ const GenresList = (props) => {
                 e.preventDefault();
                 e.stopPropagation();
                 onGenreClick(genre);
-                onClick(index);
+                setTabIndex(tabIndex);
               }}
             >
               {genre}
@@ -37,7 +38,6 @@ GenresList.propTypes = {
   genres: validArrayOfString,
   activeGenre: validString,
   onGenreClick: validFunc,
-  onClick: validFunc
 };
 
 const mapStateToProps = (state) => ({

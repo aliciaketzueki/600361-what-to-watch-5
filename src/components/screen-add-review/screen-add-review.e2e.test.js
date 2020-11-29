@@ -2,7 +2,7 @@ import React from "react";
 import {configure, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import {AddReview} from "./screen-add-review";
-import {film} from "./screen-add-review.test";
+import {FILM, FILM_ID} from "../../mocks";
 
 configure({adapter: new Adapter()});
 
@@ -16,8 +16,8 @@ describe(`Load Film on ScreenAddReviewr`, () => {
 
     shallow(
         <AddReview
-          film={film}
-          filmId={0}
+          film={FILM}
+          filmId={FILM_ID}
           loadCurrentFilm={handleLoadFilm}
         />
     );

@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import VideoPreview from "../video-preview/video-preview";
-import {validShape, validFunc, validOneOfType} from "../../utils/props";
+import {validLoadedFilm, validFunc, validOneOfType} from "../../utils/props";
 
 const SmallMovieCard = (props) => {
   const {film, onMouseEnter, onMouseLeave, video} = props;
@@ -29,7 +29,7 @@ const SmallMovieCard = (props) => {
 };
 
 SmallMovieCard.propTypes = {
-  film: validShape,
+  film: validLoadedFilm,
   video: validOneOfType,
   onMouseEnter: validFunc,
   onMouseLeave: validFunc,

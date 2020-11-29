@@ -1,11 +1,10 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {validShape, validString, validFunc} from "../../utils/props";
+import {validLoadedFilm, validHeader, validUserData, validString, validFunc} from "../../utils/props";
 import {AuthorizationStatus, AppRoute} from "../../utils/const";
 import {connect} from "react-redux";
 import {getAuthorizationStatus, getUserData} from "../../store/selectors";
 import {redirectToRoute} from "../../store/actions/action";
-import PropTypes from "prop-types";
 
 const Header = (props) => {
   const {header, login, userData, film, moveToPage} = props;
@@ -60,11 +59,11 @@ const Header = (props) => {
 };
 
 Header.propTypes = {
-  header: validShape,
-  userData: validShape,
+  header: validHeader,
+  userData: validUserData,
   login: validString,
   moveToPage: validFunc,
-  film: PropTypes.shape(),
+  film: validLoadedFilm,
 };
 
 const mapStateToProps = (state) => ({

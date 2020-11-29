@@ -2,9 +2,8 @@ import React from "react";
 import Header from "../header/header";
 import Footer from "../footer/footer";
 import FormLogin from "../form-login/form-login";
-import withChangingForm from "../../hocs/with-changing-form/with-changing-form";
 import withValidation from "../../hocs/with-validation/with-validation";
-const LoginFormWrapper = withValidation(withChangingForm(FormLogin));
+const LoginFormWrapper = withValidation(FormLogin);
 
 const Login = () => {
   return (

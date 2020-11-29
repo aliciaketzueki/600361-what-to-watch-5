@@ -2,7 +2,7 @@ import React from "react";
 import {configure, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import {ShowMore} from "./show-more";
-import {films} from "./show-more.test";
+import {FILMS} from "../../mocks";
 
 configure({adapter: new Adapter()});
 
@@ -13,7 +13,7 @@ describe(`Press ShowMore`, () => {
     const wrapper = shallow(
         <ShowMore
           filmsRendered={0}
-          films={films}
+          films={FILMS}
           onShowMoreClick={handleShowMoreClick}
         />
     );

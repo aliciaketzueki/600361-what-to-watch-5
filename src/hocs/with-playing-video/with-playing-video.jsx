@@ -52,6 +52,9 @@ const withPlayingVideo = (Component) => {
     }
 
     componentWillUnmount() {
+      this.video.current.onstarted = null;
+      this.video.current.onended = null;
+      this.video.current.ontimeupdate = null;
       clearInterval(this.interval);
     }
 

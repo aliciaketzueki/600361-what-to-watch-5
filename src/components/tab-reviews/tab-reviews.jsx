@@ -1,6 +1,6 @@
 import React from "react";
 import Review from "../review/review";
-import {validArrayOfShape} from "../../utils/props";
+import {validReviews} from "../../utils/props";
 
 const TabReviews = (props) => {
   const {reviews} = props;
@@ -30,7 +30,7 @@ const TabReviews = (props) => {
 };
 
 TabReviews.propTypes = {
-  reviews: validArrayOfShape,
+  reviews: validReviews,
 };
 
 export default TabReviews;

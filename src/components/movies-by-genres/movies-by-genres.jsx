@@ -3,17 +3,15 @@ import MoviesList from "../movies-list/movies-list";
 import GenresList from "../genres-list/genres-list";
 import ShowMore from "../show-more/show-more";
 import {connect} from "react-redux";
-import withActiveItem from "../../hocs/with-active-item/with-active-item";
 import {getFilmsByGenre, getGenres, getFilmsRendered} from "../../store/selectors";
-import {validArrayOfShape, validNum, validArrayOfString} from "../../utils/props";
-const TabSwitcher = withActiveItem(GenresList);
+import {validNum, validArrayOfString, validFilms} from "../../utils/props";
 
 const MoviesByGenres = (props) => {
   const {films, genres, filmsRendered} = props;
 
   return (
     <React.Fragment>
-      <TabSwitcher genres={genres} />
+      <GenresList genres={genres} />
       <MoviesList films={films} filmsRendered={filmsRendered} />
       <ShowMore />
     </React.Fragment>
@@ -21,7 +19,7 @@ const MoviesByGenres = (props) => {
 };
 
 MoviesByGenres.propTypes = {
-  films: validArrayOfShape,
+  films: validFilms,
   genres: validArrayOfString,
   filmsRendered: validNum,
 };

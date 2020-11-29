@@ -1,8 +1,7 @@
 import React from "react";
 import renderer from "react-test-renderer";
 import {FormAddReview} from "./form-add-review";
-
-export const noop = () => {};
+import {NOOP, FILM_ID} from "../../mocks";
 
 describe(`Render FormAddReview`, () => {
   test.each([
@@ -12,13 +11,9 @@ describe(`Render FormAddReview`, () => {
     const tree = renderer
       .create(
           <FormAddReview
-            rating={``}
-            textReview={``}
-            handleSubmit={noop}
-            handleFieldChange={noop}
-            checkValid={noop}
-            onSubmit={noop}
-            filmId={1}
+            checkValid={NOOP}
+            onSubmit={NOOP}
+            filmId={FILM_ID}
             formValid={isValid}
           />
       )

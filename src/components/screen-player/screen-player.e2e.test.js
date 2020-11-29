@@ -2,7 +2,7 @@ import React from "react";
 import {configure, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import {Player} from "./screen-player";
-import {film, noop} from "./screen-player.test";
+import {FILM, NOOP, FILM_ID} from "../../mocks";
 
 configure({adapter: new Adapter()});
 
@@ -16,9 +16,9 @@ describe(`Load Film on ScreenPlayer`, () => {
 
     shallow(
         <Player
-          onExitBtnClick={noop}
-          filmId={0}
-          film={film}
+          onExitBtnClick={NOOP}
+          filmId={FILM_ID}
+          film={FILM}
           loadCurrentFilm={handleLoadFilm}
         />
     );

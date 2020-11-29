@@ -7,9 +7,7 @@ import {filterFilms} from "../../utils/utils";
 import {getFilms, getFilm, getReviews} from "../../store/selectors";
 import {fetchFilm, fetchReviews} from "../../store/actions/api-actions";
 import {connect} from "react-redux";
-
-import {validArrayOfShape, validNum, validFunc} from "../../utils/props";
-import PropTypes from "prop-types";
+import {validLoadedFilm, validFilms, validReviews, validNum, validFunc} from "../../utils/props";
 
 const Film = (props) => {
   const {films, filmId, loadCurrentFilm, film, reviews} = props;
@@ -46,9 +44,9 @@ const Film = (props) => {
 };
 
 Film.propTypes = {
-  films: validArrayOfShape,
-  film: PropTypes.shape(),
-  reviews: validArrayOfShape,
+  films: validFilms,
+  film: validLoadedFilm,
+  reviews: validReviews,
   filmId: validNum,
   loadCurrentFilm: validFunc,
 };

@@ -2,7 +2,7 @@ import React from "react";
 import {configure, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import {MyListBtn} from "./my-list-btn";
-import {film} from "./my-list-btn.test";
+import {FILM} from "../../mocks";
 import {AuthorizationStatus} from "../../utils/const";
 
 configure({adapter: new Adapter()});
@@ -16,7 +16,7 @@ describe(`Press MyListBtn`, () => {
 
     const wrapper = shallow(
         <MyListBtn
-          film={film}
+          film={FILM}
           authStatus={login}
           addFilm={handleMyListBtnClick}
           moveToPage={handleMyListBtnClick}

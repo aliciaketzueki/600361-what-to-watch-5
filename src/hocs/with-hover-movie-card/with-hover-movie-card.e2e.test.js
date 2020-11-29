@@ -3,12 +3,11 @@ import {configure, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import withHoverMovieCard from "./with-hover-movie-card";
 import {SECOND} from "../../utils/const";
+import {MOCK_COMPONENT} from "../../mocks";
 
 configure({adapter: new Adapter()});
 
-const MockComponent = () => <div />;
-
-const MockComponentWrapped = withHoverMovieCard(MockComponent);
+const MockComponentWrapped = withHoverMovieCard(MOCK_COMPONENT);
 
 describe(`Change state after hover`, () => {
   it(`Should state changing depending on hover`, () => {

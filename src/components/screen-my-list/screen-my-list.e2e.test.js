@@ -2,7 +2,7 @@ import React from "react";
 import {configure, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import {MyList} from "./screen-my-list";
-import {films} from "./screen-my-list.test";
+import {FILMS} from "../../mocks";
 
 configure({adapter: new Adapter()});
 
@@ -16,7 +16,7 @@ describe(`Load Film on ScreenMyList`, () => {
 
     shallow(
         <MyList
-          films={films}
+          films={FILMS}
           loadFavourites={handleLoadFilm}
         />
     );

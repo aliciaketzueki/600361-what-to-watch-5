@@ -1,7 +1,7 @@
 import React, {useEffect} from "react";
 import {connect} from "react-redux";
 import BigMovieCard from "../big-movie-card/big-movie-card";
-import {validFilm, validNum, validFunc} from "../../utils/props";
+import {validLoadedFilm, validNum, validFunc} from "../../utils/props";
 import {getFilm} from "../../store/selectors";
 import {fetchFilm} from "../../store/actions/api-actions";
 
@@ -26,7 +26,7 @@ const AddReview = (props) => {
 };
 
 AddReview.propTypes = {
-  film: validFilm,
+  film: validLoadedFilm,
   filmId: validNum,
   loadCurrentFilm: validFunc,
 };

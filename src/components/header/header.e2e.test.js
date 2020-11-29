@@ -3,7 +3,7 @@ import {configure, shallow} from "enzyme";
 import Adapter from "enzyme-adapter-react-16";
 import {Header} from "./header";
 import {AuthorizationStatus} from "../../utils/const";
-import {header, userData, film} from "./header.test";
+import {HEADER, USER_DATA, FILM} from "../../mocks";
 
 configure({adapter: new Adapter()});
 
@@ -13,10 +13,10 @@ describe(`Press User Avatar`, () => {
 
     const wrapper = shallow(
         <Header
-          header={header}
+          header={HEADER}
           login={AuthorizationStatus.AUTH}
-          userData={userData}
-          film={film}
+          userData={USER_DATA}
+          film={FILM}
           moveToPage={handleMoveToPage}
         />
     );

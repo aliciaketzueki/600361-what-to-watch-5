@@ -1,13 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import {NavLink} from "react-router-dom";
-import {validFunc, validArrayOfShape, validNum, validFilm} from "../../utils/props";
+import {validReviews, validFilm} from "../../utils/props";
 import {tabs} from "../../utils/const";
 import TabOverview from "../tab-overview/tab-overview";
 import TabDetails from "../tab-details/tab-details";
 import TabReviews from "../tab-reviews/tab-reviews";
 
 const Tabs = (props) => {
-  const {reviews, tabIndex, onClick, film} = props;
+  const {reviews, film} = props;
+  const [tabIndex, setCount] = useState(0);
 
   return (
     <div className="movie-card__desc">
@@ -25,7 +26,7 @@ const Tabs = (props) => {
                   onClick={(e) => {
                     e.preventDefault();
                     e.stopPropagation();
-                    onClick(index);
+                    setCount(index);
                   }}
                 >
                   {tab.name}
@@ -45,9 +46,7 @@ const Tabs = (props) => {
 };
 
 Tabs.propTypes = {
-  onClick: validFunc,
-  reviews: validArrayOfShape,
-  tabIndex: validNum,
+  reviews: validReviews,
   film: validFilm
 };
 

@@ -2,16 +2,13 @@ import React, {Fragment} from "react";
 import MovieCardHead from "../movie-card-head/movie-card-head";
 import MovieCardDescr from "../movie-card-descr/movie-card-descr";
 import MovieCardPoster from "../movie-card-poster/movie-card-poster";
-import withActiveItem from "../../hocs/with-active-item/with-active-item";
-import withChangingForm from "../../hocs/with-changing-form/with-changing-form";
 import withValidation from "../../hocs/with-validation/with-validation";
 import FormAddReview from "../form-add-review/form-add-review";
 import Tabs from "../tabs/tabs";
-import {validFilm} from "../../utils/props";
+import {validFilm, validReview} from "../../utils/props";
 import PropTypes from "prop-types";
 
-const TabSwitcher = withActiveItem(Tabs);
-const ReviewFormWrapper = withValidation(withChangingForm(FormAddReview));
+const ReviewFormWrapper = withValidation(FormAddReview);
 
 const BigMovieCard = (props) => {
   const {isFull, isReview, film, reviews} = props;
@@ -31,7 +28,7 @@ const BigMovieCard = (props) => {
           <div className="movie-card__wrap movie-card__translate-top">
             <div className="movie-card__info">
               <MovieCardPoster film={film} classname="big" />
-              <TabSwitcher reviews={reviews} film={film} />
+              <Tabs reviews={reviews} film={film} />
             </div>
           </div>
         </Fragment>
@@ -62,7 +59,7 @@ const BigMovieCard = (props) => {
 
 BigMovieCard.propTypes = {
   film: validFilm,
-  reviews: PropTypes.arrayOf(PropTypes.shape()),
+  reviews: PropTypes.arrayOf(validReview),
   isFull: PropTypes.bool,
   isReview: PropTypes.bool
 };

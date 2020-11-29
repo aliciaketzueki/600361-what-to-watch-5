@@ -5,7 +5,7 @@ import {convertUserProps, convertFilmProps} from "../../utils/utils";
 export const fetchFilms = () => (dispatch, _getState, api) => (
   api.get(APIRoute.FILMS)
     .then(({data}) => {
-      dispatch(loadFilms(data));
+      dispatch(loadFilms(data.map((item) => convertFilmProps(item))));
       dispatch(createGenresList(data));
     })
     .catch(() => {
@@ -56,7 +56,7 @@ export const addReview = (id, rating, comment) => (dispatch, _getState, api) => 
 export const fetchFavourites = () => (dispatch, _getState, api) => (
   api.get(APIRoute.FAVOURITES)
     .then(({data}) => {
-      dispatch(loadFavourites(data));
+      dispatch(loadFavourites(data.map((item) => convertFilmProps(item))));
     })
     .catch(() => {
       throw Error(`Ошибка загруки любимых фильмов`);
