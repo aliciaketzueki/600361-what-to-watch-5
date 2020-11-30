@@ -6,7 +6,8 @@ const initialState = {
   films: [],
   film: null,
   reviews: [],
-  favourites: []
+  favourites: [],
+  reviewStatus: null
 };
 
 const data = (state = initialState, action) => {
@@ -25,6 +26,9 @@ const data = (state = initialState, action) => {
 
     case ActionType.LOAD_FAVOURITES:
       return extend(state, {favourites: action.payload});
+
+    case ActionType.GET_REVIEW_STATUS:
+      return extend(state, {reviewStatus: action.payload});
   }
 
   return state;

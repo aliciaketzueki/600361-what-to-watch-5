@@ -1,4 +1,4 @@
-import {loadFilms, createGenresList, loadPromoFilm, loadFilm, loadReviews, loadFavourites, requireAuthorization, loadUser, redirectToRoute} from "./action";
+import {loadFilms, createGenresList, loadPromoFilm, loadFilm, loadReviews, loadFavourites, requireAuthorization, loadUser, redirectToRoute, getUserStatus, getReviewStatus} from "./action";
 import {AuthorizationStatus, APIRoute, AppRoute} from "../../utils/const";
 import {convertUserProps, convertFilmProps} from "../../utils/utils";
 
@@ -48,7 +48,8 @@ export const addReview = (id, rating, comment) => (dispatch, _getState, api) => 
     .then(() => {
       dispatch(redirectToRoute(`${APIRoute.FILMS}/${id}`));
     })
-    .catch(() => {
+    .catch(({response}) => {
+      dispatch(getReviewStatus(response));
       throw Error(`Ошибка добавления отзыва`);
     })
 );
@@ -71,7 +72,7 @@ export const addToMyList = (id, status) => (dispatch, _getState, api) => (
 );
 
 export const checkAuth = () => (dispatch, _getState, api) => (
-  api.get(AppRoute.LOGIN)
+  api.get(APIRoute.LOGIN)
     .then(({data}) => {
       dispatch(loadUser(convertUserProps(data)));
       dispatch(requireAuthorization(AuthorizationStatus.AUTH));
@@ -82,14 +83,15 @@ export const checkAuth = () => (dispatch, _getState, api) => (
 );
 
 export const login = ({email, password}) => (dispatch, _getState, api) => (
-  api.post(AppRoute.LOGIN, {email, password})
+  api.post(APIRoute.LOGIN, {email, password})
     .then(({data}) => {
       dispatch(requireAuthorization(AuthorizationStatus.AUTH));
       dispatch(loadUser(convertUserProps(data)));
     })
     .then(() => dispatch(redirectToRoute(AppRoute.ROOT)))
-    .catch(() => {
+    .catch(({response}) => {
       dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH));
+      dispatch(getUserStatus(response));
       throw Error(`Ошибка авторизации`);
     })
 );

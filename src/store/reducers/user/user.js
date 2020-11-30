@@ -4,7 +4,8 @@ import {extend} from "../../../utils/utils";
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
-  userData: {}
+  userData: {},
+  userStatus: null
 };
 
 const user = (state = initialState, action) => {
@@ -13,6 +14,8 @@ const user = (state = initialState, action) => {
       return extend(state, {authorizationStatus: action.payload});
     case ActionType.LOAD_USER:
       return extend(state, {userData: action.payload});
+    case ActionType.GET_USER_STATUS:
+      return extend(state, {userStatus: action.payload});
   }
 
   return state;

@@ -69,6 +69,8 @@ export const NOOP = () => {};
 
 export const COMMENT = `This is a test comment to check input changing`;
 
+export const RATING = 6;
+
 export const HEADER = {
   title: `My list`,
   headClass: `movie-card__head`,
@@ -90,6 +92,11 @@ export const MOCK_COMPONENT_WITH_CHILDREN = (props) => {
 export const MOVIE = {
   duration: 1000,
   progress: 10
+};
+
+export const ERROR_STATUS = {
+  status: 404,
+  statusText: `Not Found`
 };
 
 MOCK_COMPONENT_WITH_CHILDREN.propTypes = {

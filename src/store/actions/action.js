@@ -5,12 +5,14 @@ export const ActionType = {
   LOAD_FILMS: `LOAD_FILMS`,
   LOAD_PROMO_FILM: `LOAD_PROMO_FILM`,
   LOAD_REVIEWS: `LOAD_REVIEWS`,
+  GET_REVIEW_STATUS: `GET_REVIEW_STATUS`,
   LOAD_FILM: `LOAD_FILM`,
   CHANGE_ACTIVE_FILM: `CHANGE_ACTIVE_FILM`,
   REQUIRE_AUTHORIZATION: `REQUIRE_AUTHORIZATION`,
   LOAD_USER: `LOAD_USER`,
   REDIRECT_TO_ROUTE: `REDIRECT_TO_ROUTE`,
   LOAD_FAVOURITES: `LOAD_FAVOURITES`,
+  GET_USER_STATUS: `GET_USER_STATUS`
 };
 
 export const createGenresList = (films) => ({
@@ -48,6 +50,11 @@ export const loadReviews = (reviews) => ({
   payload: reviews
 });
 
+export const getReviewStatus = (status) => ({
+  type: ActionType.GET_REVIEW_STATUS,
+  payload: status
+});
+
 export const loadFavourites = (films) => ({
   type: ActionType.LOAD_FAVOURITES,
   payload: films
@@ -60,6 +67,11 @@ export const requireAuthorization = (status) => ({
 
 export const loadUser = (status) => ({
   type: ActionType.LOAD_USER,
+  payload: status
+});
+
+export const getUserStatus = (status) => ({
+  type: ActionType.GET_USER_STATUS,
   payload: status
 });
 

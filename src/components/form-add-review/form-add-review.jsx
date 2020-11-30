@@ -2,9 +2,11 @@ import React, {useState} from "react";
 import {connect} from "react-redux";
 import {validFunc, validBool, validNum} from "../../utils/props";
 import {addReview} from "../../store/actions/api-actions";
+import {getReviewStatus} from "../../store/selectors";
+import PropTypes from "prop-types";
 
 const FormAddReview = (props) => {
-  const {checkValid, onSubmit, filmId, formValid} = props;
+  const {checkValid, onSubmit, filmId, formValid, status} = props;
   const [rating, setRating] = useState(3);
   const [textReview, setText] = useState(``);
 
@@ -72,6 +74,12 @@ const FormAddReview = (props) => {
           </button>
         </div>
       </div>
+      {
+        status &&
+        <div className="add-review-error">
+          {`Error adding comment: ${status.status} ${status.statusText}`}
+        </div>
+      }
     </form>
   );
 };
@@ -80,8 +88,13 @@ FormAddReview.propTypes = {
   checkValid: validFunc,
   onSubmit: validFunc,
   filmId: validNum,
-  formValid: validBool
+  formValid: validBool,
+  status: PropTypes.shape()
 };
+
+const mapStateToProps = (state) => ({
+  status: getReviewStatus(state)
+});
 
 const mapDispatchToProps = (dispatch) => ({
   onSubmit(id, rating, comment) {
@@ -90,4 +103,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export {FormAddReview};
-export default connect(null, mapDispatchToProps)(FormAddReview);
+export default connect(mapStateToProps, mapDispatchToProps)(FormAddReview);

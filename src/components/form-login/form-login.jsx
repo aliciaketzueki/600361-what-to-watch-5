@@ -2,9 +2,11 @@ import React, {useState} from "react";
 import {validFunc, validShape, validBool} from "../../utils/props";
 import {connect} from "react-redux";
 import {login} from "../../store/actions/api-actions";
+import {getUserStatus} from "../../store/selectors";
+import PropTypes from "prop-types";
 
 const FormLogin = (props) => {
-  const {emailValid, passwordValid, formErrors, formValid, checkValid, onSubmit} = props;
+  const {emailValid, passwordValid, formErrors, formValid, checkValid, onSubmit, status} = props;
   const [email, setEmail] = useState(``);
   const [password, setPassword] = useState(``);
 
@@ -17,6 +19,9 @@ const FormLogin = (props) => {
     >
       {
         <div className="sign-in__message">
+          {status &&
+            `Registration error: ${status.status} ${status.statusText}`
+          }
           {
             Object.keys(formErrors).map((fieldName, i) => {
               if (formErrors[fieldName].length > 0) {
@@ -83,7 +88,12 @@ FormLogin.propTypes = {
   emailValid: validBool,
   passwordValid: validBool,
   formValid: validBool,
+  status: PropTypes.shape()
 };
+
+const mapStateToProps = (state) => ({
+  status: getUserStatus(state)
+});
 
 const mapDispatchToProps = (dispatch) => ({
   onSubmit(authData) {
@@ -92,4 +102,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export {FormLogin};
-export default connect(null, mapDispatchToProps)(FormLogin);
+export default connect(mapStateToProps, mapDispatchToProps)(FormLogin);
