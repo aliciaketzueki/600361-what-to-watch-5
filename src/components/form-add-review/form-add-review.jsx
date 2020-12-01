@@ -1,9 +1,8 @@
 import React, {useState} from "react";
 import {connect} from "react-redux";
-import {validFunc, validBool, validNum} from "../../utils/props";
+import {validFunc, validBool, validNum, validStatusResponse} from "../../utils/props";
 import {addReview} from "../../store/actions/api-actions";
 import {getReviewStatus} from "../../store/selectors";
-import PropTypes from "prop-types";
 
 const FormAddReview = (props) => {
   const {checkValid, onSubmit, filmId, formValid, status} = props;
@@ -89,7 +88,7 @@ FormAddReview.propTypes = {
   onSubmit: validFunc,
   filmId: validNum,
   formValid: validBool,
-  status: PropTypes.shape()
+  status: validStatusResponse
 };
 
 const mapStateToProps = (state) => ({

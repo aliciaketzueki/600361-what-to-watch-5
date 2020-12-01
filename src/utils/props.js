@@ -68,3 +68,8 @@ export const validChildren = PropTypes.oneOfType([
   PropTypes.arrayOf(PropTypes.node),
   PropTypes.node
 ]).isRequired;
+
+export const validStatusResponse = PropTypes.shape({
+  status: PropTypes.number,
+  statusText: PropTypes.string
+});

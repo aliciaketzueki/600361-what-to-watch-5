@@ -1,9 +1,8 @@
 import React, {useState} from "react";
-import {validFunc, validShape, validBool} from "../../utils/props";
+import {validFunc, validShape, validBool, validStatusResponse} from "../../utils/props";
 import {connect} from "react-redux";
 import {login} from "../../store/actions/api-actions";
 import {getUserStatus} from "../../store/selectors";
-import PropTypes from "prop-types";
 
 const FormLogin = (props) => {
   const {emailValid, passwordValid, formErrors, formValid, checkValid, onSubmit, status} = props;
@@ -88,7 +87,7 @@ FormLogin.propTypes = {
   emailValid: validBool,
   passwordValid: validBool,
   formValid: validBool,
-  status: PropTypes.shape()
+  status: validStatusResponse
 };
 
 const mapStateToProps = (state) => ({
